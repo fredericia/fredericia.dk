@@ -1,0 +1,152 @@
+// |--------------------------------------------------------------------------
+// | Breadcrumb
+// |--------------------------------------------------------------------------
+// |
+// | This file contains styles for the following:
+// | - .os2-breadcrumb-container
+// |
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+
+// Breadcrumb
+@os2-breadcrumb-separator-font-size:	@font-size-small;
+
+@os2-breadcrumb-link-color:			      @text-color-light;
+@os2-breadcrumb-link-hover-color:		  @brand-secondary;
+@os2-breadcrumb-active-color:		  		@os2-breadcrumb-link-color;
+
+@os2-breadcrumb-separator-color:		  @os2-breadcrumb-link-color;
+@os2-breadcrumb-separator-spacing:	  5px;
+
+// --------------------------------------------------
+// Styling
+// --------------------------------------------------
+
+// Breadcrumb
+.os2-breadcrumb-container {
+	padding: 10px;
+
+	.breadcrumb {
+		margin: 0 @default-left-right-spacing;
+		border-radius: 0;
+
+		li {
+			font-size: @os2-breadcrumb-separator-font-size;
+			text-transform: uppercase;
+
+			a {
+				color: @os2-breadcrumb-link-color;
+
+				&:hover {
+					color: @os2-breadcrumb-link-hover-color;
+				}
+			}
+
+			&.active {
+				color: @os2-breadcrumb-active-color;
+			}
+
+			+ li {
+
+				&:before {
+					color: @os2-breadcrumb-separator-color;
+					padding: 0 @os2-breadcrumb-separator-spacing;
+					font-family: 'FontAwesome';
+					content: @fa-var-angle-right;
+				}
+			}
+		}
+	}
+}
+
+// --------------------------------------------------
+// Responsive
+// --------------------------------------------------
+
+// Mobile
+@media @media-query-mobile {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// Mobile - only
+@media @media-query-mobile-only {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {
+		display: none;
+	}
+}
+
+// Tablet
+@media @media-query-tablet {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// Tablet - only
+@media @media-query-tablet-only {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// Desktop
+@media @media-query-desktop {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// Desktop - only
+@media @media-query-desktop-only {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// Large desktop
+@media @media-query-large-desktop {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// Large desktop - only
+@media @media-query-large-desktop-only {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// Print
+@media print {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// Touch
+.touch {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// No touch
+.no-touch {
+
+	// Breadcrumb
+	.os2-breadcrumb-container {}
+}
+
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+
+// Breadcrumb mixin
+.os2-mixin-breadcrumb() {}
