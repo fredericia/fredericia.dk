@@ -1,0 +1,4 @@
+name = OS2Web Core
+description = Core installation of OS2web.
+version = 1.10
+core = 7.x
