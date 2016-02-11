@@ -172,6 +172,17 @@ function os2web_borger_dk_settings_form($form, $form_state) {
     '#description' => t('Check to enable the menu-import from Borger.dk.'),
     '#default_value' => variable_get('os2web_borger_dk_menus_import', 0),
   );
+  $menu_page = node_type_get_types();
+  foreach ($menu_page as $key => $object) {
+    $menu_page[$key] = $object->name;
+  }
+  $form['os2web_borger_dk_settings_6']['os2web_borger_dk_menus_menu_page'] = array(
+    '#type' => 'select',
+    '#options' => $menu_page,
+    '#title' => t('Menu page content type'),
+    '#description' => t('Select menu page content type'),
+    '#default_value' => variable_get('os2web_borger_dk_menus_menu_page', 'os2web_base_contentpage'),
+  );
   $form['os2web_borger_dk_settings_6']['os2web_borger_dk_borger_dk_menu_name'] = array(
     '#type' => 'textfield',
     '#title' => t('Menu name for imported Borger.dk-menu'),
@@ -196,8 +207,8 @@ function os2web_borger_dk_settings_form($form, $form_state) {
   $form['os2web_borger_dk_settings_6']['os2web_borger_dk_menu_import_description'] = array(
     '#type' => 'fieldset',
     '#title' => t('Description for importing Borger.dk menu structure'),
-    '#description' => t("Before you import Borger.dk menu structure, please create a content type
-                        which is called 'menu_page'(machine name) with title and body fields.
+    '#description' => t("Before you import Borger.dk menu structure, please choose a content type
+                        which default is OS2web base contentpage <b><u>(Indholdsside)</u></b>.
                         Step1 : Please import Borger.dk-menu items now.
                         Step2 : When Borger.dk menu items are imported, please import all Borger.dk articles.
                         Step 3 : Create Borger.dk menu structure now."),
