@@ -1064,7 +1064,7 @@ function os2web_borger_dk_node_submit(&$node, $form, &$form_state) {
         $node->uid = $account->uid;
       }
       else {
-        $node->uid = 0;
+        $node->uid = 1;
       }
 
       // Insert default value of a new node.
@@ -1294,6 +1294,7 @@ function _os2web_borger_dk_create_menu_page($item) {
                      array('type' => $type, 'title' => $item['SiteTitle']))->fetchAssoc();
   if (!$result) {
     $node = new stdClass();
+    $node->uid = 1;
     $node->created = !empty($node->date) ? strtotime($node->date) : REQUEST_TIME;
     $node->validated = TRUE;
 
@@ -1461,6 +1462,7 @@ function _os2web_borger_dk_batch_article_import($external_id_list, $max_count, $
       if (!isset($update_items[$eid])) {
         // And we update all the node-fields with the article-values.
         $node = new stdClass();
+        $node->uid = 1;
         $node->created = !empty($node->date) ? strtotime($node->date) : REQUEST_TIME;
         $node->validated = TRUE;
 
@@ -1701,6 +1703,7 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
                 $title = $article['title'];
                 $nid = FALSE;
                 $node = new stdClass();
+                $node->uid = 1;
                 $node->created = !empty($node->date) ? strtotime($node->date) : REQUEST_TIME;
                 $node->validated = TRUE;
                 // Insert default value of a new node.
@@ -1832,6 +1835,7 @@ function _os2web_borger_dk_import_supplement_article($value) {
     $title = $article['title'];
     $nid = FALSE;
     $node = new stdClass();
+    $node->uid = 1;
     $node->created = !empty($node->date) ? strtotime($node->date) : REQUEST_TIME;
     $node->validated = TRUE;
     // Insert default value of a new node.
