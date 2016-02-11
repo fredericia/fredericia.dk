@@ -1,6 +1,6 @@
 name = OS2web Paragraph
 core = 7.x
-package = OS2Web - Frontend
+package = OS2Web - Contenttype
 version = 7.x-1.0
 project = os2web_paragraph
 dependencies[] = features
