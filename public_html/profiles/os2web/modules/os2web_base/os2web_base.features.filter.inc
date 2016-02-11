@@ -47,16 +47,6 @@ function os2web_base_filter_default_formats() {
     ),
   );
 
-  // Exported format: PHP code.
-  $formats['php_code'] = array(
-    'format' => 'php_code',
-    'name' => 'PHP code',
-    'cache' => 1,
-    'status' => 1,
-    'weight' => -6,
-    'filters' => array(),
-  );
-
   // Exported format: Plain text.
   $formats['plain_text'] = array(
     'format' => 'plain_text',
@@ -78,16 +68,6 @@ function os2web_base_filter_default_formats() {
         ),
       ),
     ),
-  );
-
-  // Exported format: Raw.
-  $formats['raw'] = array(
-    'format' => 'raw',
-    'name' => 'Raw',
-    'cache' => 1,
-    'status' => 1,
-    'weight' => 0,
-    'filters' => array(),
   );
 
   return $formats;

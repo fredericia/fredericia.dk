@@ -258,27 +258,7 @@ function os2web_base_image_default_styles() {
     'name' => 'os2web_gallery_thumbnails',
     'label' => 'OS2web gallery thumbnails',
     'effects' => array(
-      14 => array(
-        'label' => 'EPSA Image Crop',
-        'help' => '',
-        'dimensions callback' => 'epsacrop_crop_dimensions',
-        'effect callback' => 'epsacrop_crop_image',
-        'form callback' => 'epsacrop_crop_image_form',
-        'module' => 'epsacrop',
-        'name' => 'epsacrop_crop',
-        'data' => array(
-          'width' => 290,
-          'height' => 290,
-          'anchor' => 'center-center',
-          'jcrop_settings' => array(
-            'aspect_ratio' => '',
-            'bgcolor' => 'black',
-            'bgopacity' => 0.6,
-            'fallback' => 1,
-          ),
-        ),
-        'weight' => -10,
-      ),
+      14 => NULL,
       15 => array(
         'label' => 'Skalér og beskær',
         'help' => 'Skalering og beskæring bevarer billedets højde-bredde-forhold og beskærer derefter den største dimension. Det er nyttigt til at generere kvadratiske thumbnails uden at forvrænge billedet.',
@@ -298,69 +278,4 @@ function os2web_base_image_default_styles() {
   );
 
   return $styles;
-}
-
-/**
- * Implements hook_node_info().
- */
-function os2web_base_node_info() {
-  $items = array(
-    'media' => array(
-      'name' => t('Medier'),
-      'base' => 'node_content',
-      'description' => t('Video og audio.'),
-      'has_title' => '1',
-      'title_label' => t('Titel'),
-      'help' => '',
-    ),
-    'os2web_base_contentpage' => array(
-      'name' => t('Indholdsside'),
-      'base' => 'node_content',
-      'description' => t('Almindelig webside til generel brug på sitet.'),
-      'has_title' => '1',
-      'title_label' => t('Overskrift'),
-      'help' => '',
-    ),
-    'os2web_base_gallery' => array(
-      'name' => t('Galleri'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Overskrift'),
-      'help' => '',
-    ),
-    'os2web_base_iframe' => array(
-      'name' => t('iFrame, Selvbetjeningsløsning mm.'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Overskrift'),
-      'help' => '',
-    ),
-    'os2web_base_news' => array(
-      'name' => t('Nyhed'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Overskrift'),
-      'help' => '',
-    ),
-    'os2web_base_rotating_image' => array(
-      'name' => t('Billedekarrusel'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Overskrift'),
-      'help' => '',
-    ),
-    'os2web_base_selfservice_link' => array(
-      'name' => t('Selvbetjening'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Overskrift'),
-      'help' => '',
-    ),
-  );
-  return $items;
 }
