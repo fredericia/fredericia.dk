@@ -13,6 +13,7 @@ function os2web_news_page_archive_field_default_field_instances() {
   // Exported field_instance: 'node-os2web_base_news-field_os2web_news_page_archive'
   $field_instances['node-os2web_base_news-field_os2web_news_page_archive'] = array(
     'bundle' => 'os2web_base_news',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Vælg en dato hvor denne nyheds skal arkiveres. Arkivering af en nyhed gør at den ikke optræder i de normale oversigter, men udelukkende i nyheds arkivet.',
     'display' => array(
@@ -83,7 +84,7 @@ function os2web_news_page_archive_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_popup',
+      'type' => 'date_select',
       'weight' => 1,
     ),
   );

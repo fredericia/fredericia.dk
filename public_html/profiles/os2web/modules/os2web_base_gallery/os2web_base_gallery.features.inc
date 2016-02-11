@@ -1,17 +1,14 @@
 <?php
 /**
  * @file
- * os2web_news_page.features.inc
+ * os2web_base_gallery.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function os2web_news_page_ctools_plugin_api($module = NULL, $api = NULL) {
+function os2web_base_gallery_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
-    return array("version" => "1");
-  }
-  if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
   if ($module == "strongarm" && $api == "strongarm") {
@@ -20,19 +17,12 @@ function os2web_news_page_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_views_api().
- */
-function os2web_news_page_views_api($module = NULL, $api = NULL) {
-  return array("api" => "3.0");
-}
-
-/**
  * Implements hook_node_info().
  */
-function os2web_news_page_node_info() {
+function os2web_base_gallery_node_info() {
   $items = array(
-    'os2web_base_news' => array(
-      'name' => t('Nyhed'),
+    'os2web_base_gallery' => array(
+      'name' => t('Galleri'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

@@ -18,8 +18,10 @@ function os2web_news_page_form_os2web_base_news_node_form_alter(&$form, $form_st
   $options = array();
 
   if ((!isset($node->nid) || isset($node->is_new)) && user_access('administer all news type')) {
-    // Get first item in vocabulary and set selects default value..
-    $form['field_os2web_news_page_type']['und']['#default_value'][] = $first_term->tid;
+    // Get first item in vocabulary and set selects default value.
+    if (is_object($first_term)) {
+      $form['field_os2web_news_page_type']['und']['#default_value'][] = $first_term->tid;
+    }
   }
   elseif (!user_access('administer all news type')) {
     foreach ($terms as $tid => $term) {
