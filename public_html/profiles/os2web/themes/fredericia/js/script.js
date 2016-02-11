@@ -97,12 +97,13 @@
     });
 
     // borger.dk articles
-      $("div.mArticle").hide();
-      $(".microArticle a.gplus").click(function() {
+      //$("div.mArticle").hide();
+      /*$(".microArticle a.gplus").click(function() {
         var article = $(this).parent().find('h3');
         var myid = article.attr('id');
         var style = $('div.' + myid).css('display');
         if (style == 'none') {
+          console.log('her');
           $("div." + myid).show("500");
           $(this).addClass('gminus');
           $(this).removeClass('gplus');
@@ -113,10 +114,9 @@
           $(this).removeClass('gminus');
         }
         return false;
-      });
+      });*/
 
       $(".gplus_all").click(function() {
-        console.log('plus');
         $("div.mArticle").show();
         $(".microArticle a.gplus").addClass('gminus');
         $(".microArticle a.gplus").removeClass('gplus');

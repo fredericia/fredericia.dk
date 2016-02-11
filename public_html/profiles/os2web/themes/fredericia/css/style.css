@@ -285,7 +285,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #005191;
+  color: #00406f;
   text-decoration: underline;
 }
 a:focus {
@@ -500,10 +500,10 @@ cite {
   color: #dedede;
 }
 .text-primary {
-  color: #589000;
+  color: #00406f;
 }
 a.text-primary:hover {
-  color: #395d00;
+  color: #00233c;
 }
 .text-success {
   color: #3c763d;
@@ -531,10 +531,10 @@ a.text-danger:hover {
 }
 .bg-primary {
   color: #fff;
-  background-color: #589000;
+  background-color: #00406f;
 }
 a.bg-primary:hover {
-  background-color: #395d00;
+  background-color: #00233c;
 }
 .bg-success {
   background-color: #dff0d8;
@@ -2048,8 +2048,8 @@ fieldset[disabled] .btn {
 }
 .btn-default {
   color: #ffffff;
-  background-color: #005191;
-  border-color: #005191;
+  background-color: #00406f;
+  border-color: #00406f;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -2057,8 +2057,8 @@ fieldset[disabled] .btn {
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: #ffffff;
-  background-color: #003a68;
-  border-color: #002f54;
+  background-color: #002846;
+  border-color: #001d32;
 }
 .btn-default:active,
 .btn-default.active,
@@ -2080,17 +2080,17 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #005191;
-  border-color: #005191;
+  background-color: #00406f;
+  border-color: #00406f;
 }
 .btn-default .badge {
-  color: #005191;
+  color: #00406f;
   background-color: #ffffff;
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #589000;
-  border-color: #487700;
+  background-color: #00406f;
+  border-color: #003156;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -2098,8 +2098,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #3f6700;
-  border-color: #233900;
+  background-color: #002846;
+  border-color: #000e18;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -2121,11 +2121,11 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #589000;
-  border-color: #487700;
+  background-color: #00406f;
+  border-color: #003156;
 }
 .btn-primary .badge {
-  color: #589000;
+  color: #00406f;
   background-color: #ffffff;
 }
 .btn-success {
@@ -2315,7 +2315,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #005191;
+  color: #00406f;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -3066,7 +3066,7 @@ input[type="button"].btn-block {
   color: #ffffff;
   text-decoration: none;
   outline: 0;
-  background-color: #589000;
+  background-color: #00406f;
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -3583,7 +3583,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #ffffff;
-  background-color: #589000;
+  background-color: #00406f;
 }
 .nav-stacked > li {
   float: none;
@@ -4174,7 +4174,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  color: #005191;
+  color: #00406f;
   background-color: #eeeeee;
   border-color: #dddddd;
 }
@@ -4186,8 +4186,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .pagination > .active > span:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #589000;
-  border-color: #589000;
+  background-color: #00406f;
+  border-color: #00406f;
   cursor: default;
 }
 .pagination > .disabled > span,
@@ -4302,11 +4302,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #c5c5c5;
 }
 .label-primary {
-  background-color: #589000;
+  background-color: #00406f;
 }
 .label-primary[href]:hover,
 .label-primary[href]:focus {
-  background-color: #395d00;
+  background-color: #00233c;
 }
 .label-success {
   background-color: #5cb85c;
@@ -4542,7 +4542,7 @@ a.thumbnail.active {
   line-height: 20px;
   color: #ffffff;
   text-align: center;
-  background-color: #589000;
+  background-color: #00406f;
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
@@ -4657,8 +4657,8 @@ a.list-group-item.active:hover,
 a.list-group-item.active:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #589000;
-  border-color: #589000;
+  background-color: #00406f;
+  border-color: #00406f;
 }
 a.list-group-item.active .list-group-item-heading,
 a.list-group-item.active:hover .list-group-item-heading,
@@ -4668,7 +4668,7 @@ a.list-group-item.active:focus .list-group-item-heading {
 a.list-group-item.active .list-group-item-text,
 a.list-group-item.active:hover .list-group-item-text,
 a.list-group-item.active:focus .list-group-item-text {
-  color: #c0ff5d;
+  color: #3cacff;
 }
 .list-group-item-success {
   color: #3c763d;
@@ -4980,18 +4980,18 @@ a.list-group-item-danger.active:focus {
   border-bottom-color: #dddddd;
 }
 .panel-primary {
-  border-color: #589000;
+  border-color: #00406f;
 }
 .panel-primary > .panel-heading {
   color: #ffffff;
-  background-color: #589000;
-  border-color: #589000;
+  background-color: #00406f;
+  border-color: #00406f;
 }
 .panel-primary > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #589000;
+  border-top-color: #00406f;
 }
 .panel-primary > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #589000;
+  border-bottom-color: #00406f;
 }
 .panel-success {
   border-color: #d6e9c6;
@@ -6190,7 +6190,7 @@ div.password-suggestions ul {
   font-size: 120%;
 }
 .form-autocomplete .glyphicon.glyphicon-spin {
-  color: #589000;
+  color: #00406f;
 }
 .form-autocomplete .input-group-addon {
   background-color: #ffffff;
@@ -6525,7 +6525,7 @@ a {
 }
 a:hover {
   text-decoration: none;
-  color: #005191;
+  color: #00406f;
 }
 .bottom-padding {
   padding-bottom: 20px;
@@ -6832,20 +6832,20 @@ body .form-control {
 }
 #block-feedback-form #feedback-submit.btn-default {
   color: #ffffff;
-  background-image: -webkit-linear-gradient(top, #85c500 0%, #589000 100%);
-  background-image: linear-gradient(to bottom, #85c500 0%, #589000 100%);
+  background-image: -webkit-linear-gradient(top, #85c500 0%, #00406f 100%);
+  background-image: linear-gradient(to bottom, #85c500 0%, #00406f 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff589000', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff00406f', GradientType=0);
   border: none;
 }
 #block-feedback-form #feedback-submit.btn-default:hover,
 #block-feedback-form #feedback-submit.btn-default:focus,
 #block-feedback-form #feedback-submit.btn-default:active,
 #block-feedback-form #feedback-submit.btn-default.active {
-  background-image: -webkit-linear-gradient(top, #589000 0%, #85c500 100%);
-  background-image: linear-gradient(to bottom, #589000 0%, #85c500 100%);
+  background-image: -webkit-linear-gradient(top, #00406f 0%, #85c500 100%);
+  background-image: linear-gradient(to bottom, #00406f 0%, #85c500 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff589000', endColorstr='#ff85c500', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00406f', endColorstr='#ff85c500', GradientType=0);
   color: #ffffff;
 }
 #block-feedback-form #feedback-submit.btn-default.disabled,
@@ -6863,30 +6863,30 @@ fieldset[disabled] #block-feedback-form #feedback-submit.btn-default:active,
 #block-feedback-form #feedback-submit.btn-default.disabled.active,
 #block-feedback-form #feedback-submit.btn-default[disabled].active,
 fieldset[disabled] #block-feedback-form #feedback-submit.btn-default.active {
-  background-color: #589000;
+  background-color: #00406f;
 }
 .main-container .form-search input:focus {
-  border: 4px solid #589000;
+  border: 4px solid #67c10e;
 }
 .photoswipe-gallery .field-item img {
   margin-bottom: 20px;
 }
 .btn-default {
   color: #ffffff;
-  background-image: -webkit-linear-gradient(top, #005191 0%, #0089cd 100%);
-  background-image: linear-gradient(to bottom, #005191 0%, #0089cd 100%);
+  background-image: -webkit-linear-gradient(top, #00406f 0%, #0089cd 100%);
+  background-image: linear-gradient(to bottom, #00406f 0%, #0089cd 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff005191', endColorstr='#ff0089cd', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00406f', endColorstr='#ff0089cd', GradientType=0);
   border: none;
 }
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active {
-  background-image: -webkit-linear-gradient(top, #0089cd 0%, #005191 100%);
-  background-image: linear-gradient(to bottom, #0089cd 0%, #005191 100%);
+  background-image: -webkit-linear-gradient(top, #0089cd 0%, #00406f 100%);
+  background-image: linear-gradient(to bottom, #0089cd 0%, #00406f 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0089cd', endColorstr='#ff005191', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0089cd', endColorstr='#ff00406f', GradientType=0);
   color: #ffffff;
 }
 .btn-default.disabled,
@@ -6908,20 +6908,20 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #ffffff;
-  background-image: -webkit-linear-gradient(top, #85c500 0%, #589000 100%);
-  background-image: linear-gradient(to bottom, #85c500 0%, #589000 100%);
+  background-image: -webkit-linear-gradient(top, #85c500 0%, #00406f 100%);
+  background-image: linear-gradient(to bottom, #85c500 0%, #00406f 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff589000', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff00406f', GradientType=0);
   border: none;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active {
-  background-image: -webkit-linear-gradient(top, #589000 0%, #85c500 100%);
-  background-image: linear-gradient(to bottom, #589000 0%, #85c500 100%);
+  background-image: -webkit-linear-gradient(top, #00406f 0%, #85c500 100%);
+  background-image: linear-gradient(to bottom, #00406f 0%, #85c500 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff589000', endColorstr='#ff85c500', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00406f', endColorstr='#ff85c500', GradientType=0);
   color: #ffffff;
 }
 .btn-primary.disabled,
@@ -6939,7 +6939,7 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #589000;
+  background-color: #00406f;
 }
 .btn-blacknblue {
   color: #ffffff;
@@ -7253,7 +7253,7 @@ fieldset[disabled] .btn-orange.active {
 }
 .panel .panel-body .panel-body-inner .field-name-field-os2web-contact-field-info a:hover,
 .panel .panel-body .panel-body-inner .field-name-field-os2web-contact-field-info a:active {
-  color: #005191;
+  color: #00406f;
 }
 .panel .panel-body ul {
   padding: 0;
@@ -7279,17 +7279,17 @@ fieldset[disabled] .btn-orange.active {
 }
 .panel-default > .panel-heading,
 .like-panel.like-panel-default {
-  background-image: -webkit-linear-gradient(top, #0089cd 0%, #005191 100%);
-  background-image: linear-gradient(to bottom, #0089cd 0%, #005191 100%);
+  background-image: -webkit-linear-gradient(top, #00406f 0%, #00406f 100%);
+  background-image: linear-gradient(to bottom, #00406f 0%, #00406f 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0089cd', endColorstr='#ff005191', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00406f', endColorstr='#ff00406f', GradientType=0);
 }
 .panel-primary > .panel-heading,
 .like-panel.like-panel-primary {
-  background-image: -webkit-linear-gradient(top, #85c500 0%, #589000 100%);
-  background-image: linear-gradient(to bottom, #85c500 0%, #589000 100%);
+  background-image: -webkit-linear-gradient(top, #85c500 0%, #67c10e 100%);
+  background-image: linear-gradient(to bottom, #85c500 0%, #67c10e 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff589000', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff67c10e', GradientType=0);
 }
 .large-arrow.panel-primary.with-arrow > .panel-body {
   padding-top: 19px;
@@ -7375,7 +7375,7 @@ fieldset[disabled] .btn-orange.active {
   right: 0;
   height: 2.16em;
   width: 2.2em;
-  background: #005191;
+  background: #00406f;
   text-align: center;
   border-radius: 0 4px 4px 0;
 }
@@ -7401,7 +7401,7 @@ fieldset[disabled] .btn-orange.active {
 .dropdown.like-panel ul.dropdown-menu {
   margin: 0;
   width: 100%;
-  border: 2px solid #005191;
+  border: 2px solid #00406f;
   border-radius: 0 0 4px 4px;
 }
 .dropdown.like-panel ul.dropdown-menu li a {
@@ -7416,7 +7416,7 @@ fieldset[disabled] .btn-orange.active {
   padding-bottom: 12px;
 }
 .search-results .search-snippet-info .url a {
-  color: #589000;
+  color: #67c10e;
   font-size: 85%;
   font-style: italic;
 }
@@ -7747,10 +7747,10 @@ div.node-os2web-spotbox-box .field-name-field-os2web-spotbox-video iframe {
 .breadcrumb li.last {
   margin-bottom: 0;
   border-radius: 4px 4px 0 0;
-  background-image: -webkit-linear-gradient(top, #85c500 0%, #589000 100%);
-  background-image: linear-gradient(to bottom, #85c500 0%, #589000 100%);
+  background-image: -webkit-linear-gradient(top, #00406f 0%, #00406f 100%);
+  background-image: linear-gradient(to bottom, #00406f 0%, #00406f 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff589000', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00406f', endColorstr='#ff00406f', GradientType=0);
 }
 .breadcrumb li.last i {
   background-image: url(../images/sprites.png);
@@ -8421,7 +8421,7 @@ body.page-taxonomy-term.term-is-not-top .region-content.col-md-6 div.node-os2web
 .region-content .field-name-body a:hover,
 .region-content .taxonomy-term-description a:active,
 .region-content .field-name-body a:active {
-  color: #005191;
+  color: #00406f;
 }
 .wrap img {
   max-width: 100%;
@@ -8455,7 +8455,7 @@ body.page-node article #borger_dk-body .microArticle a {
 }
 div.microArticle a:hover,
 body.page-node article #borger_dk-body .microArticle a:hover {
-  color: #005191;
+  color: #00406f;
 }
 div.microArticle ul,
 body.page-node article #borger_dk-body .microArticle ul {
@@ -8485,7 +8485,7 @@ body.page-node article #borger_dk-body .microArticle ul {
 .os2web_borger_dk_selfservi a:hover,
 .os2web_borger_dk_selfservi a:link:hover,
 .os2web_borger_dk_selfservi ul li a:hover {
-  color: #005191;
+  color: #00406f;
 }
 .borger_dk-field_os2web-borger-dk-pre_text,
 .borger_dk-field_os2web-borger-dk-post_text {
@@ -8510,7 +8510,7 @@ body.page-node article #borger_dk-body .microArticle ul {
 .borger_dk-field_os2web-borger-dk-recommend a:hover,
 .borger_dk-field_os2web-borger-dk-legislati a:hover,
 .borger_dk-field_os2web-borger-dk-shortlist a:hover {
-  color: #005191;
+  color: #00406f;
 }
 .borger_dk-field_os2web-borger-dk-recommend h3,
 .borger_dk-field_os2web-borger-dk-legislati h3,
@@ -8667,7 +8667,7 @@ body.page-node article #borger_dk-body .microArticle ul {
   color: #30353c;
 }
 .front-s-news-item-text .news-title:hover {
-  color: #005191;
+  color: #00406f;
   text-decoration: none;
 }
 .front-s-news-item-text p {
@@ -8757,10 +8757,10 @@ fieldset[disabled] #fredericia_tabs ul.quicktabs-tabs li.active {
   background-color: #36525e;
 }
 #fredericia_tabs ul.quicktabs-tabs li.active {
-  background-image: -webkit-linear-gradient(top, #85c500 0%, #589000 100%);
-  background-image: linear-gradient(to bottom, #85c500 0%, #589000 100%);
+  background-image: -webkit-linear-gradient(top, #85c500 0%, #67c10e 100%);
+  background-image: linear-gradient(to bottom, #85c500 0%, #67c10e 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff589000', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff67c10e', GradientType=0);
 }
 #fredericia_tabs ul.quicktabs-tabs li.active:after {
   content: " ";
@@ -8849,7 +8849,7 @@ fieldset[disabled] #fredericia_tabs ul.quicktabs-tabs li.active {
   text-decoration: none;
 }
 #fredericia_tabs .views-row h4 a:hover {
-  color: #005191;
+  color: #00406f;
 }
 #fredericia_tabs .views-row .quicktabs-nyheder-row {
   min-height: 67px;
