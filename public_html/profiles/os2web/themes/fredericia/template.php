@@ -8,8 +8,12 @@
  * Implements template_preprocess_page().
  */
 function fredericia_preprocess_page(&$variables) {
-  // Remove all Taxonomy auto listings here.
+  // Install os2web_theme_helper module.
+  if (!module_exists('os2web_theme_helper')) {
+    module_enable(array('os2web_theme_helper'));
+  }
 
+  // Remove all Taxonomy auto listings here.
   $term = NULL;
   if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
     $term = taxonomy_term_load(arg(2));
