@@ -1,7 +1,7 @@
 name = OS2web Contact Block - Advanced
 description = Advanced type of Contact block. Provides more fields and opening hours.
 core = 7.x
-package = OS2Web - Frontend
+package = OS2Web - Contenttype
 version = 7.x-2.0
 project = os2web_contact_advanced
 dependencies[] = features

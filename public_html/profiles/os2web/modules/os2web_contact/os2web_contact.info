@@ -1,7 +1,7 @@
 name = OS2Web Contact Block
 description = Provides a inheriatable Contact content type.
 core = 7.x
-package = OS2Web - Frontend
+package = OS2Web - Contenttype
 version = 7.x-2.0
 project = os2web_contact
 dependencies[] = block
