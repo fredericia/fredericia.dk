@@ -454,7 +454,6 @@ function os2web_theme_helper_get_borger_dk_content($node) {
             $show_div = $item['0']['value'];
             $show_div = str_replace("</h2>", "</h2><a href='#' class='gplus'>+</a>", $show_div);
             $content_field['body'] = $show_div;
-            dpm($item);
           }
         }
         elseif (!$microarticle && $type == 'body') {
