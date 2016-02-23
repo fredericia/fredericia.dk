@@ -29,6 +29,21 @@
 ?>
 <?php if ($content): ?>
   <aside<?php print $attributes; ?>>
+  <?php if(!empty($page['page']['contact'])) : ?>
+    <div class="contact-block">
+      <?php $contact_content =  node_view(node_load($page['page']['contact']['nid']));
+        print render( $contact_content)
+      ?>
+    </div>
+    <?php endif; ?>
+    <?php if(!empty($page['page']['infobox'])) : ?>
+    <div class="info-box">
+      <?php $infobox_content =  node_view(node_load($page['page']['infobox']['nid']));
+        print render( $infobox_content)
+      ?>
+    </div>
+    <?php endif; ?>
+
     <?php if(!empty($page['page']['os2web_selfservicelinks']) && (!isset($page['page']['term_is_top']) || $page['page']['term_is_top'] == FALSE)) : ?>
       <div class="panel panel-default with-arrow">
         <div class="panel-heading">

@@ -52,7 +52,7 @@ function fredericia_preprocess_page(&$variables) {
   $sidebar_first_hidden = FALSE;
 
   // If node has hidden the sidebar, set content to null.
-  if (($node && $hide_sidebar_field = field_get_items('node', $node, 'field_os2web_hide_sidebar')) ||
+  if (($node && $hide_sidebar_field = field_get_items('node', $node, 'field_os2web_base_hide_sidebar')) ||
       ($term && $hide_sidebar_field = field_get_items('taxonomy_term', $term, 'field_os2web_hide_sidebar'))) {
     if ($hide_sidebar_field[0]['value']) {
       $variables['page']['sidebar_second'] = array();
@@ -63,8 +63,11 @@ function fredericia_preprocess_page(&$variables) {
   // Get all the nodes selvbetjeningslinks and give them to the template.
   if ($node || $term) {
     $variables['page']['os2web_selfservicelinks'] = os2web_theme_helper_get_selfservicelinks(NULL, $node, $term);
+      // Get all the nodes selvbetjeningslinks and give them to the template.
   }
-
+  if ($node && $link = os2web_theme_helper_get_contact($node->nid)) {
+    $variables['page']['contact']['nid'] = $link;
+  }
   // Get borger.dk legislation links and give them to the template.
   if (($node && $item = field_get_items('node', $node, 'field_os2web_borger_dk_legislati'))) {
     $variables['page']['os2web_borger_dk_legislation'] = os2web_theme_helper_get_borger_dk_links($item);
@@ -79,45 +82,48 @@ function fredericia_preprocess_page(&$variables) {
     $related_links = os2web_theme_helper_output_related_links($term, 'taxonomy_term');
   }
 
-  if ($related_links) {
-    // Provide the related links to the templates.
-    $variables['page']['related_links'] = $related_links;
-  }
-
-  // Hack to force the sidebar_second to be rendered if we have anything to put
-  // in it.
-  if (!$sidebar_second_hidden && empty($variables['page']['sidebar_second'])
-      && (!empty($variables['page']['related_links']) || !empty($variables['page']['os2web_selfservicelinks']))) {
-    $variables['page']['sidebar_second'] = array(
-      '#theme_wrappers' => array('region'),
-      '#region' => 'sidebar_second',
-      'dummy_content' => array(
-        '#markup' => ' ',
-      ),
-    );
-  }
-
-  // On taxonomy pages, add a news list in second sidebar.
-  if (!$sidebar_second_hidden && $term) {
-
-    $view_rendered = '';
-    $view_rendered = os2web_theme_helper_get_view_content('os2web_news_lists', 'panel_pane_2', array('all', 'Branding', $term->tid), 3);
-
-    if ($view_rendered != '') {
-      if (empty($variables['page']['sidebar_second'])) {
-        $variables['page']['sidebar_second'] = array(
-          '#theme_wrappers' => array('region'),
-          '#region' => 'sidebar_second',
-        );
-      }
-      $variables['page']['sidebar_second']['os2web_news_lists'] = array('#markup' => $view_rendered);
-    }
-  }
 
   // Spotbox handling. Find all spotboxes for this node, and add them to
   // content_bottom.
-  if ($term && $content = os2web_theme_helper_output_spotbox($variables, $node, $term, $term_is_top)) {
+  if (($term || $node ) && $content = os2web_theme_helper_output_spotbox($variables, $node, $term)) {
     $variables['page']['content']['os2web_spotbox'] = $content;
+  }
+  // Hack to force the sidebar_second to be rendered if we have anything to put
+  // in it.
+
+  if (!$sidebar_second_hidden) {
+
+    if (empty($variables['page']['sidebar_second'])
+      && (!empty($variables['page']['related_links']) || !empty($variables['page']['os2web_selfservicelinks'])
+          || !empty($variables['page']['contact']))) {
+      $variables['page']['sidebar_second'] = array(
+        '#theme_wrappers' => array('region'),
+        '#region' => 'sidebar_second',
+        'dummy_content' => array(
+          '#markup' => ' ',
+        ),
+      );
+    }
+    if ($related_links) {
+      // Provide the related links to the templates.
+      $variables['page']['related_links'] = $related_links;
+    }
+    // On taxonomy pages, add a news list in second sidebar.
+    if ($term) {
+
+      $view_rendered = '';
+      $view_rendered = os2web_theme_helper_get_view_content('os2web_news_lists', 'panel_pane_2', array('all', 'Branding', $term->tid), 3);
+
+      if ($view_rendered != '') {
+        if (empty($variables['page']['sidebar_second'])) {
+          $variables['page']['sidebar_second'] = array(
+            '#theme_wrappers' => array('region'),
+            '#region' => 'sidebar_second',
+          );
+        }
+        $variables['page']['sidebar_second']['os2web_news_lists'] = array('#markup' => $view_rendered);
+      }
+    }
   }
 
     // If this is a node with an embedded webform.

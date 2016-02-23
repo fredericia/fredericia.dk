@@ -132,8 +132,8 @@
       hide($content['field_tags']);
       hide($content['field_os2web_base_field_image']);
       hide($content['field_os2web_base_field_lead_img']);
-      hide($content['field_os2web_hide_sidebar']);
-      hide($content['field_os2web_hide_contact']);
+      hide($content['field_os2web_base_hide_sidebar']);
+      hide($content['field_os2web_base_hide_contact']);
       hide($content['field_os2web_base_field_hidlinks']);
 
       print render($content['field_os2web_base_field_summary']);
@@ -141,15 +141,19 @@
       print render($content['body']);
       
       if(isset($content['field_os2web_base_field_sympage'])) {
-      print render($content['field_os2web_base_field_sympage']);        
+        print render($content['field_os2web_base_field_sympage']);
       }
 
-      
-      print render($content);
+      print render($content); ?>
+      <?php if(!empty($os2web_spotboxe)) : ?>
+      <div class="os2web_spotboxes col-md-12 col-sm-12 clearfix">
+        <div class="row">
+          <?php print render($os2web_spotboxe); ?>
+        </div>
+      </div>
+      <?php endif; ?>
 
-      print $author_node_info;
-
-    ?>
+     <?php print $author_node_info;?>
 
   </div>
   <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>

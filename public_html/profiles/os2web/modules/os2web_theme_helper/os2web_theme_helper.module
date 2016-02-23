@@ -47,6 +47,27 @@ function os2web_theme_helper_get_spotboxes($spotboxes, $classes = 'col-xs-6 col-
   return $spotbox_array;
 }
 
+function os2web_theme_helper_get_contact($nid) {
+  $menuParent = menu_get_active_trail();
+  $currrent_node = node_load($nid);
+
+  for ($i = count($menuParent) - 1; $i >= 0; $i--) {
+    // var_dump($menuParent[$i]["link_path"]);
+
+    $node = menu_get_object('node', 1, $menuParent[$i]["link_path"]);
+    if (empty($node)) {
+      $node = node_load($nid);
+    }
+    if (isset($node->field_os2web_base_field_contact['und'])) {
+      $hide = field_get_items('node', $currrent_node, 'field_os2web_base_hide_contact');
+      if (($hide && !$hide[0]['value'])
+          || !$hide) {
+        return $link[0]['nid'] = $node->field_os2web_base_field_contact['und'][0]['nid'];
+      }
+    }
+  }
+  return FALSE;
+}
 
 /**
  * Helper function to retrieve the correct array to display selfservicelinks.
@@ -575,16 +596,18 @@ function os2web_theme_helper_get_parent_menu_link($path) {
   return $plid;
 }
 
-function os2web_theme_helper_output_spotbox($variables, $node, $term, $term_is_top) {
+function os2web_theme_helper_output_spotbox($variables, $node, $term, $term_is_top = NULL) {
   $output = FALSE;
   if (($node && $spotboxes = field_get_items('node', $node, 'field_os2web_base_field_spotbox')) ||
       ($term && !$term_is_top && $spotboxes = field_get_items('taxonomy_term', $term, 'field_os2web_base_field_spotbox'))) {
 
     if (empty($variables['page']['sidebar_second'])) {
-      $spotbox_render = drupal_render(os2web_theme_helper_get_spotboxes($spotboxes));
+      $content = os2web_theme_helper_get_spotboxes($spotboxes);
+      $spotbox_render = drupal_render($content);
     }
     else {
-      $spotbox_render = drupal_render(os2web_theme_helper_get_spotboxes($spotboxes, 'col-xs-6 col-sm-6 col-md-6 col-lg-6'));
+      $content = os2web_theme_helper_get_spotboxes($spotboxes, 'col-xs-6 col-sm-6 col-md-6 col-lg-6');
+      $spotbox_render = drupal_render($content);
     }
 
     $output = array(
