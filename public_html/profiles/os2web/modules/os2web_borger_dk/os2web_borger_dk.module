@@ -1147,14 +1147,16 @@ function os2web_borger_dk_node_submit(&$node, $form, &$form_state) {
  * Function os2web_borger_dk_import_menu_now_form_submit().
  */
 function os2web_borger_dk_import_menu_now_form_submit($form, &$form_state) {
-  if (($form_state['submitted'] == 1) && ($form_state['input']['op'] == 'Import Borger.dk-menu now')) {
+  if (($form_state['submitted'] == 1) && ($form_state['input']['op'] == 'Import Borger.dk-menu to taxonomy now')) {
     // Next we get a list of all menu-items from the Borger.dk-webservice.
     $wsdl = variable_get('os2web_borger_dk_webservice', 'https://www.borger.dk/_vti_bin/borger/ArticleExport.svc?wsdl');
+    $updated_at =  variable_get('os2web_borger_dk_last_update');
+    $updated_at = date('Y-m-d\TH\:i\:s', $updated_at);
     $menu_items_availlable = _os2web_borger_dk_GetAllSites($wsdl);
 
     if (!empty($menu_items_availlable['Exceptions']) || !empty($menu_items_availlable['error'])) {
-      $msg = 'An error occured while fetching the Borger.dk menus. Last succesful update was at: %success';
-      watchdog('Borger.dk-articles', $msg, $variables = array('%success' => $updated_at));
+      $msg = 'An error occured while fetching the Borger.dk menus.';
+      watchdog('Borger.dk-articles', $msg);
       return;
     }
 
@@ -1165,45 +1167,27 @@ function os2web_borger_dk_import_menu_now_form_submit($form, &$form_state) {
       $parent_array[$item_site_id] = $item['SiteTitle'];
     }
     $total = count($menu_items_availlable);
-    // $menu_name = $form['build_borger_menu_under_menu']['#value'];
-    $menu_name = variable_get('build_borger_menu_under_menu');
-
-    os2web_borger_dk_create_custom_menu($menu_items_availlable, $total, $parent_array, $menu_name);
+    os2web_borger_dk_create_taxonomy($menu_items_availlable, $total, $parent_array);
   }
 }
 
 /**
- * Function os2web_borger_dk_create_custom_menu().
+ * Function os2web_borger_dk_create_taxonomy().
  *
  * Create a custom menu.
  */
-function os2web_borger_dk_create_custom_menu($menu_items_availlable, $total, $parent_array, $menu_name) {
-  $borger_dk_menu = variable_get('os2web_borger_dk_borger_dk_menu_name', t('Borger.dk menu'));
-  if ($menu_name == 'borgerdkmenu2' && $borger_dk_menu == 'Borger.dk menu') {
-    $existing_menu = db_query('SELECT * FROM {menu_custom} WHERE menu_name = :menu_name',
-                       array('menu_name' => $menu_name))->fetchAssoc();
-    if (!$existing_menu) {
-      $menu = array();
-      $menu['menu_name'] = 'borgerdkmenu2';
-      $menu['title'] = $borger_dk_menu;
-      $menu['description'] = "The <em>Presentation tabs</em> menu contains links to presentation detail";
-      menu_save($menu);
+function os2web_borger_dk_create_taxonomy($menu_items_availlable, $total, $parent_array) {
+  $vocab_name = variable_get('build_borger_menu_under_vocabulary', 'os2web_base_tax_site_structure');
+  $term_vocabularies = taxonomy_vocabulary_get_names();
+
+  if ($term_vocabularies) {
+    if ($term_vocabularies[$vocab_name]) {
+      $vid = $term_vocabularies[$vocab_name]->vid;
+    }
+    else {
+      return;
     }
   }
-  /* elseif ($menu_name != 'borgerdkmenu2') {
-    $existing_menu = db_query('SELECT * FROM {menu_links} WHERE link_title= :link_title AND menu_name = :menu_name',
-                              array('link_title' => $borger_dk_menu, 'menu_name' => $menu_name))->fetchAssoc();
-    if (!$existing_menu) {
-      $menu_item = array(
-        'menu_name' => $menu_name,
-        'link_path' => 'node',
-        'link_title' => $borger_dk_menu,
-        'module' => 'os2web_borger_dk',
-        'plid' => 0,
-    );
-    menu_link_save($menu_item);
-    }
-  }*/
 
   $operations[] = array();
   // Then import the menu from Borger.dk and tag all imported articles.
@@ -1214,27 +1198,25 @@ function os2web_borger_dk_create_custom_menu($menu_items_availlable, $total, $pa
     // Set the batch operation to import 10 menu items each time.
     $operations[] = array(
       '_os2web_borger_dk_import_menu_items',
-      array($group, $total, $parent_array, $menu_name),
+      array($group, $total, $vocab_name, $parent_array, $vid),
     );
   }
 
   $batch = array(
     'operations' => $operations,
-    'title' => t('Importing menu from Borger.dk'),
+    'title' => t('Importing menu from Borger.dk to taxonomy'),
     'init_message' => t('Import job is starting.'),
     'progress_message' => t('Processed @current out of @total.'),
     'finished' => 'os2web_borger_dk_batch_menu_import_finished',
   );
   // Finally we execute the batch process(es).
   batch_set($batch);
-  // menu_cache_clear_all();
-  // menu_link_load($menu);
 }
 
 /**
  * Function _os2web_borger_dk_import_menu_items().
  */
-function _os2web_borger_dk_import_menu_items($group, $total, $parent_array, $menu_name, &$context) {
+function _os2web_borger_dk_import_menu_items($group, $total, $vocab_name, $parent_array, $vid, &$context) {
   if (empty($context['sandbox'])) {
     $context['sandbox'] = array();
     $context['sandbox']['progress'] = 0;
@@ -1246,39 +1228,44 @@ function _os2web_borger_dk_import_menu_items($group, $total, $parent_array, $men
     $menu_item = array();
     // The first menu item from Borger.dk does NOT contain a parent ID.
     // 'Emner', it is the root of Borger.dk menu tree structure.
-    if (empty($item['ParentID'])) {
-      $mlid = db_query('SELECT * FROM {menu_links} WHERE link_title= :link_title AND menu_name = :menu_name', array('link_title' => $item['SiteTitle'], 'menu_name' => $menu_name))->fetchAssoc();
-      // If the menu link is NOT existed.
-      if (!$mlid) {
-        $nid = _os2web_borger_dk_create_menu_page($item);
-        $menu_item = array(
-          'menu_name' => $menu_name,
-          'link_path' => "node/" . $nid,
-          'link_title' => $item['SiteTitle'],
-          'module' => 'os2web_borger_dk',
-          'plid' => $item_pid,
-        );
-        menu_link_save($menu_item);
+    if (empty($item_pid)) {
+      $borger = taxonomy_get_term_by_name('Borger', $vocab_name);
+      if (!$borger) {
+        $borger = taxonomy_get_term_by_name('Emner', $vocab_name);
       }
+
+      if (!$borger) {
+        // Create a new top level term programmatically.
+        $borger = reset($borger);
+        $borger = new stdClass();
+        $borger->name = 'Borger'; // The name of the term
+        $borger->vid = $vid; // The ID of the parent vocabulary
+        $borger->parent = array(); // This tells taxonomy that this is a top-level term
+        taxonomy_term_save($borger);
+      }
+      else {
+        $borger = reset($borger);
+      }
+
+      // Create a new term programmatically under 'Borger'.
+      _os2web_borger_dk_create_menu_term($item, $vid, $borger->tid, $vocab_name);
+
       // Update our progress information.
       $context['sandbox']['progress']++;
     }
     else {
-      $mlid = db_query('SELECT * FROM {menu_links} WHERE link_title= :link_title AND menu_name = :menu_name', array('link_title' => $item['SiteTitle'], 'menu_name' => $menu_name))->fetchAssoc();
+      $mlid = taxonomy_get_term_by_name($item['SiteTitle'], $vocab_name);
       // If the menu link is NOT existed.
-      $existing_parent = db_query('SELECT * FROM {menu_links} WHERE link_title= :link_title AND menu_name = :menu_name', array('link_title' => $parent_array[$item_pid], 'menu_name' => $menu_name))->fetchAssoc();
-      if ($existing_parent && !$mlid) {
-        // Create a menu page for the Menu item (path).
-        $nid = _os2web_borger_dk_create_menu_page($item);
-        $menu_item = array(
-          'menu_name' => $menu_name,
-          'link_path' => "node/" . $nid,
-          'link_title' => $item['SiteTitle'],
-          'module' => 'os2web_borger_dk',
-          'plid' => $existing_parent['mlid'],
-        );
-        menu_link_save($menu_item);
+      $existing_parent = taxonomy_get_term_by_name($parent_array[$item_pid], $vocab_name);
+
+      if (!$mlid) {
+        if (!empty($existing_parent)) {
+          $existing_parent = reset($existing_parent);
+          // Create a term for the Menu item (path).
+          _os2web_borger_dk_create_menu_term($item, $vid, $existing_parent->tid, $vocab_name);
+        }
       }
+
       // Update our progress information.
       $context['sandbox']['progress']++;
     }
@@ -1288,29 +1275,16 @@ function _os2web_borger_dk_import_menu_items($group, $total, $parent_array, $men
 /**
  * Function _os2web_borger_dk_create_menu_page().
  */
-function _os2web_borger_dk_create_menu_page($item) {
-  $type = variable_get('os2web_borger_dk_menus_menu_page', 'os2web_base_contentpage');
-  $result = db_query('SELECT * FROM {node} WHERE type = :type AND title = :title',
-                     array('type' => $type, 'title' => $item['SiteTitle']))->fetchAssoc();
-  if (!$result) {
-    $node = new stdClass();
-    $node->uid = 1;
-    $node->created = !empty($node->date) ? strtotime($node->date) : REQUEST_TIME;
-    $node->validated = TRUE;
-
-    // Insert default value of a new node.
-    $node->type = $type;
-    $node->title = $item['SiteTitle'];
-    $node->body['und']['0']['value'] = '';
-    $node->body['und']['0']['safe_value'] = '';
-    $node->body['und'][0]['format'] = BORGERDK_TEXT_FORMAT_HTML;
-    $node = node_submit($node);
-    node_save($node);
-    return $node->nid;
-  }
-  else {
-    return $result['nid'];
-  }
+function _os2web_borger_dk_create_menu_term($item, $vid, $tid, $vocab_name = NULL) {
+  $vocab_name = variable_get('build_borger_menu_under_vocabulary', 'os2web_base_tax_site_structure');
+  // Create a new term programmatically under 'Borger'.
+  $newterm = new stdClass();
+  $newterm->name = $item['SiteTitle']; // The name of the term
+  $newterm->vid = $vid; // The ID of the parent vocabulary
+  $newterm->vocabulary_machine_name = $vocab_name;
+  $newterm->parent = array($tid);
+  taxonomy_term_save($newterm);
+  return $newterm->tid;
 
 }
 
@@ -1641,26 +1615,26 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
     $context['sandbox']['progress'] = 0;
     $context['sandbox']['max'] = $total;
   }
-  /* This part is only for Ishøj kommune or other u
-   * sers where they create their own
-   * 'Emner' menu link and rename it to 'Borger'.
-   */
-  if ($item['SiteTitle'] == 'Emner') {
-    $result = db_query('SELECT * FROM {menu_links} WHERE link_title= :link_title AND menu_name = :menu_name',
-                  array('link_title' => 'Borger', 'menu_name' => $menu_name))->fetchAssoc();
-    if ($result) {
-      $item['SiteTitle'] = 'Borger';
-    }
-  }
+  $vocab_name = variable_get('build_borger_menu_under_vocabulary', 'os2web_base_tax_site_structure');
+  $vocab = taxonomy_vocabulary_machine_name_load($vocab_name);
 
-  // Search each menu link under the given menu_name.
-  $pid = db_query('SELECT * FROM {menu_links} WHERE link_title= :link_title AND menu_name = :menu_name',
-                  array('link_title' => $item['SiteTitle'], 'menu_name' => $menu_name))->fetchAssoc();
+  if (!$vocab) {
+    watchdog('os2web_borger_dk', 'Vocabulary ' . $vocab_name .  'doesn\'t exist.!', WATCHDOG_WARNING);
+    drupal_set_message(t('The taxonomy vocabulary does not exist, please set in borger.dk setting form'), 'warning');
+    return FALSE;
+  }
+  $vid = $vocab->vid;
+
+  // Search each term link under the given term name.
+  $pid = taxonomy_get_term_by_name($item['SiteTitle'], $vocab_name);
+
   if ($pid) {
     // If the menu link is existed, then get all article
     // IDs in the menu link page.
     $wsdl = variable_get('os2web_borger_dk_webservice', 'https://www.borger.dk/_vti_bin/borger/ArticleExport.svc?wsdl');
     $article_ids = _os2web_borger_dk_GetArticleIDsBySiteID($item['SiteID'], $wsdl);
+    $p_term = reset($pid);
+
     // When there are articles with IDs under the page.
     if (!empty($article_ids)) {
       foreach ($article_ids as $id => $value) {
@@ -1671,24 +1645,31 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
         if ($result) {
           foreach ($result as $row) {
             $article_title = $row->ArticleTitle;
-            $query = 'SELECT * FROM {menu_links} WHERE link_title= :link_title AND menu_name = :menu_name AND plid = :plid';
-            $mlid = db_query($query, array(
-                      'link_title' => $article_title,
-                      'menu_name' => $menu_name,
-                      'plid' => $pid['mlid'])
-                    )->fetchAssoc();
-            if ($mlid) {
-              return;
+
+            $current_term = taxonomy_get_term_by_name($article_title, $vocab_name);
+            if (!$current_term) {
+              $item_p['SiteTitle'] = $article_title;
+              $tid = _os2web_borger_dk_create_menu_term($item_p, $vid, $p_term->tid, $vocab_name);
+            }
+            else {
+
+              $record = db_select('field_data_field_os2web_borger_dk_menu_term', 'n')
+                ->fields('n', array('field_os2web_borger_dk_menu_term_tid'))
+                ->condition('entity_id', $row->ArticleStatus, '=')
+                ->execute()
+                ->fetchAssoc();
+              if ($record['field_os2web_borger_dk_menu_term_tid']) {
+
+                continue;
+              }
+              $tid = reset($current_term)->tid;
+
             }
             if ($row->ArticleStatus > 0) {
-              $menu_item = array(
-                'menu_name' => $menu_name,
-                'link_path' => "node/" . $row->ArticleStatus,
-                'link_title' => $row->ArticleTitle,
-                'module' => 'os2web_borger_dk',
-                'plid' => isset($pid['mlid']) ? $pid['mlid'] : 0,
-              );
-              menu_link_save($menu_item);
+              $node = node_load($row->ArticleStatus);
+              $node->field_os2web_borger_dk_menu_term[LANGUAGE_NONE][0]['tid'] = $tid;
+
+              node_save($node);
             }
             // If the article is NOT imported yet, so import it.
             else {
@@ -1710,6 +1691,8 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
                 $node->type = 'os2web_borger_dk_article';
                 $node->title = (!empty($article['title'])) ? $article['title'] : '';
                 $node->body['und']['0']['value'] = !empty($body) ? $body : '';
+
+                $node->field_os2web_borger_dk_menu_term[LANGUAGE_NONE][0]['tid'] = $tid;
                 $node->field_os2web_borger_dk_borgerurl['und'][0]['value'] = (!empty($article['external_url'])) ? $article['external_url'] : '';
                 $node->field_os2web_borger_dk_header['und'][0]['value'] = (!empty($article['header'])) ? $article['header'] : '';
                 $node->field_os2web_borger_dk_selfservi['und'][0]['value'] = (!empty($article['selvbetjeningslinks'])) ? $article['selvbetjeningslinks'] : '';
@@ -1772,14 +1755,8 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
                       ->condition('ArticleID', $article['external_id'], '=')
                       ->execute();
                   }
-                  $menu_item = array(
-                    'menu_name' => $menu_name,
-                    'link_path' => "node/" . $node->nid,
-                    'link_title' => $node->title,
-                    'module' => 'os2web_borger_dk',
-                    'plid' => isset($pid['mlid']) ? $pid['mlid'] : 0,
-                  );
-                  menu_link_save($menu_item);
+                  $item_p['SiteTitle'] = $title;
+                  $tid = _os2web_borger_dk_create_menu_term($item_p, $vid, $p_term->tid, $vocab_name);
                 }
               }
             }
@@ -1787,33 +1764,12 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
         }
         // If article is NOT existed, then import by articleID.
         else {
-          _os2web_borger_dk_import_supplement_article($value);
+          _os2web_borger_dk_import_supplement_article($value, $p_term, $vid);
         }
         // Update our progress information.
         $context['sandbox']['progress']++;
       }
     }
-    /*
-    // TODO: list links for menu page.here!
-    $node_id = $pid['link_path'];
-    $node_id = substr($node_id, 5, strlen($node_id)-1);
-
-    $body_content = '';
-    $children = db_query('SELECT * FROM {menu_links} WHERE plid= :plid AND menu_name = :menu_name',
-                              array('plid' => $pid['mlid'], 'menu_name' => $menu_name));
-    if ($children) {
-      foreach ($children as $child) {
-        $body_content = $body_content . "<p><a href= '". $child->link_path ."'> " . $child->link_title ." </a>" . "\n";
-      }
-
-      if (!empty($node_id)) {
-        $node = node_load($node_id);
-        $node->body['und']['0']['value'] = $body_content;
-        $node->body['und']['0']['safe_value'] = $body_content;
-        $node->body['und'][0]['format'] = BORGERDK_TEXT_FORMAT_HTML;
-        node_save($node);
-      }
-    }*/
   }
 
   $context['finished'] = 1;
@@ -1821,7 +1777,7 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
 /**
  * Functioin _os2web_borger_dk_import_supplement_article().
  */
-function _os2web_borger_dk_import_supplement_article($value) {
+function _os2web_borger_dk_import_supplement_article($value, $p_term, $vid) {
   $wsdl = variable_get('os2web_borger_dk_webservice', 'https://www.borger.dk/_vti_bin/borger/ArticleExport.svc?wsdl');
   // Import the Borger.dk-article with the given ArticleID.
   $article = _os2web_borger_dk_GetArticleByID($value, $wsdl, FALSE);
@@ -1913,14 +1869,10 @@ function _os2web_borger_dk_import_supplement_article($value) {
           ))
           ->execute();
       }
-      $menu_item = array(
-        'menu_name' => $menu_name,
-        'link_path' => "node/" . $node->nid,
-        'link_title' => $node->title,
-        'module' => 'os2web_borger_dk',
-        'plid' => isset($pid['mlid']) ? $pid['mlid'] : 0,
-      );
-      menu_link_save($menu_item);
+      // Added term to vocabulary.
+      $item_p['SiteTitle'] = $article['title'];
+      $tid = _os2web_borger_dk_create_menu_term($item_p, $vid, $p_term->tid, $vocab_name);
+
     }
   }
 }
@@ -2643,7 +2595,7 @@ function _os2web_borger_dk_GetAllSites($wsdl = 'https://www.borger.dk/_vti_bin/b
   // Then we execute our webservice-request.
   $result_list = $client->GetAllSites();
   if (is_soap_fault($result_list)) {
-    $errors = _os2web_borger_dk_articles_translate_soap_fault('GetAllSites', $result_list->faultcode, $result_list->faultstring);
+    $errors = _os2web_borger_dk_translate_soap_fault('GetAllSites', $result_list->faultcode, $result_list->faultstring);
 
     return $errors;
   }
@@ -2652,7 +2604,7 @@ function _os2web_borger_dk_GetAllSites($wsdl = 'https://www.borger.dk/_vti_bin/b
   // Then we get the result-list from the specified webservice.
   $menu_list = $result_list->GetAllSitesResult;
   if (is_soap_fault($menu_list)) {
-    $errors = _os2web_borger_dk_articles_translate_soap_fault('GetAllSitesResult', $menu_list->faultcode, $menu_list->faultstring);
+    $errors = _os2web_borger_dk_translate_soap_fault('GetAllSitesResult', $menu_list->faultcode, $menu_list->faultstring);
 
     return $errors;
   }
