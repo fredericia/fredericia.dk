@@ -172,23 +172,22 @@ function os2web_borger_dk_settings_form($form, $form_state) {
     '#description' => t('Check to enable the menu-import from Borger.dk.'),
     '#default_value' => variable_get('os2web_borger_dk_menus_import', 0),
   );
-  $term_vocabularies = taxonomy_get_vocabularies();
-  $term_options = array();
-  if ($term_vocabularies) {
-    foreach ($term_vocabularies as $term_parent) {
-      $term_name = $term_parent->name;
-      $term = $term_parent->machine_name;
-      $term_options[$term] = $term_name;
-    }
+  $menu_page = node_type_get_types();
+  foreach ($menu_page as $key => $object) {
+    $menu_page[$key] = $object->name;
   }
-
-  $form['os2web_borger_dk_settings_6']['build_borger_menu_under_vocabulary'] = array(
+  $form['os2web_borger_dk_settings_6']['os2web_borger_dk_menus_menu_page'] = array(
     '#type' => 'select',
-    '#title' => t('Select Borger.dk menu Parent Taxonomy Item'),
-    '#options' => $term_options,
-    '#description' => t('Select Borger.dk menu Parent Item from the list. REMEMBER to save before you start Menu import.'),
-    '#default_value' => variable_get('build_borger_menu_under_vocabulary', 'os2web_base_tax_site_structure'),
-    '#type' => 'select',
+    '#options' => $menu_page,
+    '#title' => t('Menu page content type'),
+    '#description' => t('Select menu page content type'),
+    '#default_value' => variable_get('os2web_borger_dk_menus_menu_page', 'os2web_base_contentpage'),
+  );
+  $form['os2web_borger_dk_settings_6']['os2web_borger_dk_borger_dk_menu_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Menu name for imported Borger.dk-menu'),
+    '#description' => t("The imported menu will be put into a local menu by the name given here."),
+    '#default_value' => variable_get('os2web_borger_dk_borger_dk_menu_name', 'Borger.dk menu'),
   );
   //$sync_options = drupal_map_assoc(range(1, 24));
   //$sync_options[0] = t('Disabled (No menu syncronization)');
@@ -208,12 +207,31 @@ function os2web_borger_dk_settings_form($form, $form_state) {
   $form['os2web_borger_dk_settings_6']['os2web_borger_dk_menu_import_description'] = array(
     '#type' => 'fieldset',
     '#title' => t('Description for importing Borger.dk menu structure'),
-    '#description' => t("
-                        <b>Step1 </b> : Please import Borger.dk-menu to <b><u>taxonomy</u></b> items now. (Choose the Taxonomy vocabulary above.)<br />
-                        <b>Step2 </b> : When Borger.dk menu items are imported, please import all Borger.dk articles.<br />
-                        <b>Step 3</b> : Create taxonomy sturcutre now.
-                        <b>Step 4</b> : Create menu strucutre by taxonomy. Use contrib modules - Taxonomy menu and Taxonomy Menu Trails <br />"),
+    '#description' => t("Before you import Borger.dk menu structure, please choose a content type
+                        which default is OS2web base contentpage <b><u>(Indholdsside)</u></b>.
+                        Step1 : Please import Borger.dk-menu items now.
+                        Step2 : When Borger.dk menu items are imported, please import all Borger.dk articles.
+                        Step 3 : Create Borger.dk menu structure now."),
   );
+  $menu_option = array();
+  $existing_menu = db_query('SELECT * FROM {menu_custom}');
+  $menu_option['borgerdkmenu2'] = variable_get('os2web_borger_dk_borger_dk_menu_name', 'Borger.dk menu');
+  if ($existing_menu) {
+    foreach ($existing_menu as $menu_item) {
+      $menu_name = $menu_item->menu_name;
+      $menu_title = $menu_item->title;
+      $menu_option[$menu_name] = $menu_title;
+    }
+  }
+  $form['os2web_borger_dk_settings_6']['build_borger_menu_under_menu'] = array(
+    '#type' => 'select',
+    '#title' => t('Select Borger.dk menu Parent Item'),
+    '#options' => $menu_option,
+    '#description' => t('Select Borger.dk menu Parent Item from the list. REMEMBER to save before you start Menu import.'),
+    '#default_value' => variable_get('build_borger_menu_under_menu', 'borgerdkmenu2'),
+    '#type' => 'select',
+  );
+  // variable_set('build_borger_menu_under_menu');
 
   $disabled = FALSE;
   $description = '';
@@ -225,7 +243,7 @@ function os2web_borger_dk_settings_form($form, $form_state) {
   }
   $form['os2web_borger_dk_settings_6']['submit'] = array(
     '#type' => 'submit',
-    '#value' => 'Import Borger.dk-menu to taxonomy now',
+    '#value' => 'Import Borger.dk-menu now',
     '#submit' => array('os2web_borger_dk_import_menu_now_form_submit'),
     '#disabled' => $disabled,
 
@@ -233,15 +251,14 @@ function os2web_borger_dk_settings_form($form, $form_state) {
   );
   $form['os2web_borger_dk_settings_6']['import_all_articles_now'] = array(
     '#type' => 'submit',
-    '#value' => 'Import Borger.dk articles now',
+    '#value' => 'Import Borger.dk articles',
     '#submit' => array('os2web_borger_dk_import_articles_now_form_submit'),
     '#disabled' => $disabled,
     '#description' => t('Step2 : When Borger.dk menu items are imported, please import all Borger.dk articles.'),
   );
-
   $form['os2web_borger_dk_settings_6']['create_borger_dk_menu_links'] = array(
     '#type' => 'submit',
-    '#value' => t('Create taxonomy sturcutre now'),
+    '#value' => t('Create Borger.dk menu structure now'),
     '#submit' => array('os2web_borger_dk_create_borger_dk_menu_now_form_submit'),
     '#disabled' => $disabled,
     '#description' => t('Step 3 : Create Borger.dk menu structure now.'),
@@ -310,7 +327,7 @@ function _os2web_borger_dk_GetMunicipalityList($wsdl = 'https://www.borger.dk/_v
   // Then we execute our webservice-request.
   $result_list = $client->GetMunicipalityList();
   if (is_soap_fault($result_list)) {
-    $errors = _os2web_borger_dk_translate_soap_fault('GetMunicipalityList', $result_list->faultcode, $result_list->faultstring);
+    $errors = _os2web_borger_dk_articles_translate_soap_fault('GetMunicipalityList', $result_list->faultcode, $result_list->faultstring);
     return $errors;
   }
 
@@ -318,7 +335,7 @@ function _os2web_borger_dk_GetMunicipalityList($wsdl = 'https://www.borger.dk/_v
   // Then we get the result-list from the specified webservice.
   $municipality_list = $result_list->GetMunicipalityListResult;
   if (is_soap_fault($municipality_list)) {
-    $errors = _os2web_borger_dk_translate_soap_fault('GetMunicipalityListResult', $municipality_list->faultcode, $municipality_list->faultstring);
+    $errors = _os2web_borger_dk_articles_translate_soap_fault('GetMunicipalityListResult', $municipality_list->faultcode, $municipality_list->faultstring);
 
     return $errors;
   }

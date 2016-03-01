@@ -79,7 +79,13 @@
 
     <?php if(!$term_display_alternative) :?>
     <?php
-
+      // Get news carousel.
+      $view = views_get_view('os2web_news_lists');
+      $view->set_display('panel_pane_1');
+      $view->set_arguments(array('Branding', 'none', $term_name));
+      $view->set_items_per_page(3);
+      $view->pre_execute();
+      $view->execute();
     ?>
       <?php if (!empty($view->result)) : ?>
       <div class="col-sm-12 col-md-12 extra-bottom-padding">
@@ -100,8 +106,20 @@
     </div>
     <?php endif;?>
 
+    <?php
+      // Get Sub terms.
+      $view = views_get_view('subtermer');
+      $view->set_display('panel_pane_1');
+      $view->pre_execute();
+      if (!$term_is_top) {
+        $view->display_handler->default_display->options['style_options']['row_class'] = 'col-md-6 call-to-action';
+      }
+      $view->execute();
+      if (!empty($view->result)) : ?>
     <div class="col-sm-12 col-md-12 bottom-padding">
+      <?php print $view->render(); ?>
     </div>
+    <?php endif; ?>
 
     <?php if(!empty($os2web_spotboxes)) : ?>
     <div class="os2web_spotboxes col-md-12 col-sm-12 clearfix">
