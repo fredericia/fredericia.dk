@@ -104,7 +104,6 @@ function _os2web_borger_dk_autocomplete_callback($string = '') {
  * Implements hook_form_alter().
  */
 function os2web_borger_dk_form_alter(&$form, &$form_state, $form_id) {
-
   static $os2web_borger_dk_falter_form;
   if (isset($form['type']) && isset($form['#node'])) {
     if ($form_id == 'os2web_borger_dk_article_node_form') {
@@ -1667,18 +1666,7 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
 
             }
             if ($row->ArticleStatus > 0) {
-
               $node = node_load($row->ArticleStatus);
-              $plid = _taxonomy_menu_get_mlid($tid, $vid, $langcode = LANGUAGE_NONE);
-              if ($plid) {
-                $node->menu = array(
-                  'link_title' => $node->title,
-                  'menu_name' => 'main-menu',
-                  'plid' => $plid,
-                  'enabled' => 1,
-                  'description' => '',
-                );
-              }
               $node->field_os2web_borger_dk_menu_term[LANGUAGE_NONE][0]['tid'] = $tid;
 
               node_save($node);
@@ -1757,16 +1745,6 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
                   drupal_set_message(t('You can fetch this article when the webservice is responsive again.'), 'error');
                 }
                 else {
-                  $plid = _taxonomy_menu_get_mlid($tid, $vid, $langcode = LANGUAGE_NONE);
-                  if ($plid) {
-                    $node->menu = array(
-                      'link_title' => $node->title,
-                      'menu_name' => 'main-menu',
-                      'plid' => $plid,
-                      'enabled' => 1,
-                      'description' => '',
-                    );
-                  }
                   $node = node_submit($node);
                   // We need to store the field values and article-settings.
                   node_save($node);
@@ -1777,8 +1755,8 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
                       ->condition('ArticleID', $article['external_id'], '=')
                       ->execute();
                   }
-                  //$item_p['SiteTitle'] = $title;
-                  //$tid = _os2web_borger_dk_create_menu_term($item_p, $vid, $p_term->tid, $vocab_name);
+                  $item_p['SiteTitle'] = $title;
+                  $tid = _os2web_borger_dk_create_menu_term($item_p, $vid, $p_term->tid, $vocab_name);
                 }
               }
             }
@@ -1871,16 +1849,6 @@ function _os2web_borger_dk_import_supplement_article($value, $p_term, $vid) {
       drupal_set_message(t('You can fetch this article when the webservice is responsive again.'), 'error');
     }
     else {
-      $plid = _taxonomy_menu_get_mlid($tid, $vid, $langcode = LANGUAGE_NONE);
-      if ($plid) {
-        $node->menu = array(
-          'link_title' => $node->title,
-          'menu_name' => 'main-menu',
-          'plid' => $plid,
-          'enabled' => 1,
-          'description' => '',
-        );
-      }
       $node = node_submit($node);
       // We need to store the field values and article-settings.
       node_save($node);
@@ -1902,8 +1870,8 @@ function _os2web_borger_dk_import_supplement_article($value, $p_term, $vid) {
           ->execute();
       }
       // Added term to vocabulary.
-     // $item_p['SiteTitle'] = $article['title'];
-     // $tid = _os2web_borger_dk_create_menu_term($item_p, $vid, $p_term->tid, $vocab_name);
+      $item_p['SiteTitle'] = $article['title'];
+      $tid = _os2web_borger_dk_create_menu_term($item_p, $vid, $p_term->tid, $vocab_name);
 
     }
   }
