@@ -176,12 +176,37 @@ function os2web_borger_dk_settings_form($form, $form_state) {
   foreach ($menu_page as $key => $object) {
     $menu_page[$key] = $object->name;
   }
+
   $form['os2web_borger_dk_settings_6']['os2web_borger_dk_menus_menu_page'] = array(
     '#type' => 'select',
     '#options' => $menu_page,
-    '#title' => t('Menu page content type'),
+    '#title' => t('Import Menu page to content type'),
     '#description' => t('Select menu page content type'),
     '#default_value' => variable_get('os2web_borger_dk_menus_menu_page', 'os2web_base_contentpage'),
+  );
+
+  $term_vocabularies = taxonomy_get_vocabularies();
+  $term_options = array();
+  if ($term_vocabularies) {
+    foreach ($term_vocabularies as $term_parent) {
+      $term_name = $term_parent->name;
+      $term = $term_parent->machine_name;
+      $term_options[$term] = $term_name;
+    }
+  }
+  $form['os2web_borger_dk_settings_6']['os2web_borger_dk_choose_term'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Import menu link to term'),
+    '#description' => t('Import menu link to term, not content type.'),
+    '#default_value' => variable_get('os2web_borger_dk_choose_term', 0),
+  );
+  $form['os2web_borger_dk_settings_6']['build_borger_menu_under_vocabulary'] = array(
+    '#type' => 'select',
+    '#title' => t('Select Borger.dk menu Parent Taxonomy Item'),
+    '#options' => $term_options,
+    '#description' => t('Select Borger.dk menu Parent Item from the list. REMEMBER to save before you start Menu import.'),
+    '#default_value' => variable_get('build_borger_menu_under_vocabulary', 'os2web_base_tax_site_structure'),
+    '#type' => 'select',
   );
   $form['os2web_borger_dk_settings_6']['os2web_borger_dk_borger_dk_menu_name'] = array(
     '#type' => 'textfield',
