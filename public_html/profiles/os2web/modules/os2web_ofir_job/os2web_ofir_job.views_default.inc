@@ -196,7 +196,7 @@ Svendborg Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jo
   $handler->display->display_options['fields']['field_os2web_job_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_job_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_os2web_job_image']['settings'] = array(
-    'image_style' => 'svendborg_content_image',
+    'image_style' => 'fredericia_content_image',
     'image_link' => '',
   );
   /* Sorteringskriterie: Indhold: Oprettelsesdato */

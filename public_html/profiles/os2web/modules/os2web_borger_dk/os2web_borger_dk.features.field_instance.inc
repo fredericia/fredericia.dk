@@ -717,7 +717,7 @@ function os2web_borger_dk_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'svendborg_content_image',
+          'image_style' => 'fredericia_content_image',
         ),
         'type' => 'image',
         'weight' => 2,
@@ -752,7 +752,7 @@ function os2web_borger_dk_field_default_field_instances() {
       'epsacrop' => array(
         'styles' => array(
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 'svendborg_content_image',
+          'fredericia_content_image' => 'fredericia_content_image',
           'svendborg_spotbox' => 0,
         ),
       ),

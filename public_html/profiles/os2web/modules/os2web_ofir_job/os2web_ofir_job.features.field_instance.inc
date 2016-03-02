@@ -1063,7 +1063,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'styles' => array(
           'os2web_gallery_thumbnails' => 0,
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 'svendborg_content_image',
+          'fredericia_content_image' => 'fredericia_content_image',
           'svendborg_spotbox' => 0,
         ),
       ),

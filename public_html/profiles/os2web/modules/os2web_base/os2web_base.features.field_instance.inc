@@ -796,7 +796,7 @@ function os2web_base_field_default_field_instances() {
           'slideshow_controls_position' => 'after',
           'slideshow_field_collection_image' => '',
           'slideshow_fx' => 'fade',
-          'slideshow_image_style' => 'svendborg_content_image',
+          'slideshow_image_style' => 'fredericia_content_image',
           'slideshow_link' => '',
           'slideshow_order' => '',
           'slideshow_pager' => '',
@@ -840,7 +840,7 @@ function os2web_base_field_default_field_instances() {
       'epsacrop' => array(
         'styles' => array(
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 'svendborg_content_image',
+          'fredericia_content_image' => 'fredericia_content_image',
           'svendborg_spotbox' => 0,
         ),
       ),
@@ -1468,7 +1468,7 @@ function os2web_base_field_default_field_instances() {
       'epsacrop' => array(
         'styles' => array(
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 0,
+          'fredericia_content_image' => 0,
           'svendborg_spotbox' => 0,
         ),
       ),
@@ -2398,7 +2398,7 @@ function os2web_base_field_default_field_instances() {
         'styles' => array(
           'os2web_gallery_thumbnails' => 'os2web_gallery_thumbnails',
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 0,
+          'fredericia_content_image' => 0,
           'svendborg_spotbox' => 0,
         ),
       ),
@@ -2771,7 +2771,7 @@ function os2web_base_field_default_field_instances() {
       'epsacrop' => array(
         'styles' => array(
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 0,
+          'fredericia_content_image' => 0,
           'svendborg_spotbox' => 0,
         ),
       ),
@@ -3768,7 +3768,7 @@ function os2web_base_field_default_field_instances() {
           'slideshow_controls_position' => 'after',
           'slideshow_field_collection_image' => '',
           'slideshow_fx' => 'fade',
-          'slideshow_image_style' => 'svendborg_content_image',
+          'slideshow_image_style' => 'fredericia_content_image',
           'slideshow_link' => '',
           'slideshow_order' => '',
           'slideshow_pager' => 'number',
@@ -3821,7 +3821,7 @@ function os2web_base_field_default_field_instances() {
       'epsacrop' => array(
         'styles' => array(
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 'svendborg_content_image',
+          'fredericia_content_image' => 'fredericia_content_image',
           'svendborg_spotbox' => 0,
         ),
       ),
@@ -4402,7 +4402,7 @@ function os2web_base_field_default_field_instances() {
       'epsacrop' => array(
         'styles' => array(
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 0,
+          'fredericia_content_image' => 0,
           'svendborg_spotbox' => 0,
         ),
       ),
@@ -5816,7 +5816,7 @@ For et møde er det tidspunktet hvor mødet starter.',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'svendborg_content_image',
+          'image_style' => 'fredericia_content_image',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -5833,7 +5833,7 @@ For et møde er det tidspunktet hvor mødet starter.',
       'epsacrop' => array(
         'styles' => array(
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 'svendborg_content_image',
+          'fredericia_content_image' => 'fredericia_content_image',
           'svendborg_spotbox' => 0,
         ),
       ),
@@ -5938,7 +5938,7 @@ For et møde er det tidspunktet hvor mødet starter.',
       'epsacrop' => array(
         'styles' => array(
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 0,
+          'fredericia_content_image' => 0,
           'svendborg_spotbox' => 0,
         ),
       ),

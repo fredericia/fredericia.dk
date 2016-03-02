@@ -132,7 +132,7 @@ function os2web_spotbox_field_default_field_instances() {
       'epsacrop' => array(
         'styles' => array(
           'os2web_spotbox_image' => 0,
-          'svendborg_content_image' => 0,
+          'fredericia_content_image' => 0,
           'svendborg_spotbox' => 'svendborg_spotbox',
         ),
       ),
