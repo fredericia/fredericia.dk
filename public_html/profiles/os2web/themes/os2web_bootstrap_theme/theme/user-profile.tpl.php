@@ -36,14 +36,4 @@
 ?>
 <div class="profile"<?php print $attributes; ?>>
   <?php print render($user_profile); ?>
-
-  <?php
-    // Add created node info to user profile page.
-  if (arg(0) == 'user' && is_numeric(arg(1))) {
-    $view = os2web_theme_helper_get_view_content('forfatters_indhold', 'block_1', array(arg(1)));
-    print '<div class="bg-white">';
-    print $view;
-    print '</div>';
-  }
-  ?>
 </div>
