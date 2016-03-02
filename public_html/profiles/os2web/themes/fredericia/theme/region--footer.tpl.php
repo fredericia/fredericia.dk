@@ -41,19 +41,7 @@
     <div class="lcontainer-fluid clearfix" id="footer-contacts">
       <div class="container">
         <div class="row">
-        <div class="col-md-3 col-xs-12 col-sm-6 col-md-push-9 col-sm-push-6 social-icons">
 
-        </div>
-        <div class="col-md-9 col-sm-6 col-xs-12 col-md-pull-3 col-sm-pull-6">
-          <div class='footer-logo'>
-            <img id="footer-logo" src="/<?php print drupal_get_path('theme','fredericia'); ?>/images/fredericia_logo.png" title="<?php print $page['site_name'] ?>" />
-
-          </div>
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 footer-address">
-          <span>Gothersgade 20 ∙ 5700 Fredericia Kommune ∙ Telefon  7210 7000 ∙ Mail <a href="mailto:kommunen@fredericia.dk" target="_blank">Mail: kommunen@fredericia.dk</a></span>
-          <a href="/kontakt" title="Kontakt kommunen">Se kontakt og åbningstider her</a>
-        </div>
         </div>
       </div>
     </div>
