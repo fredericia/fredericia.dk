@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * fredericia_news_view.features.inc
+ * fredericia.features.inc
  */
 
 /**
