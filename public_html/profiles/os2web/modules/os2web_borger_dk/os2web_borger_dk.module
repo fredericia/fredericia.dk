@@ -205,6 +205,7 @@ function os2web_borger_dk_form_alter(&$form, &$form_state, $form_id) {
             $body_text = (isset($form['body'][LANGUAGE_NONE]['0']['#entity']->body[LANGUAGE_NONE]['0']['value'])) ? $form['body'][LANGUAGE_NONE]['0']['#entity']->body[LANGUAGE_NONE]['0']['value'] : '';
 
             $form['body']['#access'] = FALSE;
+
             $doc = new DOMDocument();
             $doc->loadHTML('<?xml encoding="utf-8" ?>' . $body_text);
             $xpath = new DOMXPath($doc);
@@ -626,41 +627,8 @@ function os2web_borger_dk_node_view($node, $view_mode, $langcode) {
           if ($content_field == 'body' && !empty($field_microarticle_settings)) {
             $body_text = $node->body[LANGUAGE_NONE]['0']['value'];
 
-            $article_text = '';
+            $article_text = _os2web_borger_dk_microarticle_helper($body_text, $field_microarticle_settings, TRUE);
 
-            $doc = new DOMDocument();
-            $doc->loadHTML('<?xml encoding="utf-8" ?>' . $body_text);
-            $xpath = new DOMXPath($doc);
-
-            $results = $xpath->query("//*[@class='microArticle']");
-
-            $microno = 0;
-            foreach ($results as $item) {
-              foreach ($item->getElementsByTagName('h2') as $articletitle) {
-                $title = trim($articletitle->nodeValue);
-              }
-
-              $text = '';
-              foreach ($item->getElementsByTagName('div')->item(0)->childNodes as $articletext) {
-                $text .= $doc->saveHTML($articletext);
-              }
-              $microno++;
-
-              if ($field_microarticle_settings[$microno] != 0) {
-                // Body text (Article text).
-                $article_text .= "<div class=\"microArticle\" id=\"microArticle" . $micro_id . "\">" . "\r\n";
-
-                $micro_h2 = "<h2 class=\"mArticle\" id=\"mArticle" . $microno . "\">";
-                $micro_h2 .= $title . "</h2>";
-
-                $micro_content = "<div class=\"mArticle" . $microno . " mArticle\">";
-                $micro_content .= $text . "\r\n    </div>";
-
-                $article_text .= $micro_h2 . "\r\n";
-                $article_text .= $micro_content;
-                $article_text .= "\r\n</div>\r\n\r\n";
-              }
-            }
             // Content body shows only visible microarticles/ part of body_text.
             $node->content[$type]['0']['#markup'] = $article_text;
           }
@@ -924,47 +892,11 @@ function os2web_borger_dk_node_submit(&$node, $form, &$form_state) {
         $field_microarticle_settings = array();
         $body_text = isset($node->body[LANGUAGE_NONE][0]['value']) ? $node->body[LANGUAGE_NONE][0]['value'] : '';
 
-        $article_text = '';
+        $article_text = _os2web_borger_dk_microarticle_helper($body_text, $node, FALSE);
 
-        $doc = new DOMDocument();
-        $doc->loadHTML('<?xml encoding="utf-8" ?>' . $body_text);
-        $xpath = new DOMXPath($doc);
-
-        $results = $xpath->query("//*[@class='microArticle']");
-
-        $microno = 0;
-        foreach ($results as $item) {
-          $microno++;
-
-          $checkboxno = 'os2web_borger_dk_micro_' . $microno;
-          $h2_text_field = 'os2web_borger_dk_micro_h2_' . $microno;
-          $text_area = 'os2web_borger_dk_micro_textarea_' . $microno;
-
-          $field_microarticle_settings[$microno] = $node->$checkboxno;
-          // Body text (Article text).
-          $article_text .= "<div class=\"microArticle\" id=\"microArticle" . $micro_id . "\">" . "\r\n";
-
-          $micro_h2 = "<h2 class=\"mArticle\" id=\"mArticle" . $microno . "\">";
-          $micro_h2 .= $node->$h2_text_field . "</h2>";
-
-          $micro_content = "<div class=\"mArticle" . $microno . " mArticle\">";
-          $micro_content .= $node->$text_area . "\r\n    </div>";
-
-          $article_text .= $micro_h2 . "\r\n";
-          $article_text .= $micro_content;
-          $article_text .= "\r\n</div>\r\n\r\n";
-          // End of body text (Article text).
-        }
         $node->body[LANGUAGE_NONE][0]['value'] = $article_text;
         $node->body[LANGUAGE_NONE][0]['safe_value'] = $article_text;
 
-        $serialized_microarticle = serialize($field_microarticle_settings);
-        db_update('os2web_borger_dk_article')
-            ->fields(array(
-              'field_microarticle_settings' => $serialized_microarticle,
-            ))
-            ->condition('nid', $nid, '=')
-            ->execute();
       }
       // End of Micro articles.
       // All other fields are handled by the normal Drupal field-handling.
@@ -1042,13 +974,82 @@ function os2web_borger_dk_node_submit(&$node, $form, &$form_state) {
           return;
         }
       }
-
-      $node = _os2web_borger_dk_update_node_content(FALSE, $article);
-      node_save($node);
+      $node = _os2web_borger_dk_create_article_node($nid, $article, NULL);
     }
   }
 }
+/**
+ * Function _os2web_borger_dk_microarticle_helper().
+ */
+function _os2web_borger_dk_microarticle_helper($body_text, $node, $view = FALSE) {
+  $article_text = '';
+  $doc = new DOMDocument();
+  $doc->loadHTML('<?xml encoding="utf-8" ?>' . $body_text);
+  $xpath = new DOMXPath($doc);
 
+  $results = $xpath->query("//*[@class='microArticle']");
+
+  $microno = 0;
+  foreach ($results as $item) {
+    $microno++;
+
+    $checkboxno = 'os2web_borger_dk_micro_' . $microno;
+    $h2_text_field = 'os2web_borger_dk_micro_h2_' . $microno;
+    $text_area = 'os2web_borger_dk_micro_textarea_' . $microno;
+
+    if (!$view && is_object($node)) {
+      $field_microarticle_settings[$microno] = $node->$checkboxno;
+        // Body text (Article text).
+      $article_text .= "<div class=\"microArticle\" id=\"microArticle" . $micro_id . "\">" . "\r\n";
+
+      $micro_h2 = "<h2 class=\"mArticle\" id=\"mArticle" . $microno . "\">";
+      $micro_h2 .= $node->$h2_text_field . "</h2>";
+
+      $micro_content = "<div class=\"mArticle" . $microno . " mArticle\">";
+      $micro_content .= $node->$text_area . "\r\n    </div>";
+
+      $article_text .= $micro_h2 . "\r\n";
+      $article_text .= $micro_content;
+      $article_text .= "\r\n</div>\r\n\r\n";
+    }
+    elseif ($view) {
+      foreach ($item->getElementsByTagName('h2') as $articletitle) {
+        $title = trim($articletitle->nodeValue);
+      }
+
+      $text = '';
+      foreach ($item->getElementsByTagName('div')->item(0)->childNodes as $articletext) {
+        $text .= $doc->saveHTML($articletext);
+      }
+      if ($node[$microno] != 0) {
+        // Body text (Article text).
+        $article_text .= "<div class=\"microArticle\" id=\"microArticle" . $micro_id . "\">" . "\r\n";
+
+        $micro_h2 = "<h2 class=\"mArticle\" id=\"mArticle" . $microno . "\">";
+        $micro_h2 .= $title . "</h2>";
+
+        $micro_content = "<div class=\"mArticle" . $microno . " mArticle\">";
+        $micro_content .= $text . "\r\n    </div>";
+
+        $article_text .= $micro_h2 . "\r\n";
+        $article_text .= $micro_content;
+        $article_text .= "\r\n</div>\r\n\r\n";
+      }
+    }
+    // End of body text (Article text).
+  }
+  if (!$view && is_object($node)) {
+    $serialized_microarticle = serialize($field_microarticle_settings);
+    db_update('os2web_borger_dk_article')
+        ->fields(array(
+          'field_microarticle_settings' => $serialized_microarticle,
+        ))
+        ->condition('nid', $node->nid, '=')
+        ->execute();
+  }
+
+  return $article_text;
+}
 /**
  * Function _os2web_borger_dk_update_node_content().
  */
@@ -1065,6 +1066,7 @@ function _os2web_borger_dk_update_node_content($nid, $article) {
     $node->language = 'da';
     $node->uid = 1;
     $node->created = !empty($node->date) ? strtotime($node->date) : REQUEST_TIME;
+    $node->type = 'os2web_borger_dk_article';
     $node->validated = TRUE;
   }
 
@@ -1109,6 +1111,11 @@ function _os2web_borger_dk_update_node_content($nid, $article) {
   // Some fields from borger_dk_article can not be syncronized nor changed here.
   $node->os2web_borger_dk_article['external_id'] = $article['external_id'];
   $node->os2web_borger_dk_article['external_url'] = $article['external_url'];
+
+  $external_status = (empty($article['Exceptions']) && empty($article['error'])) ? 1 : 0;
+  $external_status = (!empty($article['error']) && $article['error_type'] == 'not_found') ? -1 : $external_status;
+
+  $node->os2web_borger_dk_article['external_status'] = $external_status;
   $node->os2web_borger_dk_article['published_date'] = strtotime($article['published_date']);
   $node->os2web_borger_dk_article['last_updated'] = strtotime($article['last_updated']);
 
@@ -1446,48 +1453,7 @@ function _os2web_borger_dk_batch_article_import($external_id_list, $max_count, $
       $nid = FALSE;
       // Then check if this node should be updated or created.
       if (!isset($update_items[$eid])) {
-        $node = _os2web_borger_dk_update_node_content($nid, $article);
-
-        $field_settings = $form_state['values']['os2web_borger_dk_field_settings'];
-        // Check admin field settings : are there fields set as hidden by admin.
-        $admin_display_fields = variable_get('os2web_borger_dk_display');
-        foreach ($admin_display_fields as $type => $items) {
-          if (!$admin_display_fields[$type]) {
-            $field_settings[$type] = $type;
-          }
-        }
-        // TODO: Perform a logical-test (on paper) to
-        // see if the external_status is correct.
-        $external_status = (empty($article['Exceptions']) && empty($article['error'])) ? 1 : 0;
-        $external_status = (!empty($article['error']) && $article['error_type'] == 'not_found') ? -1 : $external_status;
-        $node->os2web_borger_dk_article = array(
-          'external_id' => $article['external_id'],
-          'external_url' => $article['external_url'],
-          'external_status' => $external_status,
-          'field_settings' => $field_settings,
-          'published_date' => strtotime($article['published_date']),
-          'last_updated' => strtotime($article['last_updated']),
-        );
-
-        if (!empty($article['Exceptions']) || !empty($article['error'])) {
-          drupal_set_message(t('An exception was thrown by the Borger.dk webservice for the specified URL.'), 'error');
-          drupal_set_message(t('You can fetch this article when the webservice is responsive again.'), 'error');
-        }
-        else {
-          $node = node_submit($node);
-
-          // We need to store the field values and article-settings.
-          node_save($node);
-
-          // Then we need to update the ArticleStatus in the Title-list.
-          if ($node->nid) {
-            db_update('os2web_borger_dk_article_titles')
-                ->fields(array('ArticleStatus' => $node->nid))
-                ->condition('ArticleID', $article['external_id'], '=')
-                ->execute();
-          }
-        }
-        $nid = $node->nid;
+        _os2web_borger_dk_create_article_node($nid, $article);
       }
       else {
         // This is an already imported article, and we should
@@ -1647,47 +1613,7 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
               if (empty($article['Exceptions']) && empty($article['error'])) {
 
                 $nid = FALSE;
-                $node = _os2web_borger_dk_update_node_content($nid, $article);
-
-                $field_settings = $form_state['values']['os2web_borger_dk_field_settings'];
-                // Check admin field settings : are there fields
-                // set as hidden by admin.
-                $admin_display_fields = variable_get('os2web_borger_dk_display');
-                foreach ($admin_display_fields as $type => $items) {
-                  if (!$admin_display_fields[$type]) {
-                    $field_settings[$type] = $type;
-                  }
-                }
-                // TODO: Perform a logical-test (on paper) to
-                // see if the external_status is correct.
-                $external_status = (empty($article['Exceptions']) && empty($article['error'])) ? 1 : 0;
-                $external_status = (!empty($article['error']) && $article['error_type'] == 'not_found') ? -1 : $external_status;
-                $node->os2web_borger_dk_article = array(
-                  'external_id' => $article['external_id'],
-                  'external_url' => $article['external_url'],
-                  'external_status' => $external_status,
-                  'field_settings' => $field_settings,
-                  'published_date' => strtotime($article['published_date']),
-                  'last_updated' => strtotime($article['last_updated']),
-                );
-
-                if (!empty($article['Exceptions']) || !empty($article['error'])) {
-                  drupal_set_message(t('An exception was thrown by the Borger.dk webservice for the specified URL.'), 'error');
-                  drupal_set_message(t('You can fetch this article when the webservice is responsive again.'), 'error');
-                }
-                else {
-                  $node = node_submit($node);
-                  // We need to store the field values and article-settings.
-                  node_save($node);
-                  // Then we need to update the ArticleStatus in the Title-list.
-                  if ($node->nid) {
-                    db_update('os2web_borger_dk_article_titles')
-                      ->fields(array('ArticleStatus' => $node->nid))
-                      ->condition('ArticleID', $article['external_id'], '=')
-                      ->execute();
-                  }
-                  _os2web_borger_dk_add_node_menu($node, $pid);
-                }
+                $node = _os2web_borger_dk_create_article_node($nid, $article, $pid);
               }
             }
           }
@@ -1725,6 +1651,51 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
 
   $context['finished'] = 1;
 }
+function _os2web_borger_dk_create_article_node($nid, $article, $pid = NULL) {
+  $node = _os2web_borger_dk_update_node_content($nid, $article);
+  $field_settings = $form_state['values']['os2web_borger_dk_field_settings'];
+  // Check admin field settings : are there fields set as hidden by admin.
+  $admin_display_fields = variable_get('os2web_borger_dk_display');
+  foreach ($admin_display_fields as $type => $items) {
+    if (!$admin_display_fields[$type]) {
+      $field_settings[$type] = $type;
+    }
+  }
+  // TODO: Perform a logical-test (on paper) to
+  // see if the external_status is correct.
+  $external_status = (empty($article['Exceptions']) && empty($article['error'])) ? 1 : 0;
+  $external_status = (!empty($article['error']) && $article['error_type'] == 'not_found') ? -1 : $external_status;
+  $node->os2web_borger_dk_article = array(
+    'external_id' => $article['external_id'],
+    'external_url' => $article['external_url'],
+    'external_status' => $external_status,
+    'field_settings' => $field_settings,
+    'published_date' => strtotime($article['published_date']),
+    'last_updated' => strtotime($article['last_updated']),
+  );
+
+  if (!empty($article['Exceptions']) || !empty($article['error'])) {
+    drupal_set_message(t('An exception was thrown by the Borger.dk webservice for the specified URL.'), 'error');
+    drupal_set_message(t('You can fetch this article when the webservice is responsive again.'), 'error');
+  }
+  else {
+    $node = node_submit($node);
+    // We need to store the field values and article-settings.
+    node_save($node);
+    // Then we need to update the ArticleStatus in the Title-list.
+    if ($node->nid) {
+       db_update('os2web_borger_dk_article_titles')
+              ->fields(array('ArticleStatus' => $node->nid))
+              ->condition('ArticleID', $article['external_id'], '=')
+              ->execute();
+
+    }
+    if (is_numeric($pid)) {
+      _os2web_borger_dk_add_node_menu($node, $pid);
+    }
+  }
+  return $node;
+}
 /**
  * Functioin _os2web_borger_dk_import_supplement_article().
  */
@@ -1736,44 +1707,9 @@ function _os2web_borger_dk_import_supplement_article($value, $pid) {
   if (empty($article['Exceptions']) && empty($article['error'])) {
 
     $nid = FALSE;
-    $node = _os2web_borger_dk_update_node_content($nid, $article);
+    $node = _os2web_borger_dk_create_article_node($nid, $article, $pid);
 
-    $field_settings = $form_state['values']['os2web_borger_dk_field_settings'];
-    // Check admin field settings : are there fields set as hidden by admin.
-    $admin_display_fields = variable_get('os2web_borger_dk_display');
-    foreach ($admin_display_fields as $type => $items) {
-      if (!$admin_display_fields[$type]) {
-        $field_settings[$type] = $type;
-      }
-    }
-    // TODO: Perform a logical-test (on paper) to
-    // see if the external_status is correct.
-    $external_status = (empty($article['Exceptions']) && empty($article['error'])) ? 1 : 0;
-    $external_status = (!empty($article['error']) && $article['error_type'] == 'not_found') ? -1 : $external_status;
-    $node->os2web_borger_dk_article = array(
-      'external_id' => $article['external_id'],
-      'external_url' => $article['external_url'],
-      'external_status' => $external_status,
-      'field_settings' => $field_settings,
-      'published_date' => strtotime($article['published_date']),
-      'last_updated' => strtotime($article['last_updated']),
-    );
-
-    if (!empty($article['Exceptions']) || !empty($article['error'])) {
-      drupal_set_message(t('An exception was thrown by the Borger.dk webservice for the specified URL.'), 'error');
-      drupal_set_message(t('You can fetch this article when the webservice is responsive again.'), 'error');
-    }
-    else {
-      $node = node_submit($node);
-      // We need to store the field values and article-settings.
-      node_save($node);
-      // Then we need to update the ArticleStatus in the Title-list.
-      if ($node->nid) {
-        db_insert('os2web_borger_dk_article_titles')
-          ->fields(array('ArticleStatus' => $node->nid))
-          ->condition('ArticleID', $article['external_id'], '=')
-          ->execute();
-        db_insert('os2web_borger_dk_article_titles')
+    db_insert('os2web_borger_dk_article_titles')
           ->fields(array(
             'ArticleID' => $article['external_id'],
             'ArticleTitle' => $article['title'],
@@ -1783,9 +1719,6 @@ function _os2web_borger_dk_import_supplement_article($value, $pid) {
             'FORMFields' => $article['FORMFields'],
           ))
           ->execute();
-      }
-      _os2web_borger_dk_add_node_menu($node, $pid);
-    }
   }
 }
 
