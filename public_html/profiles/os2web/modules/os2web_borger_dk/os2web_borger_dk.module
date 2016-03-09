@@ -203,7 +203,7 @@ function os2web_borger_dk_form_alter(&$form, &$form_state, $form_id) {
           if ($microarticle) {
             $field_microarticle_settings = (isset($form['#node']->os2web_borger_dk_microarticle['field_microarticle_settings'])) ? $form['#node']->os2web_borger_dk_microarticle['field_microarticle_settings'] : NULL;
             $body_text = (isset($form['body'][LANGUAGE_NONE]['0']['#entity']->body[LANGUAGE_NONE]['0']['value'])) ? $form['body'][LANGUAGE_NONE]['0']['#entity']->body[LANGUAGE_NONE]['0']['value'] : '';
-            hide($form['body']);
+
             $form['body']['#access'] = FALSE;
             $doc = new DOMDocument();
             $doc->loadHTML('<?xml encoding="utf-8" ?>' . $body_text);
