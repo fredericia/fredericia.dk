@@ -3,3 +3,4 @@ sessions/*
 tmp/*
 private
 public_html/sites/*.dd
+.idea
