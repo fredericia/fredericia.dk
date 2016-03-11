@@ -72,18 +72,6 @@
             <div class="row">
 
               <!-- Begin - content -->
-              <?php if (isset($main_navigation_primary)): ?>
-                <div class="col-md-4">
-
-                  <!-- Begin - navigation -->
-                  <?php print render($main_navigation_primary); ?>
-                  <!-- End - navigation -->
-
-                </div>
-              <?php endif; ?>
-              <!-- End - content -->
-
-              <!-- Begin - content -->
               <div class="col-md-4 text-center">
                 <a href="<?php print $front_page; ?>" class="main-navigation-logo-link">
                   <img src="<?php print $path_img; ?>/logo-main-navigation.png" alt="" class="main-navigation-logo-image">
@@ -93,7 +81,7 @@
 
               <!-- Begin - content -->
               <?php if (isset($main_navigation_secondary)): ?>
-                <div class="col-md-4 main-navigation-right">
+                <div class="col-md-8 main-navigation-right">
 
                   <!-- Begin - navigation -->
                   <?php print render($main_navigation_secondary); ?>
@@ -108,6 +96,16 @@
         </section>
       </nav>
       <!-- End - main navigation -->
+
+      <!-- Begin - content -->
+      <?php if (isset($main_navigation_primary)): ?>
+
+        <!-- Begin - navigation -->
+        <?php print render($main_navigation_primary); ?>
+        <!-- End - navigation -->
+
+      <?php endif; ?>
+      <!-- End - content -->
 
       <!-- Begin - page header -->
       <?php if ($title): ?>
