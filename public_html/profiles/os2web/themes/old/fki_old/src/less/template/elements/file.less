@@ -1,0 +1,147 @@
+// |--------------------------------------------------------------------------
+// | File
+// |--------------------------------------------------------------------------
+// |
+// | This file contains styles for the following:
+// | - .file
+// |
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+
+@os2-file-top-bottom-spacing: 8px;
+@os2-file-left-right-spacing: 0;
+
+@os2-file-border-color: @border-color;
+@os2-file-border-width: 1px;
+@os2-file-border-style: solid;
+
+@os2-file-link-font-color: @brand-primary;
+@os2-file-link-hover-font-color: @brand-secondary;
+@os2-file-link-text-decoration: none;
+@os2-file-link-hover-text-decoration: underline;
+
+// --------------------------------------------------
+// Styling
+// --------------------------------------------------
+
+// File
+.file {
+
+	a {
+		color: @os2-file-link-font-color;
+		text-decoration: @os2-file-link-text-decoration;
+
+		&:hover {
+			color: @os2-file-link-hover-font-color;
+			text-decoration: @os2-file-link-hover-text-decoration;
+		}
+	}
+}
+
+// Field
+.field-type-file {
+
+	.field-item {
+		padding: @os2-file-top-bottom-spacing @os2-file-left-right-spacing;
+		border-bottom-width: @os2-file-border-width;
+		border-bottom-style: @os2-file-border-style;
+		border-bottom-color: @os2-file-border-color;
+
+		.file {
+		}
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+}
+
+// --------------------------------------------------
+// Responsive
+// --------------------------------------------------
+
+// Mobile
+@media @media-query-mobile {
+
+	// File
+	.file {}
+}
+
+// Mobile - only
+@media @media-query-mobile-only {
+
+	// File
+	.file {}
+}
+
+// Tablet
+@media @media-query-tablet {
+
+	// File
+	.file {}
+}
+
+// Tablet - only
+@media @media-query-tablet-only {
+
+	// File
+	.file {}
+}
+
+// Desktop
+@media @media-query-desktop {
+
+	// File
+	.file {}
+}
+
+// Desktop - only
+@media @media-query-desktop-only {
+
+	// File
+	.file {}
+}
+
+// Large desktop
+@media @media-query-large-desktop {
+
+	// File
+	.file {}
+}
+
+// Large desktop - only
+@media @media-query-large-desktop-only {
+
+	// File
+	.file {}
+}
+
+// Print
+@media print {
+
+	// File
+	.file {}
+}
+
+// Touch
+.touch {
+
+	// File
+	.file {}
+}
+
+// No touch
+.no-touch {
+
+	// File
+	.file {}
+}
+
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+
+// File mixin
+.mixin-file() {}

@@ -1,0 +1,280 @@
+// |--------------------------------------------------------------------------
+// | Footer
+// |--------------------------------------------------------------------------
+// |
+// | This file contains styles for the following:
+// | - .footer
+// |
+
+// --------------------------------------------------
+// Variables - footer top
+// --------------------------------------------------
+
+@footer-top-background-color: #fff;
+
+// Responsive
+@footer-top-xs-inner-top-bottom-padding: 30px;
+@footer-top-sm-inner-top-bottom-padding: 35px;
+@footer-top-md-inner-top-bottom-padding: 40px;
+@footer-top-lg-inner-top-bottom-padding: 50px;
+
+// --------------------------------------------------
+// Variables - footer bottom
+// --------------------------------------------------
+
+@footer-bottom-background-color: @state-secondary-bg;
+@footer-bottom-font-color: @state-secondary-text;
+@footer-bottom-font-size: @font-size-small;
+@footer-bottom-icon-heart-color: @brand-primary;
+
+// Logo
+@footer-bottom-logo-image-height: 48px;
+@footer-bottom-logo-image-width: 286px;
+
+// Responsive
+@footer-bottom-xs-inner-top-bottom-padding: 14px;
+@footer-bottom-sm-inner-top-bottom-padding: 17px;
+@footer-bottom-md-inner-top-bottom-padding: 20px;
+@footer-bottom-lg-inner-top-bottom-padding: 25px;
+
+// --------------------------------------------------
+// Styling
+// --------------------------------------------------
+
+// Footer
+.footer {
+  padding: 0;
+  background-color: @footer-top-background-color;
+
+  .footer-top {
+    background-color: @footer-top-background-color;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-family: @font-family-base;
+      font-size: @font-size-large;
+      .line-height(@font-size-large);
+      color: @text-color;
+      letter-spacing: 0;
+      font-weight: @font-weight-bold;
+    }
+
+    .row {
+
+      > div {
+
+        &:first-child {
+
+          .footer-top-content {
+            padding-top: 0;
+          }
+        }
+
+        &:last-child {
+
+          .footer-top-content {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    background-color: @footer-bottom-background-color;
+
+    .footer-bottom-logo-link {
+      display: inline-block;
+    }
+
+    .footer-bottom-logo-image {
+      height: floor( (@footer-bottom-logo-image-height / 2) );
+      width: floor( (@footer-bottom-logo-image-width / 2) );
+      border: 0;
+    }
+
+    &,
+    p,
+    span,
+    h1, h2, h3, h4, h5, h6 {
+      color: @footer-bottom-font-color;
+    }
+
+    &,
+    p,
+    span {
+      font-size: @footer-bottom-font-size;
+      .line-height(@footer-bottom-font-size);
+    }
+
+    p,
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
+
+    .icon {
+      color: @footer-bottom-icon-heart-color;
+    }
+
+    .row {
+
+      > div {
+
+        &:first-child {
+
+          .footer-bottom-content {
+            padding-top: 0;
+          }
+        }
+
+        &:last-child {
+
+          .footer-bottom-content {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// --------------------------------------------------
+// Responsive
+// --------------------------------------------------
+
+// Mobile
+@media @media-query-mobile {
+
+  // Footer
+  .footer {}
+}
+
+// Mobile - only
+@media @media-query-mobile-only {
+
+  // Footer
+  .footer {
+
+    .footer-top {
+      padding: @footer-top-xs-inner-top-bottom-padding 0;
+
+      .footer-top-content {
+        padding: 8px 0;
+      }
+    }
+
+    .footer-bottom {
+      padding: @footer-bottom-xs-inner-top-bottom-padding 0;
+
+      .icon {
+        display: block;
+      }
+    }
+  }
+}
+
+// Tablet
+@media @media-query-tablet {
+
+  // Footer
+  .footer {}
+}
+
+// Tablet - only
+@media @media-query-tablet-only {
+
+  // Footer
+  .footer {
+
+    .footer-top {
+      padding: @footer-top-sm-inner-top-bottom-padding 0;
+
+      .footer-top-content {
+        padding: 12px 0;
+      }
+    }
+
+    .footer-bottom {
+      padding: @footer-bottom-sm-inner-top-bottom-padding 0;
+    }
+  }
+}
+
+// Desktop
+@media @media-query-desktop {
+
+  // Footer
+  .footer {}
+}
+
+// Desktop - only
+@media @media-query-desktop-only {
+
+  // Footer
+  .footer {
+
+    .footer-top {
+      padding: @footer-top-md-inner-top-bottom-padding 0;
+    }
+
+    .footer-bottom {
+      padding: @footer-bottom-md-inner-top-bottom-padding 0;
+    }
+  }
+}
+
+// Large desktop
+@media @media-query-large-desktop {
+
+  // Footer
+  .footer {}
+}
+
+// Large desktop - only
+@media @media-query-large-desktop-only {
+
+  // Footer
+  .footer {
+
+    .footer-top {
+      padding: @footer-top-lg-inner-top-bottom-padding 0;
+    }
+
+    .footer-bottom {
+      padding: @footer-bottom-lg-inner-top-bottom-padding 0;
+    }
+  }
+}
+
+// Print
+@media print {
+
+  // Footer
+  .footer {}
+}
+
+// Touch
+.touchevents {
+
+  // Footer
+  .footer {}
+}
+
+// No touch
+.no-touchevents {
+
+  // Footer
+  .footer {}
+}
+
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+
+// Footer mixin
+.footer-mixin() {}

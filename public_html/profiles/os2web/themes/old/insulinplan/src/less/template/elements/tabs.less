@@ -1,0 +1,244 @@
+// |--------------------------------------------------------------------------
+// | Tabs
+// |--------------------------------------------------------------------------
+// |
+// | This file contains styles for the following:
+// | - .os2-tabs
+// |
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+
+@os2-tabs-spacing:                 @line-height-computed;
+@os2-tabs-border-radius:           0;
+@os2-tabs-stacked-spacing:         5px;
+
+@os2-tabs-link-font-size:     @font-size-large;
+@os2-tabs-link-font-weight:   @font-weight-semi-bold;
+
+@os2-tabs-link-background-color:        transparent;
+@os2-tabs-link-hover-background-color:  transparent;
+@os2-tabs-link-active-background-color: #fff;
+
+@os2-tabs-link-text-color:        #bdc3c7;
+@os2-tabs-link-hover-text-color:  @link-color;
+@os2-tabs-link-active-text-color: @os2-tabs-link-hover-text-color;
+
+@os2-tabs-link-box-shadow: @default-content-box-shadow;
+
+// Responsive
+@os2-tabs-links-xs-padding: 5px @content-xs-left-right-spacing 12px @content-xs-left-right-spacing;
+@os2-tabs-links-sm-padding: 8px @content-sm-left-right-spacing 18px @content-sm-left-right-spacing;
+@os2-tabs-links-md-padding: 20px @content-md-left-right-spacing 35px @content-md-left-right-spacing;
+@os2-tabs-links-lg-padding: 20px @content-lg-left-right-spacing 35px @content-lg-left-right-spacing;
+
+// --------------------------------------------------
+// Styling
+// --------------------------------------------------
+
+// Tabs
+.os2-tabs {
+
+  // Tabs
+  .tabs--primary,
+  .tabs--secondary {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    &:extend(.clearfix all);
+
+    li {
+      float: left;
+
+      // Stacked
+      + li {
+        margin-left: @os2-tabs-stacked-spacing;
+      }
+
+      a {
+        display: block;
+        color: @os2-tabs-link-text-color;
+        background-color: @os2-tabs-link-background-color;
+
+        &:hover,
+        &:focus {
+          color: @os2-tabs-link-hover-text-color;
+          background-color: @os2-tabs-link-hover-background-color;
+        }
+
+        &,
+        &:hover,
+        &:focus {
+          font-size: @os2-tabs-link-font-size;
+          font-weight: @os2-tabs-link-font-weight;
+          .line-height(@os2-tabs-link-font-size);
+          border-radius: @os2-tabs-border-radius;
+          border: none;
+          border-top-width: 4px;
+          border-top-color: transparent;
+          border-top-style: solid;
+          text-decoration: none;
+        }
+      }
+
+      // Active state
+      &.active {
+
+        a {
+
+          &,
+          &:hover,
+          &:focus {
+            color: @os2-tabs-link-active-text-color;
+            background-color: @os2-tabs-link-active-background-color;
+            border-top-color: @brand-quaternary;
+            .box-shadow(@os2-tabs-link-box-shadow);
+          }
+        }
+      }
+    }
+  }
+}
+
+// --------------------------------------------------
+// Responsive
+// --------------------------------------------------
+
+// Mobile
+@media @media-query-mobile {
+
+  // Tabs
+  .os2-tabs {}
+}
+
+// Mobile - only
+@media @media-query-mobile-only {
+
+  // Tabs
+  .os2-tabs {
+
+    // Tabs
+    .tabs--primary,
+    .tabs--secondary {
+
+      li {
+
+        a {
+          padding: @os2-tabs-links-xs-padding;
+        }
+      }
+    }
+  }
+}
+
+// Tablet
+@media @media-query-tablet {
+
+  // Tabs
+  .os2-tabs {}
+}
+
+// Tablet - only
+@media @media-query-tablet-only {
+
+  // Tabs
+  .os2-tabs {
+
+    // Tabs
+    .tabs--primary,
+    .tabs--secondary {
+
+      li {
+
+        a {
+          padding: @os2-tabs-links-sm-padding;
+        }
+      }
+    }
+  }
+}
+
+// Desktop
+@media @media-query-desktop {
+
+  // Tabs
+  .os2-tabs {}
+}
+
+// Desktop - only
+@media @media-query-desktop-only {
+
+  // Tabs
+  .os2-tabs {
+
+    // Tabs
+    .tabs--primary,
+    .tabs--secondary {
+
+      li {
+
+        a {
+          padding: @os2-tabs-links-md-padding;
+        }
+      }
+    }
+  }
+}
+
+// Large desktop
+@media @media-query-large-desktop {
+
+  // Tabs
+  .os2-tabs {}
+}
+
+// Large desktop - only
+@media @media-query-large-desktop-only {
+
+  // Tabs
+  .os2-tabs {
+
+    // Tabs
+    .tabs--primary,
+    .tabs--secondary {
+
+      li {
+
+        a {
+          padding: @os2-tabs-links-lg-padding;
+        }
+      }
+    }
+  }
+}
+
+// Print
+@media print {
+
+  // Tabs
+  .os2-tabs {
+    display: none;
+  }
+}
+
+// Touch
+.touchevents {
+
+  // Tabs
+  .os2-tabs {}
+}
+
+// No touch
+.no-touchevents {
+
+  // Tabs
+  .os2-tabs {}
+}
+
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+
+// Tabs variant mixin
+.os2-mixin-os2-tabs-variant() {}

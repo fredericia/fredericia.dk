@@ -1,0 +1,426 @@
+// |--------------------------------------------------------------------------
+// | Box
+// |--------------------------------------------------------------------------
+// |
+// | This file contains styles for the following:
+// | - .os2-box
+// |
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+
+@os2-box-background-color: 	transparent;
+@os2-box-border-radius: 	 	0;
+
+@os2-box-body-background-color: 	#fff;
+@os2-box-body-box-shadow: 				@default-content-box-shadow;
+
+// Toggleable
+@os2-box-toggleable-icon-expand: 		@fa-var-plus-circle;
+@os2-box-toggleable-icon-minimize: 	@fa-var-minus-circle;
+
+// Responsive
+@os2-box-xs-stacked-spacing: floor( (@grid-gutter-width / 3) );
+@os2-box-sm-stacked-spacing: floor( (@grid-gutter-width / 3) );
+@os2-box-md-stacked-spacing: floor( (@grid-gutter-width / 2) );
+@os2-box-lg-stacked-spacing: floor( (@grid-gutter-width / 2) );
+
+// --------------------------------------------------
+// Styling
+// --------------------------------------------------
+
+// Box
+.os2-box {
+	background-color: @os2-box-background-color;
+	border-radius: @os2-box-border-radius;
+
+	.os2-box-heading {
+		.border-top-radius(@os2-box-border-radius);
+
+		.pane-title,
+		.os2-box-heading-title {
+			margin: 0;
+			font-family: @font-family-base;
+			font-size: @font-size-large;
+			.line-height(@font-size-large);
+			letter-spacing: 0;
+			font-weight: @font-weight-bold;
+		}
+	}
+
+	.os2-box-body {
+		.box-shadow(@os2-box-body-box-shadow);
+
+		+ .os2-box-footer {
+			padding-top: 0;
+		}
+
+		&:extend(.clearfix all);
+	}
+}
+
+// --------------------------------------------------
+// Variant
+// --------------------------------------------------
+
+// Table
+.os2-box {
+
+	&.os2-box-table {
+		.os2-box-mixin-background-color(transparent);
+
+		.os2-box-body {
+			padding: 0;
+			.box-shadow(none);
+		}
+	}
+}
+
+// Plain
+.os2-box-plain {
+	.os2-box-mixin-background-color(transparent);
+}
+
+// --------------------------------------------------
+// Background color variants
+// --------------------------------------------------
+
+.os2-box {
+	.os2-box-mixin-background-color(@os2-box-body-background-color);
+}
+
+// --------------------------------------------------
+// Header variants
+// --------------------------------------------------
+
+.os2-box {
+	.os2-box-mixin-heading(@os2-box-background-color, #bac6ce);
+}
+
+.os2-box-heading-primary {
+	.os2-box-mixin-heading(@os2-box-background-color, @state-primary-text);
+}
+
+.os2-box-heading-secondary {
+	.os2-box-mixin-heading(@os2-box-background-color, @state-secondary-text);
+}
+
+.os2-box-heading-tertiary {
+	.os2-box-mixin-heading(@os2-box-background-color, @state-tertiary-text);
+}
+
+.os2-box-heading-quaternary {
+	.os2-box-mixin-heading(@state-quaternary-bg, @state-quaternary-text);
+}
+
+.os2-box-heading-quinary {
+	.os2-box-mixin-heading(@os2-box-background-color, @state-quinary-text);
+}
+
+// --------------------------------------------------
+// Responsive
+// --------------------------------------------------
+
+// Mobile
+@media @media-query-mobile {
+
+	// Box
+	.os2-box {}
+}
+
+// Mobile - only
+@media @media-query-mobile-only {
+
+	// Box
+	.os2-box {
+
+		.os2-box-heading {
+			padding: @content-xs-heading-top-bottom-spacing @content-xs-left-right-spacing;
+		}
+
+		.os2-box-body {
+			padding: @content-xs-body-top-bottom-spacing @content-xs-left-right-spacing;
+		}
+
+		.os2-box-footer {
+			padding: @content-xs-footer-top-bottom-spacing @content-xs-left-right-spacing;
+		}
+	}
+
+	// Toggleable
+	.os2-box-toggleable-xs-only {
+		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	}
+
+	// Spacing
+	.os2-box-mixin-spacing(@os2-box-xs-stacked-spacing);
+}
+
+// Tablet
+@media @media-query-tablet {
+
+	// Box
+	.os2-box {}
+}
+
+// Tablet - only
+@media @media-query-tablet-only {
+
+	// Box
+	.os2-box {
+
+		.os2-box-heading {
+			padding: @content-sm-heading-top-bottom-spacing @content-sm-left-right-spacing;
+		}
+
+		.os2-box-body {
+			padding: @content-sm-body-top-bottom-spacing @content-sm-left-right-spacing;
+		}
+
+		.os2-box-footer {
+			padding: @content-sm-footer-top-bottom-spacing @content-sm-left-right-spacing;
+		}
+	}
+
+	// Toggleable
+	.os2-box-toggleable-sm-only {
+		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	}
+
+	// Spacing
+	.os2-box-mixin-spacing(@os2-box-sm-stacked-spacing);
+}
+
+// Desktop
+@media @media-query-desktop {
+
+	// Box
+	.os2-box {}
+}
+
+// Desktop - only
+@media @media-query-desktop-only {
+
+	// Box
+	.os2-box {
+
+		.os2-box-heading {
+			padding: @content-md-heading-top-bottom-spacing @content-md-left-right-spacing;
+		}
+
+		.os2-box-body {
+			padding: @content-md-body-top-bottom-spacing @content-md-left-right-spacing;
+		}
+
+		.os2-box-footer {
+			padding: @content-md-footer-top-bottom-spacing @content-md-left-right-spacing;
+		}
+	}
+
+	// Toggleable
+	.os2-box-toggleable-md-only {
+		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	}
+
+	// Spacing
+	.os2-box-mixin-spacing(@os2-box-md-stacked-spacing);
+}
+
+// Large desktop
+@media @media-query-large-desktop {
+
+	// Box
+	.os2-box {}
+}
+
+// Large desktop - only
+@media @media-query-large-desktop-only {
+
+	// Box
+	.os2-box {
+
+		.os2-box-heading {
+			padding: @content-lg-heading-top-bottom-spacing @content-lg-left-right-spacing;
+		}
+
+		.os2-box-body {
+			padding: @content-lg-body-top-bottom-spacing @content-lg-left-right-spacing;
+		}
+
+		.os2-box-footer {
+			padding: @content-lg-footer-top-bottom-spacing @content-lg-left-right-spacing;
+		}
+	}
+
+	// Toggleable
+	.os2-box-toggleable-lg-only {
+		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	}
+
+	// Spacing
+	.os2-box-mixin-spacing(@os2-box-lg-stacked-spacing);
+}
+
+// Print
+@media print {
+
+	// Box
+	.os2-box {}
+}
+
+// Touch
+.touchevents {
+
+	// Toggleable
+	.os2-box-toggleable-touch-only {
+		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	}
+}
+
+// No touch
+.no-touchevents {
+
+	// Toggleable
+	.os2-box-toggleable-no-touch-only {
+		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	}
+}
+
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+
+// Box mixin
+.os2-box-mixin-heading(@heading-background-color, @heading-font-color) {
+
+	&,
+	>	.os2-box {
+
+		.os2-box-heading {
+			background-color: @heading-background-color;
+
+			.pane-title,
+			.os2-box-heading-title {
+
+				&,
+				> a {
+
+					&,
+					&:hover,
+					&:focus,
+					&:active {
+						color: @heading-font-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Background color
+.os2-box-mixin-background-color(@background-color) {
+
+	&,
+	&.os2-box {
+
+		.os2-box-body {
+			background-color: @background-color;
+		}
+	}
+}
+
+// Spacing
+.os2-box-mixin-spacing(@spacing) {
+
+	// Spacing
+	.os2-box {
+		margin-bottom: @spacing !important;;
+	}
+
+	.os2-box-small-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@spacing / 3) ) !important;;
+		}
+	}
+
+	.os2-box-large-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@spacing * 2) ) !important;
+		}
+	}
+}
+
+// Toggleable
+.os2-box-mixin-toggleable(@icon-expand, @icon-minimize) {
+
+	.os2-box,
+	&.os2-box {
+
+		.os2-box-heading {
+
+			.pane-title,
+			.os2-box-heading-title {
+				cursor: pointer;
+				cursor: hand;
+
+				&:before {
+					display: inline-block;
+					content: @icon-expand;
+					.pull-right;
+					font-family: FontAwesome;
+					font-size: inherit;
+					line-height: inherit;
+					cursor: pointer;
+					cursor: hand;
+
+					// Increase button invisible size, for easier clicking on touch devices
+					margin: auto -10px;
+					padding: 0 10px;
+				}
+			}
+		}
+
+		.os2-box-body,
+		.os2-box-footer {
+			display: none;
+		}
+	}
+
+	&.active {
+
+		.os2-box-heading {
+
+			.pane-title,
+			.os2-box-heading-title {
+
+				&:before {
+					content: @icon-minimize;
+				}
+			}
+		}
+
+		.os2-box-body,
+		.os2-box-footer {
+			display: block;
+		}
+	}
+
+	&.os2-box-toggleable-icon-toggle-only {
+
+		.pane-title,
+		.os2-box-heading-title {
+			cursor: text;
+
+			&:before {
+				content: @icon-minimize;
+				cursor: pointer;
+				cursor: hand;
+			}
+		}
+	}
+}

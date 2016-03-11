@@ -1,0 +1,293 @@
+// |--------------------------------------------------------------------------
+// | Table
+// |--------------------------------------------------------------------------
+// |
+// | This file contains styles for the following:
+// | - .table
+// |
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+
+@os2-table-box-td-background-color: 	#fff;
+@os2-table-box-td-box-shadow: 				0 1px 1px 0 rgba(225, 230, 234, 1);
+@os2-table-box-border-spacing:        7px;
+
+// --------------------------------------------------
+// Styling
+// --------------------------------------------------
+
+// Table
+.table {}
+
+// --------------------------------------------------
+// Variants
+// --------------------------------------------------
+
+// Views
+.views-table {
+
+  th {
+
+    img {
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}
+
+// Box
+.os2-box-table {
+
+  .table {
+    border-collapse: separate;
+    border-spacing: 0 @os2-table-box-border-spacing;
+
+    th {
+
+      &,
+      a {
+        font-size: @font-size-large;
+        .line-height(@font-size-large);
+        font-weight: @font-weight-bold;
+        color: #bac6ce;
+      }
+
+      a {
+
+        &:hover {
+          color: @brand-secondary;
+        }
+      }
+
+      &.active {
+
+        a {
+          color: @brand-quaternary;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    th, td {
+      border: none;
+    }
+
+    tbody {
+
+      > tr {
+
+        > td {
+          vertical-align: middle;
+          background-color: @os2-table-box-td-background-color;
+          .box-shadow(@os2-table-box-td-box-shadow);
+
+          &.active {
+
+            &,
+            &:hover {
+              background-color: @os2-table-box-td-background-color;
+            }
+
+            &,
+            a {
+              color: @headings-color;
+              font-weight: @font-weight-bold;
+            }
+          }
+
+          .no-result {
+            font-style: italic;
+            font-weight: @font-weight;
+            color: lighten(@text-color, 25%);
+          }
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// --------------------------------------------------
+// Responsive
+// --------------------------------------------------
+
+// Mobile
+@media @media-query-mobile {
+
+  // Table
+  .table {}
+}
+
+// Mobile - only
+@media @media-query-mobile-only {
+
+  // Table
+  .table {}
+
+  // Box
+  .os2-box-table {
+
+    .table {
+
+      th {
+        padding-top: @content-xs-heading-top-bottom-spacing;
+        padding-bottom: (@content-xs-heading-top-bottom-spacing - (@os2-table-box-border-spacing * 2));
+      }
+
+      th, td {
+
+        &:first-child {
+          padding-left: @content-xs-left-right-spacing;
+        }
+
+        &:last-child {
+          padding-right: @content-xs-left-right-spacing;
+        }
+      }
+    }
+  }
+}
+
+// Tablet
+@media @media-query-tablet {
+
+  // Table
+  .table {}
+}
+
+// Tablet - only
+@media @media-query-tablet-only {
+
+  // Table
+  .table {}
+
+  // Box
+  .os2-box-table {
+
+    .table {
+
+      th {
+        padding-top: @content-sm-heading-top-bottom-spacing;
+        padding-bottom: (@content-sm-heading-top-bottom-spacing - (@os2-table-box-border-spacing * 2));
+      }
+
+      th, td {
+
+        &:first-child {
+          padding-left: @content-sm-left-right-spacing;
+        }
+
+        &:last-child {
+          padding-right: @content-sm-left-right-spacing;
+        }
+      }
+    }
+  }
+}
+
+// Desktop
+@media @media-query-desktop {
+
+  // Table
+  .table {}
+}
+
+// Desktop - only
+@media @media-query-desktop-only {
+
+  // Table
+  .table {}
+
+  // Box
+  .os2-box-table {
+
+    .table {
+
+      th {
+        padding-top: @content-md-heading-top-bottom-spacing;
+        padding-bottom: (@content-md-heading-top-bottom-spacing - (@os2-table-box-border-spacing * 2));
+      }
+
+      th, td {
+
+        &:first-child {
+          padding-left: @content-md-left-right-spacing;
+        }
+
+        &:last-child {
+          padding-right: @content-md-left-right-spacing;
+        }
+      }
+    }
+  }
+}
+
+// Large desktop
+@media @media-query-large-desktop {
+
+  // Table
+  .table {}
+}
+
+// Large desktop - only
+@media @media-query-large-desktop-only {
+
+  // Table
+  .table {}
+
+  // Box
+  .os2-box-table {
+
+    .table {
+
+      th {
+        padding-top: @content-lg-heading-top-bottom-spacing;
+        padding-bottom: (@content-lg-heading-top-bottom-spacing - (@os2-table-box-border-spacing * 2));
+      }
+
+      th, td {
+
+        &:first-child {
+          padding-left: @content-lg-left-right-spacing;
+        }
+
+        &:last-child {
+          padding-right: @content-lg-left-right-spacing;
+        }
+      }
+    }
+  }
+}
+
+// Print
+@media print {
+
+  // Table
+  .table {}
+}
+
+// Touch
+.touchevents {
+
+  // Table
+  .table {}
+}
+
+// No touch
+.no-touchevents {
+
+  // Table
+  .table {}
+}
+
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+
+// Table mixin
+.table-mixin() {}
