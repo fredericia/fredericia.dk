@@ -96,9 +96,6 @@ features[field_base][] = field_vist_navn
 features[field_group][] = group_indstillinger|taxonomy_term|os2web_base_tax_site_structure|form
 features[field_group][] = group_selvbetjening|taxonomy_term|os2web_base_tax_site_structure|form
 features[field_group][] = group_spotbokse|taxonomy_term|os2web_base_tax_site_structure|form
-features[field_group][] = group_term|taxonomy_term|os2web_base_tax_site_structure|form
-features[field_group][] = group_billeder|taxonomy_term|os2web_base_tax_site_structure|form
-
 features[field_instance][] = taxonomy_term-os2web_base_tax_site_structure-field_alternative_display
 features[field_instance][] = taxonomy_term-os2web_base_tax_site_structure-field_list_as_spotboks
 features[field_instance][] = taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_field_banner

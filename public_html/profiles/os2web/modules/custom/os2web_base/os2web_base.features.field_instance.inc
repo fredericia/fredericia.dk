@@ -173,7 +173,7 @@ function os2web_base_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 33,
+      'weight' => 36,
     ),
   );
 
@@ -228,7 +228,7 @@ function os2web_base_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 35,
+      'weight' => 38,
     ),
   );
 
@@ -265,7 +265,7 @@ function os2web_base_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 36,
+      'weight' => 33,
     ),
   );
 
@@ -542,7 +542,7 @@ function os2web_base_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 34,
+      'weight' => 37,
     ),
   );
 
@@ -650,7 +650,7 @@ function os2web_base_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 38,
+      'weight' => 35,
     ),
   );
 
@@ -688,7 +688,7 @@ function os2web_base_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 37,
+      'weight' => 34,
     ),
   );
 

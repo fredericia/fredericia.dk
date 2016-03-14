@@ -21,16 +21,16 @@ function os2web_base_field_group_info() {
   $field_group->parent_name = 'group_term';
   $field_group->data = array(
     'label' => 'Indstillinger',
-    'weight' => '18',
+    'weight' => '45',
     'children' => array(
-      0 => 'field_os2web_base_field_hidlinks',
-      1 => 'field_os2web_base_field_ext_link',
-      2 => 'field_os2web_base_field_related',
-      3 => 'field_os2web_base_field_contact',
-      4 => 'field_os2web_base_hide_sidebar',
-      5 => 'field_os2web_base_hide_contact',
-      6 => 'field_alternative_display',
-      7 => 'field_list_as_spotboks',
+      0 => 'field_alternative_display',
+      1 => 'field_list_as_spotboks',
+      2 => 'field_os2web_base_field_contact',
+      3 => 'field_os2web_base_field_ext_link',
+      4 => 'field_os2web_base_field_hidlinks',
+      5 => 'field_os2web_base_field_related',
+      6 => 'field_os2web_base_hide_contact',
+      7 => 'field_os2web_base_hide_sidebar',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -56,7 +56,7 @@ function os2web_base_field_group_info() {
   $field_group->parent_name = 'group_term';
   $field_group->data = array(
     'label' => 'Selvbetjeningslinks',
-    'weight' => '16',
+    'weight' => '44',
     'children' => array(
       0 => 'field_os2web_base_field_selfserv',
     ),
@@ -84,7 +84,7 @@ function os2web_base_field_group_info() {
   $field_group->parent_name = 'group_term';
   $field_group->data = array(
     'label' => 'Spotbokse',
-    'weight' => '15',
+    'weight' => '43',
     'children' => array(
       0 => 'field_os2web_base_field_spotbox',
     ),
