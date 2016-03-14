@@ -10,7 +10,7 @@
 function os2web_base_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'body'
+  // Exported field_base: 'body'.
   $field_bases['body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -19,14 +19,6 @@ function os2web_base_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'body',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -39,14 +31,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_alternative_display'
+  // Exported field_base: 'field_alternative_display'.
   $field_bases['field_alternative_display'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_alternative_display',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -65,14 +56,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_list_as_selvservice'
+  // Exported field_base: 'field_list_as_selvservice'.
   $field_bases['field_list_as_selvservice'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_list_as_selvservice',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -91,14 +81,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_list_as_spotboks'
+  // Exported field_base: 'field_list_as_spotboks'.
   $field_bases['field_list_as_spotboks'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_list_as_spotboks',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -117,21 +106,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_base_field_banner'
+  // Exported field_base: 'field_os2web_base_field_banner'.
   $field_bases['field_os2web_base_field_banner'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_banner',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -147,21 +128,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_base_field_contact'
+  // Exported field_base: 'field_os2web_base_field_contact'.
   $field_bases['field_os2web_base_field_contact'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_contact',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -198,21 +171,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_direct'
+  // Exported field_base: 'field_os2web_base_field_direct'.
   $field_bases['field_os2web_base_field_direct'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_direct',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -227,21 +192,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_base_field_edi_tags'
+  // Exported field_base: 'field_os2web_base_field_edi_tags'.
   $field_bases['field_os2web_base_field_edi_tags'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_edi_tags',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -262,14 +219,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_ext_link'
+  // Exported field_base: 'field_os2web_base_field_ext_link'.
   $field_bases['field_os2web_base_field_ext_link'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_ext_link',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -292,21 +248,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_os2web_base_field_grp_id'
+  // Exported field_base: 'field_os2web_base_field_grp_id'.
   $field_bases['field_os2web_base_field_grp_id'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_grp_id',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -321,14 +269,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_base_field_hidlinks'
+  // Exported field_base: 'field_os2web_base_field_hidlinks'.
   $field_bases['field_os2web_base_field_hidlinks'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_hidlinks',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -347,21 +294,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_base_field_iframe'
+  // Exported field_base: 'field_os2web_base_field_iframe'.
   $field_bases['field_os2web_base_field_iframe'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_iframe',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -376,21 +315,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_base_field_image'
+  // Exported field_base: 'field_os2web_base_field_image'.
   $field_bases['field_os2web_base_field_image'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_image',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -406,14 +337,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_base_field_inh_colm'
+  // Exported field_base: 'field_os2web_base_field_inh_colm'.
   $field_bases['field_os2web_base_field_inh_colm'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_inh_colm',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -432,21 +362,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_base_field_kle_ref'
+  // Exported field_base: 'field_os2web_base_field_kle_ref'.
   $field_bases['field_os2web_base_field_kle_ref'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_kle_ref',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -467,21 +389,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_lead_img'
+  // Exported field_base: 'field_os2web_base_field_lead_img'.
   $field_bases['field_os2web_base_field_lead_img'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_lead_img',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -497,21 +411,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_base_field_loca_ref'
+  // Exported field_base: 'field_os2web_base_field_loca_ref'.
   $field_bases['field_os2web_base_field_loca_ref'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_loca_ref',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -532,21 +438,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_logo'
+  // Exported field_base: 'field_os2web_base_field_logo'.
   $field_bases['field_os2web_base_field_logo'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_logo',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -562,21 +460,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_base_field_media'
+  // Exported field_base: 'field_os2web_base_field_media'.
   $field_bases['field_os2web_base_field_media'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_media',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -593,21 +483,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_os2web_base_field_organiz'
+  // Exported field_base: 'field_os2web_base_field_organiz'.
   $field_bases['field_os2web_base_field_organiz'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_organiz',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -628,21 +510,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_parent'
+  // Exported field_base: 'field_os2web_base_field_parent'.
   $field_bases['field_os2web_base_field_parent'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_parent',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -685,21 +559,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_photo'
+  // Exported field_base: 'field_os2web_base_field_photo'.
   $field_bases['field_os2web_base_field_photo'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_photo',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -715,21 +581,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_base_field_politics'
+  // Exported field_base: 'field_os2web_base_field_politics'.
   $field_bases['field_os2web_base_field_politics'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_politics',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -750,21 +608,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_promote'
+  // Exported field_base: 'field_os2web_base_field_promote'.
   $field_bases['field_os2web_base_field_promote'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_promote',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -786,21 +636,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_ref_node'
+  // Exported field_base: 'field_os2web_base_field_ref_node'.
   $field_bases['field_os2web_base_field_ref_node'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_ref_node',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -842,21 +684,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_related'
+  // Exported field_base: 'field_os2web_base_field_related'.
   $field_bases['field_os2web_base_field_related'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_related',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -893,21 +727,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_rota_img'
+  // Exported field_base: 'field_os2web_base_field_rota_img'.
   $field_bases['field_os2web_base_field_rota_img'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_rota_img',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -923,14 +749,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_base_field_rota_lnk'
+  // Exported field_base: 'field_os2web_base_field_rota_lnk'.
   $field_bases['field_os2web_base_field_rota_lnk'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_rota_lnk',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -953,14 +778,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_os2web_base_field_rotate'
+  // Exported field_base: 'field_os2web_base_field_rotate'.
   $field_bases['field_os2web_base_field_rotate'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_rotate',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -983,21 +807,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
-  // Exported field_base: 'field_os2web_base_field_selfserv'
+  // Exported field_base: 'field_os2web_base_field_selfserv'.
   $field_bases['field_os2web_base_field_selfserv'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_selfserv',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -1034,21 +850,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_source'
+  // Exported field_base: 'field_os2web_base_field_source'.
   $field_bases['field_os2web_base_field_source'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_source',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -1063,14 +871,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_base_field_sourceid'
+  // Exported field_base: 'field_os2web_base_field_sourceid'.
   $field_bases['field_os2web_base_field_sourceid'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_sourceid',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
@@ -1079,21 +886,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_os2web_base_field_spotbox'
+  // Exported field_base: 'field_os2web_base_field_spotbox'.
   $field_bases['field_os2web_base_field_spotbox'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_spotbox',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -1130,21 +929,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_struct'
+  // Exported field_base: 'field_os2web_base_field_struct'.
   $field_bases['field_os2web_base_field_struct'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_struct',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -1166,21 +957,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_summary'
+  // Exported field_base: 'field_os2web_base_field_summary'.
   $field_bases['field_os2web_base_field_summary'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_summary',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -1193,21 +976,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_os2web_base_field_sympage'
+  // Exported field_base: 'field_os2web_base_field_sympage'.
   $field_bases['field_os2web_base_field_sympage'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_sympage',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -1247,21 +1022,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_field_text'
+  // Exported field_base: 'field_os2web_base_field_text'.
   $field_bases['field_os2web_base_field_text'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_text',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -1274,14 +1041,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_os2web_base_field_type'
+  // Exported field_base: 'field_os2web_base_field_type'.
   $field_bases['field_os2web_base_field_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_type',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -1302,21 +1068,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_os2web_base_field_video'
+  // Exported field_base: 'field_os2web_base_field_video'.
   $field_bases['field_os2web_base_field_video'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_video',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -1332,21 +1090,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_base_field_webform'
+  // Exported field_base: 'field_os2web_base_field_webform'.
   $field_bases['field_os2web_base_field_webform'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_field_webform',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -1386,14 +1136,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_os2web_base_hide_contact'
+  // Exported field_base: 'field_os2web_base_hide_contact'.
   $field_bases['field_os2web_base_hide_contact'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_hide_contact',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -1412,14 +1161,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_base_hide_sidebar'
+  // Exported field_base: 'field_os2web_base_hide_sidebar'.
   $field_bases['field_os2web_base_hide_sidebar'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_base_hide_sidebar',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -1438,14 +1186,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_news_date_end'
+  // Exported field_base: 'field_os2web_news_date_end'.
   $field_bases['field_os2web_news_date_end'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_news_date_end',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -1468,14 +1215,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_os2web_news_date_start'
+  // Exported field_base: 'field_os2web_news_date_start'.
   $field_bases['field_os2web_news_date_start'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_news_date_start',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -1498,14 +1244,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_spot_link'
+  // Exported field_base: 'field_spot_link'.
   $field_bases['field_spot_link'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_spot_link',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -1528,21 +1273,13 @@ function os2web_base_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_vist_navn'
+  // Exported field_base: 'field_vist_navn'.
   $field_bases['field_vist_navn'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_vist_navn',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
