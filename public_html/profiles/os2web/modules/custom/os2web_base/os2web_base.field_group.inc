@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function os2web_base_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -21,7 +21,7 @@ function os2web_base_field_group_info() {
   $field_group->parent_name = 'group_term';
   $field_group->data = array(
     'label' => 'Indstillinger',
-    'weight' => '18',
+    'weight' => '45',
     'children' => array(
       0 => 'field_alternative_display',
       1 => 'field_list_as_spotboks',
@@ -29,7 +29,7 @@ function os2web_base_field_group_info() {
       3 => 'field_os2web_base_field_ext_link',
       4 => 'field_os2web_base_field_hidlinks',
       5 => 'field_os2web_base_field_related',
-      6 => 'field_svendborg_hide_sidebar',
+      6 => 'field_os2web_base_hide_contact',
       7 => 'field_os2web_base_hide_sidebar',
     ),
     'format_type' => 'htab',
@@ -43,38 +43,7 @@ function os2web_base_field_group_info() {
       ),
     ),
   );
-  $export['group_indstillinger|taxonomy_term|os2web_base_tax_site_structure|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_os2web_base_group_taxono|node|os2web_base_iframe|form';
-  $field_group->group_name = 'group_os2web_base_group_taxono';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'os2web_base_iframe';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Taksonomi',
-    'weight' => '8',
-    'children' => array(
-      0 => 'field_os2web_base_field_kle_ref',
-      1 => 'field_os2web_base_field_edi_tags',
-      2 => 'field_os2web_base_field_organiz',
-      3 => 'field_os2web_base_field_loca_ref',
-      4 => 'field_os2web_base_field_politics',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_os2web_base_group_taxono|node|os2web_base_iframe|form'] = $field_group;
+  $field_groups['group_indstillinger|taxonomy_term|os2web_base_tax_site_structure|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -87,7 +56,7 @@ function os2web_base_field_group_info() {
   $field_group->parent_name = 'group_term';
   $field_group->data = array(
     'label' => 'Selvbetjeningslinks',
-    'weight' => '16',
+    'weight' => '44',
     'children' => array(
       0 => 'field_os2web_base_field_selfserv',
     ),
@@ -102,7 +71,7 @@ function os2web_base_field_group_info() {
       ),
     ),
   );
-  $export['group_selvbetjening|taxonomy_term|os2web_base_tax_site_structure|form'] = $field_group;
+  $field_groups['group_selvbetjening|taxonomy_term|os2web_base_tax_site_structure|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -115,7 +84,7 @@ function os2web_base_field_group_info() {
   $field_group->parent_name = 'group_term';
   $field_group->data = array(
     'label' => 'Spotbokse',
-    'weight' => '15',
+    'weight' => '43',
     'children' => array(
       0 => 'field_os2web_base_field_spotbox',
     ),
@@ -130,7 +99,13 @@ function os2web_base_field_group_info() {
       ),
     ),
   );
-  $export['group_spotbokse|taxonomy_term|os2web_base_tax_site_structure|form'] = $field_group;
+  $field_groups['group_spotbokse|taxonomy_term|os2web_base_tax_site_structure|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Indstillinger');
+  t('Selvbetjeningslinks');
+  t('Spotbokse');
+
+  return $field_groups;
 }
