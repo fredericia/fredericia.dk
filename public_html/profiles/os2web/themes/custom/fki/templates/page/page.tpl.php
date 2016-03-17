@@ -107,47 +107,27 @@
       <?php endif; ?>
       <!-- End - content -->
 
-      <!-- Begin - page header -->
-      <?php if ($title): ?>
-        <div class="os2-page-header">
-          <div class="container">
-            <div class="row">
+      <div class="container">
 
-              <!-- Begin - title -->
-              <div class="col-xs-12">
-                <div class="os2-page-header-heading">
-                  <h1 class="os2-page-header-heading-title"><?php print $title; ?></h1>
-                </div>
-              </div>
-              <!-- End - title -->
-
-              <?php if (!empty($tabs_primary)): ?>
-                <!-- Begin - tabs primary -->
-                <div class="col-xs-12">
-                  <div class="os2-tabs os2-page-header-tabs">
-                    <?php print render($tabs_primary); ?>
-                  </div>
-                </div>
-                <!-- End - tabs primary -->
-              <?php endif; ?>
-
-              <?php if (!empty($tabs_secondary)): ?>
-                <!-- Begin - tabs secondary -->
-                <div class="col-xs-12">
-                  <div class="os2-tabs os2-page-header-tabs">
-                    <?php print render($tabs_secondary); ?>
-                  </div>
-                </div>
-                <!-- End - tabs secondary -->
-              <?php endif; ?>
-
-            </div>
+      <?php if (!empty($tabs_primary)): ?>
+        <!-- Begin - tabs primary -->
+        <div class="col-xs-12">
+          <div class="os2-tabs os2-page-header-tabs">
+            <?php print render($tabs_primary); ?>
           </div>
         </div>
+        <!-- End - tabs primary -->
       <?php endif; ?>
-      <!-- End - page header -->
 
-      <div class="container">
+      <?php if (!empty($tabs_secondary)): ?>
+        <!-- Begin - tabs secondary -->
+        <div class="col-xs-12">
+          <div class="os2-tabs os2-page-header-tabs">
+            <?php print render($tabs_secondary); ?>
+          </div>
+        </div>
+        <!-- End - tabs secondary -->
+      <?php endif; ?>
 
         <?php if (!empty($page['help'])): ?>
           <?php print render($page['help']); ?>

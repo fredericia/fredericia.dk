@@ -10,32 +10,15 @@
 // Variables - footer top
 // --------------------------------------------------
 
-@footer-top-background-color: #fff;
+@footer-background-color: @brand-primary;
+@footer-font-color: @state-secondary-text;
+@footer-font-size: @font-size-small;
 
 // Responsive
-@footer-top-xs-inner-top-bottom-padding: 30px;
-@footer-top-sm-inner-top-bottom-padding: 35px;
-@footer-top-md-inner-top-bottom-padding: 40px;
-@footer-top-lg-inner-top-bottom-padding: 50px;
-
-// --------------------------------------------------
-// Variables - footer bottom
-// --------------------------------------------------
-
-@footer-bottom-background-color: @state-secondary-bg;
-@footer-bottom-font-color: @state-secondary-text;
-@footer-bottom-font-size: @font-size-small;
-@footer-bottom-icon-heart-color: @brand-primary;
-
-// Logo
-@footer-bottom-logo-image-height: 48px;
-@footer-bottom-logo-image-width: 286px;
-
-// Responsive
-@footer-bottom-xs-inner-top-bottom-padding: 14px;
-@footer-bottom-sm-inner-top-bottom-padding: 17px;
-@footer-bottom-md-inner-top-bottom-padding: 20px;
-@footer-bottom-lg-inner-top-bottom-padding: 25px;
+@footer-xs-inner-top-bottom-padding: 30px;
+@footer-sm-inner-top-bottom-padding: 35px;
+@footer-md-inner-top-bottom-padding: 40px;
+@footer-lg-inner-top-bottom-padding: 50px;
 
 // --------------------------------------------------
 // Styling
@@ -44,99 +27,38 @@
 // Footer
 .footer {
   padding: 0;
-  background-color: @footer-top-background-color;
+  background-color: @footer-background-color;
 
-  .footer-top {
-    background-color: @footer-top-background-color;
-
-    p {
-      margin-bottom: 0;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 0;
-      margin-bottom: 6px;
-      font-family: @font-family-base;
-      font-size: @font-size-large;
-      .line-height(@font-size-large);
-      color: @text-color;
-      letter-spacing: 0;
-      font-weight: @font-weight-bold;
-    }
-
-    .row {
-
-      > div {
-
-        &:first-child {
-
-          .footer-top-content {
-            padding-top: 0;
-          }
-        }
-
-        &:last-child {
-
-          .footer-top-content {
-            padding-bottom: 0;
-          }
-        }
-      }
-    }
+  p {
+    margin-bottom: 0;
   }
 
-  .footer-bottom {
-    background-color: @footer-bottom-background-color;
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-family: @font-family-base;
+    font-size: @font-size-large;
+    .line-height(@font-size-large);
+    color: @text-color;
+    letter-spacing: 0;
+    font-weight: @font-weight-bold;
+  }
 
-    .footer-bottom-logo-link {
-      display: inline-block;
-    }
+  .row {
 
-    .footer-bottom-logo-image {
-      height: floor( (@footer-bottom-logo-image-height / 2) );
-      width: floor( (@footer-bottom-logo-image-width / 2) );
-      border: 0;
-    }
+    > div {
 
-    &,
-    p,
-    span,
-    h1, h2, h3, h4, h5, h6 {
-      color: @footer-bottom-font-color;
-    }
+      &:first-child {
 
-    &,
-    p,
-    span {
-      font-size: @footer-bottom-font-size;
-      .line-height(@footer-bottom-font-size);
-    }
-
-    p,
-    h1, h2, h3, h4, h5, h6 {
-      margin: 0;
-    }
-
-    .icon {
-      color: @footer-bottom-icon-heart-color;
-    }
-
-    .row {
-
-      > div {
-
-        &:first-child {
-
-          .footer-bottom-content {
-            padding-top: 0;
-          }
+        .footer-content {
+          padding-top: 0;
         }
+      }
 
-        &:last-child {
+      &:last-child {
 
-          .footer-bottom-content {
-            padding-bottom: 0;
-          }
+        .footer-content {
+          padding-bottom: 0;
         }
       }
     }
@@ -159,22 +81,7 @@
 
   // Footer
   .footer {
-
-    .footer-top {
-      padding: @footer-top-xs-inner-top-bottom-padding 0;
-
-      .footer-top-content {
-        padding: 8px 0;
-      }
-    }
-
-    .footer-bottom {
-      padding: @footer-bottom-xs-inner-top-bottom-padding 0;
-
-      .icon {
-        display: block;
-      }
-    }
+    padding: @footer-xs-inner-top-bottom-padding 0;
   }
 }
 
@@ -190,18 +97,7 @@
 
   // Footer
   .footer {
-
-    .footer-top {
-      padding: @footer-top-sm-inner-top-bottom-padding 0;
-
-      .footer-top-content {
-        padding: 12px 0;
-      }
-    }
-
-    .footer-bottom {
-      padding: @footer-bottom-sm-inner-top-bottom-padding 0;
-    }
+    padding: @footer-sm-inner-top-bottom-padding 0;
   }
 }
 
@@ -217,14 +113,7 @@
 
   // Footer
   .footer {
-
-    .footer-top {
-      padding: @footer-top-md-inner-top-bottom-padding 0;
-    }
-
-    .footer-bottom {
-      padding: @footer-bottom-md-inner-top-bottom-padding 0;
-    }
+    padding: @footer-md-inner-top-bottom-padding 0;
   }
 }
 
@@ -240,14 +129,7 @@
 
   // Footer
   .footer {
-
-    .footer-top {
-      padding: @footer-top-lg-inner-top-bottom-padding 0;
-    }
-
-    .footer-bottom {
-      padding: @footer-bottom-lg-inner-top-bottom-padding 0;
-    }
+    padding: @footer-lg-inner-top-bottom-padding 0;
   }
 }
 

@@ -10,17 +10,12 @@
 // Variables
 // --------------------------------------------------
 
-@os2-box-background-color: 	transparent;
-@os2-box-border-radius: 	 	0;
-
-@os2-box-body-background-color: 	#fff;
-@os2-box-body-box-shadow: 				@default-content-box-shadow;
-
-// Toggleable
-@os2-box-toggleable-icon-expand: 		@fa-var-plus-circle;
-@os2-box-toggleable-icon-minimize: 	@fa-var-minus-circle;
+@os2-box-background-color: 	#fff;
+@os2-box-border-radius: 	 	@border-radius-base;
 
 // Responsive
+@os2-box-body-top-bottom-spacing: 5px;
+
 @os2-box-xs-stacked-spacing: floor( (@grid-gutter-width / 3) );
 @os2-box-sm-stacked-spacing: floor( (@grid-gutter-width / 3) );
 @os2-box-md-stacked-spacing: floor( (@grid-gutter-width / 2) );
@@ -41,16 +36,12 @@
 		.pane-title,
 		.os2-box-heading-title {
 			margin: 0;
-			font-family: @font-family-base;
-			font-size: @font-size-large;
-			.line-height(@font-size-large);
-			letter-spacing: 0;
-			font-weight: @font-weight-bold;
+			.heading-h4;
+			text-transform: uppercase;
 		}
 	}
 
 	.os2-box-body {
-		.box-shadow(@os2-box-body-box-shadow);
 
 		+ .os2-box-footer {
 			padding-top: 0;
@@ -61,61 +52,28 @@
 }
 
 // --------------------------------------------------
-// Variant
+// Variants
 // --------------------------------------------------
 
-// Table
-.os2-box {
-
-	&.os2-box-table {
-		.os2-box-mixin-background-color(transparent);
-
-		.os2-box-body {
-			padding: 0;
-			.box-shadow(none);
-		}
-	}
+.os2-box,
+.os2-box-primary {
+	.os2-mixin-box(@state-primary-bg, @state-primary-text);
 }
 
-// Plain
-.os2-box-plain {
-	.os2-box-mixin-background-color(transparent);
+.os2-box-secondary {
+	.os2-mixin-box(@state-secondary-bg, @state-secondary-text);
 }
 
-// --------------------------------------------------
-// Background color variants
-// --------------------------------------------------
-
-.os2-box {
-	.os2-box-mixin-background-color(@os2-box-body-background-color);
+.os2-box-tertiary {
+	.os2-mixin-box(@state-tertiary-bg, @state-tertiary-text);
 }
 
-// --------------------------------------------------
-// Header variants
-// --------------------------------------------------
-
-.os2-box {
-	.os2-box-mixin-heading(@os2-box-background-color, #bac6ce);
+.os2-box-quaternary {
+	.os2-mixin-box(@state-quaternary-bg, @state-quaternary-text);
 }
 
-.os2-box-heading-primary {
-	.os2-box-mixin-heading(@os2-box-background-color, @state-primary-text);
-}
-
-.os2-box-heading-secondary {
-	.os2-box-mixin-heading(@os2-box-background-color, @state-secondary-text);
-}
-
-.os2-box-heading-tertiary {
-	.os2-box-mixin-heading(@os2-box-background-color, @state-tertiary-text);
-}
-
-.os2-box-heading-quaternary {
-	.os2-box-mixin-heading(@state-quaternary-bg, @state-quaternary-text);
-}
-
-.os2-box-heading-quinary {
-	.os2-box-mixin-heading(@os2-box-background-color, @state-quinary-text);
+.os2-box-quinary {
+	.os2-mixin-box(@state-quinary-bg, @state-quinary-text);
 }
 
 // --------------------------------------------------
@@ -134,6 +92,7 @@
 
 	// Box
 	.os2-box {
+		margin-bottom: @os2-box-xs-stacked-spacing !important;
 
 		.os2-box-heading {
 			padding: @content-xs-heading-top-bottom-spacing @content-xs-left-right-spacing;
@@ -148,13 +107,21 @@
 		}
 	}
 
-	// Toggleable
-	.os2-box-toggleable-xs-only {
-		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	.os2-box-small-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@os2-box-xs-stacked-spacing / 3) ) !important;
+		}
 	}
 
-	// Spacing
-	.os2-box-mixin-spacing(@os2-box-xs-stacked-spacing);
+	.os2-box-large-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@os2-box-xs-stacked-spacing * 2) ) !important;
+		}
+	}
 }
 
 // Tablet
@@ -169,6 +136,7 @@
 
 	// Box
 	.os2-box {
+		margin-bottom: @os2-box-sm-stacked-spacing !important;
 
 		.os2-box-heading {
 			padding: @content-sm-heading-top-bottom-spacing @content-sm-left-right-spacing;
@@ -183,13 +151,21 @@
 		}
 	}
 
-	// Toggleable
-	.os2-box-toggleable-sm-only {
-		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	.os2-box-small-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@os2-box-sm-stacked-spacing / 3) ) !important;
+		}
 	}
 
-	// Spacing
-	.os2-box-mixin-spacing(@os2-box-sm-stacked-spacing);
+	.os2-box-large-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@os2-box-sm-stacked-spacing * 2) ) !important;
+		}
+	}
 }
 
 // Desktop
@@ -204,6 +180,7 @@
 
 	// Box
 	.os2-box {
+		margin-bottom: @os2-box-md-stacked-spacing !important;
 
 		.os2-box-heading {
 			padding: @content-md-heading-top-bottom-spacing @content-md-left-right-spacing;
@@ -218,13 +195,21 @@
 		}
 	}
 
-	// Toggleable
-	.os2-box-toggleable-md-only {
-		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	.os2-box-small-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@os2-box-md-stacked-spacing / 3) ) !important;
+		}
 	}
 
-	// Spacing
-	.os2-box-mixin-spacing(@os2-box-md-stacked-spacing);
+	.os2-box-large-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@os2-box-md-stacked-spacing * 2) ) !important;
+		}
+	}
 }
 
 // Large desktop
@@ -239,6 +224,7 @@
 
 	// Box
 	.os2-box {
+		margin-bottom: @os2-box-lg-stacked-spacing !important;
 
 		.os2-box-heading {
 			padding: @content-lg-heading-top-bottom-spacing @content-lg-left-right-spacing;
@@ -253,13 +239,21 @@
 		}
 	}
 
-	// Toggleable
-	.os2-box-toggleable-lg-only {
-		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
+	.os2-box-small-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@os2-box-lg-stacked-spacing / 3) ) !important;
+		}
 	}
 
-	// Spacing
-	.os2-box-mixin-spacing(@os2-box-lg-stacked-spacing);
+	.os2-box-large-spacing {
+
+		&.os2-box,
+		> .os2-box {
+			margin-bottom: floor( (@os2-box-lg-stacked-spacing * 2) ) !important;
+		}
+	}
 }
 
 // Print
@@ -272,19 +266,15 @@
 // Touch
 .touchevents {
 
-	// Toggleable
-	.os2-box-toggleable-touch-only {
-		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
-	}
+	// Box
+	.os2-box {}
 }
 
 // No touch
 .no-touchevents {
 
-	// Toggleable
-	.os2-box-toggleable-no-touch-only {
-		.os2-box-mixin-toggleable(@os2-box-toggleable-icon-expand, @os2-box-toggleable-icon-minimize);
-	}
+	// Box
+	.os2-box {}
 }
 
 // --------------------------------------------------
@@ -292,7 +282,7 @@
 // --------------------------------------------------
 
 // Box mixin
-.os2-box-mixin-heading(@heading-background-color, @heading-font-color) {
+.os2-mixin-box(@heading-background-color, @heading-font-color) {
 
 	&,
 	>	.os2-box {
@@ -313,113 +303,6 @@
 						color: @heading-font-color;
 					}
 				}
-			}
-		}
-	}
-}
-
-// Background color
-.os2-box-mixin-background-color(@background-color) {
-
-	&,
-	&.os2-box {
-
-		.os2-box-body {
-			background-color: @background-color;
-		}
-	}
-}
-
-// Spacing
-.os2-box-mixin-spacing(@spacing) {
-
-	// Spacing
-	.os2-box {
-		margin-bottom: @spacing !important;;
-	}
-
-	.os2-box-small-spacing {
-
-		&.os2-box,
-		> .os2-box {
-			margin-bottom: floor( (@spacing / 3) ) !important;;
-		}
-	}
-
-	.os2-box-large-spacing {
-
-		&.os2-box,
-		> .os2-box {
-			margin-bottom: floor( (@spacing * 2) ) !important;
-		}
-	}
-}
-
-// Toggleable
-.os2-box-mixin-toggleable(@icon-expand, @icon-minimize) {
-
-	.os2-box,
-	&.os2-box {
-
-		.os2-box-heading {
-
-			.pane-title,
-			.os2-box-heading-title {
-				cursor: pointer;
-				cursor: hand;
-
-				&:before {
-					display: inline-block;
-					content: @icon-expand;
-					.pull-right;
-					font-family: FontAwesome;
-					font-size: inherit;
-					line-height: inherit;
-					cursor: pointer;
-					cursor: hand;
-
-					// Increase button invisible size, for easier clicking on touch devices
-					margin: auto -10px;
-					padding: 0 10px;
-				}
-			}
-		}
-
-		.os2-box-body,
-		.os2-box-footer {
-			display: none;
-		}
-	}
-
-	&.active {
-
-		.os2-box-heading {
-
-			.pane-title,
-			.os2-box-heading-title {
-
-				&:before {
-					content: @icon-minimize;
-				}
-			}
-		}
-
-		.os2-box-body,
-		.os2-box-footer {
-			display: block;
-		}
-	}
-
-	&.os2-box-toggleable-icon-toggle-only {
-
-		.pane-title,
-		.os2-box-heading-title {
-			cursor: text;
-
-			&:before {
-				content: @icon-minimize;
-				cursor: pointer;
-				cursor: hand;
 			}
 		}
 	}
