@@ -79,14 +79,6 @@
               </div>
               <!-- End - content -->
 
-              <?php if (isset($content['field_title'])): ?>
-                <!-- Begin - title -->
-                <div class="loop-accordion-title">
-                  <?php echo render($content['field_title']); ?>
-                </div>
-                <!-- End - title -->
-              <?php endif; ?>
-
               <!-- Begin - content -->
               <?php if (isset($main_navigation_secondary)): ?>
                 <div class="col-md-8 main-navigation-right">
@@ -105,6 +97,20 @@
       </nav>
       <!-- End - main navigation -->
 
+      <?php if (!empty($breadcrumb)): ?>
+        <!-- Begin - breadcrumb -->
+        <section class="os2-breadcrumb-container">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <?php print $breadcrumb; ?>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- End - breadcrumb -->
+      <?php endif; ?>
+
       <div class="container">
 
         <?php if (!empty($page['help'])): ?>
@@ -113,18 +119,6 @@
 
         <?php if (!empty($action_links)): ?>
           <ul class="action-links"><?php print render($action_links); ?></ul>
-        <?php endif; ?>
-
-        <?php if (!empty($breadcrumb)): ?>
-          <!-- Begin - breadcrumb -->
-          <section class="os2-breadcrumb-container">
-            <div class="row">
-              <div class="col-xs-12">
-                <?php print $breadcrumb; ?>
-              </div>
-            </div>
-          </section>
-          <!-- End - breadcrumb -->
         <?php endif; ?>
 
         <?php if (!empty($tabs_primary)): ?>
