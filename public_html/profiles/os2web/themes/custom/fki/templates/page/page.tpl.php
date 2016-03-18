@@ -105,9 +105,45 @@
       </nav>
       <!-- End - main navigation -->
 
-      <?php if (!empty($page['help'])): ?>
-        <?php echo render($page['help']); ?>
-      <?php endif; ?>
+      <div class="container">
+
+        <?php if (!empty($page['help'])): ?>
+          <?php print render($page['help']); ?>
+        <?php endif; ?>
+
+        <?php if (!empty($action_links)): ?>
+          <ul class="action-links"><?php print render($action_links); ?></ul>
+        <?php endif; ?>
+
+        <?php if (!empty($breadcrumb)): ?>
+          <!-- Begin - breadcrumb -->
+          <section class="os2-breadcrumb-container">
+            <div class="row">
+              <div class="col-xs-12">
+                <?php print $breadcrumb; ?>
+              </div>
+            </div>
+          </section>
+          <!-- End - breadcrumb -->
+        <?php endif; ?>
+
+        <?php if (!empty($tabs_primary)): ?>
+          <!-- Begin - tabs primary -->
+          <div class="os2-tabs-container os2-tabs-variant-default">
+            <?php print render($tabs_primary); ?>
+          </div>
+          <!-- End - tabs primary -->
+        <?php endif; ?>
+
+        <?php if (!empty($tabs_secondary)): ?>
+          <!-- Begin - tabs secondary -->
+          <div class="os2-tabs-container os2-tabs-variant-tertiary">
+            <?php print render($tabs_secondary); ?>
+          </div>
+          <!-- End - tabs secondary -->
+        <?php endif; ?>
+        
+      </div>
 
       <a id="main-content"></a>
 
