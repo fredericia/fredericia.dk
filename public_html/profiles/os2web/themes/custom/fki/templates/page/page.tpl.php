@@ -142,7 +142,7 @@
           </div>
           <!-- End - tabs secondary -->
         <?php endif; ?>
-        
+
       </div>
 
       <a id="main-content"></a>
@@ -165,69 +165,46 @@
     <!-- Begin - footer -->
     <footer class="footer">
 
-      <?php if (!empty($page['footer_top_first']) || !empty($page['footer_top_second']) || !empty($page['footer_top_tertiary']) || !empty($page['footer_top_quaternary'])): ?>
-        <div class="footer-top">
-          <div class="container">
-            <div class="row">
+      <?php if (!empty($page['footer_first']) || !empty($page['footer_second']) || !empty($page['footer_tertiary']) || !empty($page['footer_quaternary'])): ?>
+        <div class="container">
+          <div class="row">
 
-              <?php if (!empty($page['footer_top_first'])): ?>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                  <div class="footer-top-content">
-                    <?php echo render($page['footer_top_first']); ?>
-                  </div>
+            <?php if (!empty($page['footer_first'])): ?>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="footer-top-content">
+                  <?php echo render($page['footer_first']); ?>
                 </div>
-              <?php endif; ?>
+              </div>
+            <?php endif; ?>
 
-              <?php if (!empty($page['footer_top_second'])): ?>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                  <div class="footer-top-content">
-                    <?php echo render($page['footer_top_second']); ?>
-                  </div>
+            <?php if (!empty($page['footer_second'])): ?>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="footer-top-content">
+                  <?php echo render($page['footer_second']); ?>
                 </div>
-              <?php endif; ?>
+              </div>
+            <?php endif; ?>
 
-              <?php if (!empty($page['footer_top_tertiary'])): ?>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                  <div class="footer-top-content">
-                    <?php echo render($page['footer_top_tertiary']); ?>
-                  </div>
+            <?php if (!empty($page['footer_tertiary'])): ?>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="footer-top-content">
+                  <?php echo render($page['footer_tertiary']); ?>
                 </div>
-              <?php endif; ?>
+              </div>
+            <?php endif; ?>
 
-              <?php if (!empty($page['footer_top_quaternary'])): ?>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                  <div class="footer-top-content">
-                    <?php echo render($page['footer_top_quaternary']); ?>
-                  </div>
+            <?php if (!empty($page['footer_quaternary'])): ?>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="footer-top-content">
+                  <?php echo render($page['footer_quaternary']); ?>
                 </div>
-              <?php endif; ?>
+              </div>
+            <?php endif; ?>
 
-            </div>
           </div>
         </div>
       <?php endif; ?>
 
-      <div class="footer-bottom">
-        <div class="container">
-          <div class="row">
-
-            <div class="col-xs-12 col-sm-6 text-center text-left-sm">
-              <div class="footer-bottom-content">
-                <a href="<?php echo $front_page; ?>" class="footer-bottom-logo-link">
-                  <img src="<?php echo $path_img; ?>/logo-footer.png" alt="" class="footer-bottom-logo-image">
-                </a>
-              </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-6 text-center text-right-sm">
-              <div class="footer-bottom-content">
-                <p><?php echo t('Made with love by a father to a diabetes-child'); ?> <span class="icon fa fa-heart"></span></p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
     </footer>
     <!-- End - footer -->
 

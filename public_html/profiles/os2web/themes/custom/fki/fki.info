@@ -15,10 +15,10 @@ base theme  = 'bellcom'
 regions[highlighted]            = 'Highlighted'
 regions[help]                   = 'Help'
 regions[content]                = 'Content'
-regions[footer_top_first]       = 'Footer top - first'
-regions[footer_top_second]      = 'Footer top - second'
-regions[footer_top_tertiary]    = 'Footer top - tertiary'
-regions[footer_top_quaternary]  = 'Footer top - quaternary'
+regions[footer_first]           = 'Footer first'
+regions[footer_second]          = 'Footer second'
+regions[footer_tertiary]        = 'Footer tertiary'
+regions[footer_quaternary]      = 'Footer quaternary'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Stylesheets
