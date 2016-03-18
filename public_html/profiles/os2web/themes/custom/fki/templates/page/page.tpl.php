@@ -79,6 +79,14 @@
               </div>
               <!-- End - content -->
 
+              <?php if (isset($content['field_title'])): ?>
+                <!-- Begin - title -->
+                <div class="loop-accordion-title">
+                  <?php print render($content['field_title']); ?>
+                </div>
+                <!-- End - title -->
+              <?php endif; ?>
+
               <!-- Begin - content -->
               <?php if (isset($main_navigation_secondary)): ?>
                 <div class="col-md-8 main-navigation-right">
