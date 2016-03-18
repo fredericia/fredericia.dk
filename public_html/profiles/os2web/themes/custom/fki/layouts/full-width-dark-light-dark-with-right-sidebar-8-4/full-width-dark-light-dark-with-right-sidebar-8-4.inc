@@ -3,11 +3,11 @@
  * implementation of hook_panels_layouts().
  */
 $plugin = array(
-  'title' => t('Full width - content with right sidebar (9/3)'),
+  'title' => t('Full width - dark/light/dark with right sidebar (8/4)'),
   'category' => t('OS2'),
-  'icon' => 'full-width-dark-light-dark-with-right-sidebar-9-3.png',
-  'theme' => 'full-width-dark-light-dark-with-right-sidebar-9-3',
-  'css' => 'full-width-dark-light-dark-with-right-sidebar-9-3.css',
+  'icon' => 'full-width-dark-light-dark-with-right-sidebar-8-4.png',
+  'theme' => 'full-width-dark-light-dark-with-right-sidebar-8-4',
+  'css' => 'full-width-dark-light-dark-with-right-sidebar-8-4.css',
   'regions' => array(
     'content' => t('Content'),
     'sidebar' => t('Sidebar'),

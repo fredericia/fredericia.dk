@@ -9,22 +9,22 @@
 
       <!-- Begin - logo -->
       <div class="sidebar-logo">
-        <a href="<?php print $front_page; ?>" class="sidebar-logo-link">
-          <img src="<?php print $path_img . '/logo-sidebar-wide.png'; ?>" class="sidebar-logo-image sidebar-logo-image-wide" alt="<?php print $site_name . t(' logo'); ?>" />
-          <img src="<?php print $path_img . '/logo-sidebar-narrow.png'; ?>" class="sidebar-logo-image sidebar-logo-image-narrow" alt="<?php print $site_name . t(' logo'); ?>" />
+        <a href="<?php echo $front_page; ?>" class="sidebar-logo-link">
+          <img src="<?php echo $path_img.'/logo-sidebar-wide.png'; ?>" class="sidebar-logo-image sidebar-logo-image-wide" alt="<?php echo $site_name.t(' logo'); ?>" />
+          <img src="<?php echo $path_img.'/logo-sidebar-narrow.png'; ?>" class="sidebar-logo-image sidebar-logo-image-narrow" alt="<?php echo $site_name.t(' logo'); ?>" />
         </a>
       </div>
       <!-- End - logo -->
 
       <?php if (isset($sidebar_secondary)): ?>
         <!-- Begin - navigation -->
-        <?php print render($sidebar_secondary); ?>
+        <?php echo render($sidebar_secondary); ?>
         <!-- End - navigation -->
       <?php endif; ?>
 
       <?php if (isset($sidebar_primary)): ?>
         <!-- Begin - navigation -->
-        <?php print render($sidebar_primary); ?>
+        <?php echo render($sidebar_primary); ?>
         <!-- End - navigation -->
       <?php endif; ?>
 
@@ -54,8 +54,8 @@
       <!-- End - button list -->
 
       <!-- Begin - logo -->
-      <a href="<?php print $front_page; ?>" class="simple-navigation-logo-link">
-        <img src="<?php print $path_img . '/logo-simple-navigation.png'; ?>" class="simple-navigation-logo-image" alt="<?php print t('intranet.fredericia.dk logo'); ?>" />
+      <a href="<?php echo $front_page; ?>" class="simple-navigation-logo-link">
+        <img src="<?php echo $path_img.'/logo-simple-navigation.png'; ?>" class="simple-navigation-logo-image" alt="<?php echo t('intranet.fredericia.dk logo'); ?>" />
       </a>
       <!-- End - logo -->
 
@@ -73,8 +73,8 @@
 
               <!-- Begin - content -->
               <div class="col-md-4 text-center">
-                <a href="<?php print $front_page; ?>" class="main-navigation-logo-link">
-                  <img src="<?php print $path_img; ?>/logo-main-navigation.png" alt="" class="main-navigation-logo-image">
+                <a href="<?php echo $front_page; ?>" class="main-navigation-logo-link">
+                  <img src="<?php echo $path_img; ?>/logo-main-navigation.png" alt="" class="main-navigation-logo-image">
                 </a>
               </div>
               <!-- End - content -->
@@ -82,7 +82,7 @@
               <?php if (isset($content['field_title'])): ?>
                 <!-- Begin - title -->
                 <div class="loop-accordion-title">
-                  <?php print render($content['field_title']); ?>
+                  <?php echo render($content['field_title']); ?>
                 </div>
                 <!-- End - title -->
               <?php endif; ?>
@@ -92,7 +92,7 @@
                 <div class="col-md-8 main-navigation-right">
 
                   <!-- Begin - navigation -->
-                  <?php print render($main_navigation_secondary); ?>
+                  <?php echo render($main_navigation_secondary); ?>
                   <!-- End - navigation -->
 
                 </div>
@@ -105,67 +105,24 @@
       </nav>
       <!-- End - main navigation -->
 
-      <!-- Begin - content -->
-      <?php if (isset($main_navigation_primary)): ?>
-
-        <!-- Begin - navigation -->
-        <?php print render($main_navigation_primary); ?>
-        <!-- End - navigation -->
-
-      <?php endif; ?>
-      <!-- End - content -->
-
-      <div class="container">
-
-      <?php if (!empty($tabs_primary)): ?>
-        <!-- Begin - tabs primary -->
-        <div class="col-xs-12">
-          <div class="os2-tabs os2-page-header-tabs">
-            <?php print render($tabs_primary); ?>
-          </div>
-        </div>
-        <!-- End - tabs primary -->
+      <?php if (!empty($page['help'])): ?>
+        <?php echo render($page['help']); ?>
       <?php endif; ?>
 
-      <?php if (!empty($tabs_secondary)): ?>
-        <!-- Begin - tabs secondary -->
-        <div class="col-xs-12">
-          <div class="os2-tabs os2-page-header-tabs">
-            <?php print render($tabs_secondary); ?>
-          </div>
-        </div>
-        <!-- End - tabs secondary -->
-      <?php endif; ?>
+      <a id="main-content"></a>
 
-        <?php if (!empty($page['help'])): ?>
-          <?php print render($page['help']); ?>
-        <?php endif; ?>
-
-        <?php if (!empty($action_links)): ?>
-          <?php print render($action_links); ?>
-        <?php endif; ?>
-
-        <?php if (!empty($tabs_secondary)): ?>
-          <!-- Begin - tabs secondary -->
-          <div class="os2-tabs-container os2-tabs-variant-tertiary">
-            <?php print render($tabs_secondary); ?>
-          </div>
-          <!-- End - tabs secondary -->
-        <?php endif; ?>
-
-        <a id="main-content"></a>
-
-        <?php if (!panels_get_current_page_display()): ?>
+      <?php if (!panels_get_current_page_display()): ?>
+        <div class="container">
           <div class="os2-box">
             <div class="os2-box-body">
-              <?php print render($page['content']); ?>
+              <?php echo render($page['content']); ?>
             </div>
           </div>
-        <?php else: ?>
-          <?php print render($page['content']); ?>
-        <?php endif; ?>
+        </div>
+      <?php else: ?>
+        <?php echo render($page['content']); ?>
+      <?php endif; ?>
 
-      </div>
     </div>
     <!-- End - content -->
 
@@ -180,7 +137,7 @@
               <?php if (!empty($page['footer_top_first'])): ?>
                 <div class="col-xs-12 col-sm-6 col-md-3">
                   <div class="footer-top-content">
-                    <?php print render($page['footer_top_first']); ?>
+                    <?php echo render($page['footer_top_first']); ?>
                   </div>
                 </div>
               <?php endif; ?>
@@ -188,7 +145,7 @@
               <?php if (!empty($page['footer_top_second'])): ?>
                 <div class="col-xs-12 col-sm-6 col-md-3">
                   <div class="footer-top-content">
-                    <?php print render($page['footer_top_second']); ?>
+                    <?php echo render($page['footer_top_second']); ?>
                   </div>
                 </div>
               <?php endif; ?>
@@ -196,7 +153,7 @@
               <?php if (!empty($page['footer_top_tertiary'])): ?>
                 <div class="col-xs-12 col-sm-6 col-md-3">
                   <div class="footer-top-content">
-                    <?php print render($page['footer_top_tertiary']); ?>
+                    <?php echo render($page['footer_top_tertiary']); ?>
                   </div>
                 </div>
               <?php endif; ?>
@@ -204,7 +161,7 @@
               <?php if (!empty($page['footer_top_quaternary'])): ?>
                 <div class="col-xs-12 col-sm-6 col-md-3">
                   <div class="footer-top-content">
-                    <?php print render($page['footer_top_quaternary']); ?>
+                    <?php echo render($page['footer_top_quaternary']); ?>
                   </div>
                 </div>
               <?php endif; ?>
@@ -220,15 +177,15 @@
 
             <div class="col-xs-12 col-sm-6 text-center text-left-sm">
               <div class="footer-bottom-content">
-                <a href="<?php print $front_page; ?>" class="footer-bottom-logo-link">
-                  <img src="<?php print $path_img; ?>/logo-footer.png" alt="" class="footer-bottom-logo-image">
+                <a href="<?php echo $front_page; ?>" class="footer-bottom-logo-link">
+                  <img src="<?php echo $path_img; ?>/logo-footer.png" alt="" class="footer-bottom-logo-image">
                 </a>
               </div>
             </div>
 
             <div class="col-xs-12 col-sm-6 text-center text-right-sm">
               <div class="footer-bottom-content">
-                <p><?php print t('Made with love by a father to a diabetes-child'); ?> <span class="icon fa fa-heart"></span></p>
+                <p><?php echo t('Made with love by a father to a diabetes-child'); ?> <span class="icon fa fa-heart"></span></p>
               </div>
             </div>
 

@@ -5,7 +5,7 @@
 
   <?php if ($content['dark_section_1']): ?>
     <!-- Begin - dark section no. 1 -->
-    <div class="dark">
+    <div class="os2-section os2-section-dark">
       <div class="container">
         <div class="row">
 
@@ -20,7 +20,7 @@
 
   <?php if ($content['light_section_1']): ?>
     <!-- Begin - light section no. 1 -->
-    <div class="light">
+    <div class="os2-section os2-section-light">
       <div class="container">
         <div class="row">
 
@@ -36,7 +36,7 @@
 
   <?php if ($content['dark_section_2']): ?>
     <!-- Begin - dark section no. 2 -->
-    <div class="dark">
+    <div class="os2-section os2-section-dark">
       <div class="container">
         <div class="row">
 
