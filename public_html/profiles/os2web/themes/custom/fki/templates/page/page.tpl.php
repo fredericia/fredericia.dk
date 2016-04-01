@@ -55,7 +55,7 @@
 
       <!-- Begin - logo -->
       <a href="<?php echo $front_page; ?>" class="simple-navigation-logo-link">
-        <img src="<?php echo $path_img.'/logo-simple-navigation.png'; ?>" class="simple-navigation-logo-image" alt="<?php echo t('intranet.fredericia.dk logo'); ?>" />
+        <img src="<?php echo $path_img.'/logo-simple-navigation.png'; ?>" class="simple-navigation-logo-image" alt="<?php echo t('fredericia.dk logo'); ?>" />
       </a>
       <!-- End - logo -->
 
