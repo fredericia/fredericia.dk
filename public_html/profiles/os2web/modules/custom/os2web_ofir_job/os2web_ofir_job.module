@@ -63,7 +63,7 @@ function os2web_ofir_job_settings_form() {
   $form['os2web_ofir_job_webservice'] = array(
     '#type' => 'textfield',
     '#title' => t('Ofir job Webservice URL'),
-    '#default_value' => variable_get('os2web_ofir_job_webservice', 'http://svendborg.emply.net/api.asmx?WSDL'),
+    '#default_value' => variable_get('os2web_ofir_job_webservice', 'http://fredericia.emply.net/api.asmx?WSDL'),
     '#size' => 100,
     '#maxlength' => 200,
   );
@@ -131,7 +131,7 @@ function _os2web_ofir_job_cronbatch() {
 
   // Get jobs.
   $jobs = array();
-  $wsdl = variable_get('os2web_ofir_job_webservice', 'http://svendborg.emply.net/api.asmx?WSDL');
+  $wsdl = variable_get('os2web_ofir_job_webservice', 'http://fredericia.emply.net/api.asmx?WSDL');
   $api_key = variable_get('os2web_ofir_job_apiKey', 'de411653-1e5f-477c-8c5b-a20c065da702');
   $media_id = variable_get('os2web_ofir_job_mediaId', 'f1fb8e12-1928-4328-88fd-9918a34a2bf2');
   $jobs = _os2web_ofir_job_GetProjects($wsdl, $api_key, $media_id);

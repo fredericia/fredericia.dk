@@ -678,7 +678,7 @@ function os2web_base_gallery_field_default_field_instances() {
           'os2web_gallery_thumbnails' => 'os2web_gallery_thumbnails',
           'os2web_spotbox_image' => 0,
           'fredericia_content_image' => 0,
-          'svendborg_spotbox' => 0,
+          'fredericia_spotbox' => 0,
         ),
       ),
       'file_directory' => 'gallery_images',
@@ -1051,7 +1051,7 @@ function os2web_base_gallery_field_default_field_instances() {
         'styles' => array(
           'os2web_spotbox_image' => 0,
           'fredericia_content_image' => 0,
-          'svendborg_spotbox' => 0,
+          'fredericia_spotbox' => 0,
         ),
       ),
       'file_directory' => '',

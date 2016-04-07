@@ -753,7 +753,7 @@ function os2web_borger_dk_field_default_field_instances() {
         'styles' => array(
           'os2web_spotbox_image' => 0,
           'fredericia_content_image' => 'fredericia_content_image',
-          'svendborg_spotbox' => 0,
+          'fredericia_spotbox' => 0,
         ),
       ),
       'file_directory' => '',
