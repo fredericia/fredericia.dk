@@ -22,7 +22,7 @@ function os2web_ofir_job_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Job i Svendborg Kommune';
+  $handler->display->display_options['title'] = 'Job i Fredericia Kommune';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
@@ -53,8 +53,8 @@ function os2web_ofir_job_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>Her kan du få et overblik over ledige stillinger i Svendborg Kommune.<br />
-Svendborg Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>Her kan du få et overblik over ledige stillinger i Fredericia Kommune.<br />
+Fredericia Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>';
   /* Forbindelse: Indhold: Stillingskategori (field_os2web_ofir_category) */
   $handler->display->display_options['relationships']['field_os2web_ofir_category_tid']['id'] = 'field_os2web_ofir_category_tid';
   $handler->display->display_options['relationships']['field_os2web_ofir_category_tid']['table'] = 'field_data_field_os2web_ofir_category';
@@ -125,7 +125,7 @@ Svendborg Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jo
   $handler->display->display_options['path'] = 'kommunen/job';
   $translatables['job_liste'] = array(
     t('Master'),
-    t('Job i Svendborg Kommune'),
+    t('Job i Fredericia Kommune'),
     t('mere'),
     t('Udfør'),
     t('Gendan'),
@@ -139,8 +139,8 @@ Svendborg Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jo
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('<p>Her kan du få et overblik over ledige stillinger i Svendborg Kommune.<br />
-Svendborg Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>'),
+    t('<p>Her kan du få et overblik over ledige stillinger i Fredericia Kommune.<br />
+Fredericia Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>'),
     t('term fra field_os2web_ofir_category'),
     t('Page'),
   );

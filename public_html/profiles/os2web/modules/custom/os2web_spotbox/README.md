@@ -29,7 +29,7 @@ See https://github.com/syddjurs/os2web/wiki for further instructions.
 This module can also be installed with drush make in your install profile.
 
 Add new types of spotboxes by adding new EPSACrop styles. After creating the new
-image style (http://svendborg.ab/admin/config/media/image-styles), be sure to
+image style (http://fredericia.dk/admin/config/media/image-styles), be sure to
 add it to the spotbox content type (admin/structure/types/manage/os2web_spotbox_box/fields/field_os2web_spotbox_big_image)
 
 Licence and copyright

@@ -87,7 +87,7 @@ function os2web_spotbox_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'svendborg_spotbox',
+          'image_style' => 'fredericia_spotbox',
         ),
         'type' => 'image',
         'weight' => 13,
@@ -133,7 +133,7 @@ function os2web_spotbox_field_default_field_instances() {
         'styles' => array(
           'os2web_spotbox_image' => 0,
           'fredericia_content_image' => 0,
-          'svendborg_spotbox' => 'svendborg_spotbox',
+          'fredericia_spotbox' => 'fredericia_spotbox',
         ),
       ),
       'file_directory' => '',
