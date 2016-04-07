@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function os2web_spotbox_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -39,7 +39,7 @@ function os2web_spotbox_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_billeder|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_billeder|node|os2web_spotbox_box|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -56,6 +56,8 @@ function os2web_spotbox_field_group_info() {
     'children' => array(
       0 => 'field_os2web_spotbox_text',
       1 => 'field_os2web_spotbox_url',
+      2 => 'field_os2web_base_field_ext_link',
+      3 => 'field_os2web_spotbox_display',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -67,7 +69,7 @@ function os2web_spotbox_field_group_info() {
       ),
     ),
   );
-  $export['group_links|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_links|node|os2web_spotbox_box|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -95,7 +97,7 @@ function os2web_spotbox_field_group_info() {
       ),
     ),
   );
-  $export['group_spotbox|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_spotbox|node|os2web_spotbox_box|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -126,7 +128,7 @@ function os2web_spotbox_field_group_info() {
       ),
     ),
   );
-  $export['group_taksonomi|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_taksonomi|node|os2web_spotbox_box|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -155,7 +157,14 @@ function os2web_spotbox_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_tekst|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_tekst|node|os2web_spotbox_box|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Emneord');
+  t('Links');
+  t('Spotbox');
+  t('Tekst og video');
+
+  return $field_groups;
 }
