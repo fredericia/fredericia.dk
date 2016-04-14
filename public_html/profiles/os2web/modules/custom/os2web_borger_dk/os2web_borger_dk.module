@@ -800,6 +800,10 @@ function os2web_borger_dk_update_article($nid) {
 
   // Now we update the node content with the fetched article content.
   $node = _os2web_borger_dk_update_node_content($nid, $article);
+  if (variable_get('os2web_borger_dk_microarticle_active')) {
+    $body_text = isset($node->body[LANGUAGE_NONE][0]['value']) ? $node->body[LANGUAGE_NONE][0]['value'] : '';
+    _os2web_borger_dk_microarticle_helper($body_text, $node, FALSE);
+  }
   node_save($node);
 
 }
@@ -846,6 +850,10 @@ function os2web_borger_dk_microarticles_update_submit($form, &$form_state) {
     // Only update the body text.
     $node->body[LANGUAGE_NONE][0]['value'] = $body;
     node_save($node);
+
+    // Update microarticle field setting.
+     _os2web_borger_dk_microarticle_helper($body, $node, FALSE);
+
     // And we notify the user that the article has been updated.
     drupal_set_message(t('The microarticles have been updated'), 'status');
   }
@@ -933,13 +941,16 @@ function os2web_borger_dk_node_submit(&$node, $form, &$form_state) {
             return;
           }
           elseif ($data->ArticleStatus > 0) {
-            // We have already imported this article
-            // and node->nid = ArticleStatus.
-            drupal_set_message(t('The Borger.dk article with title "!title" has already been imported.', array(
-              '!title' => $borger_dk_title)), 'status');
-            drupal_set_message(t('You can re-import the article by clicking on the "Update now"-button below.'), 'status');
-            drupal_goto('node/' . $data->ArticleStatus . '/edit');
-            return;
+            $allow_duplicate_import = variable_get('os2web_borger_dk_import_duplicate', 0);
+            if (!$allow_duplicate_import) {
+              // We have already imported this article
+              // and node->nid = ArticleStatus.
+              drupal_set_message(t('The Borger.dk article with title "!title" has already been imported.', array(
+                '!title' => $borger_dk_title)), 'status');
+              drupal_set_message(t('You can re-import the article by clicking on the "Update now"-button below.'), 'status');
+              drupal_goto('node/' . $data->ArticleStatus . '/edit');
+              return;
+            }
           }
           elseif ($data->ArticleStatus == 0) {
             $aid = $data->ArticleID;
@@ -998,9 +1009,9 @@ function _os2web_borger_dk_microarticle_helper($body_text, $node, $view = FALSE)
     $text_area = 'os2web_borger_dk_micro_textarea_' . $microno;
 
     if (!$view && is_object($node)) {
-      $field_microarticle_settings[$microno] = $node->$checkboxno;
+      $field_microarticle_settings[$microno] = isset($node->$checkboxno) ? $node->$checkboxno : 1;
         // Body text (Article text).
-      $article_text .= "<div class=\"microArticle\" id=\"microArticle" . $micro_id . "\">" . "\r\n";
+      $article_text .= "<div class=\"microArticle\" id=\"microArticle" . $microno . "\">" . "\r\n";
 
       $micro_h2 = "<h2 class=\"mArticle\" id=\"mArticle" . $microno . "\">";
       $micro_h2 .= $node->$h2_text_field . "</h2>";
@@ -1023,7 +1034,7 @@ function _os2web_borger_dk_microarticle_helper($body_text, $node, $view = FALSE)
       }
       if ($node[$microno] != 0) {
         // Body text (Article text).
-        $article_text .= "<div class=\"microArticle\" id=\"microArticle" . $micro_id . "\">" . "\r\n";
+        $article_text .= "<div class=\"microArticle\" id=\"microArticle" . $microno . "\">" . "\r\n";
 
         $micro_h2 = "<h2 class=\"mArticle\" id=\"mArticle" . $microno . "\">";
         $micro_h2 .= $title . "</h2>";
@@ -1039,6 +1050,7 @@ function _os2web_borger_dk_microarticle_helper($body_text, $node, $view = FALSE)
     // End of body text (Article text).
   }
   if (!$view && is_object($node)) {
+
     $serialized_microarticle = serialize($field_microarticle_settings);
     db_update('os2web_borger_dk_article')
         ->fields(array(

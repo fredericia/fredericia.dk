@@ -331,6 +331,18 @@ function os2web_borger_dk_settings_form($form, $form_state) {
     '#description' => t('Check to import articles from Borger.dk according to municipality.'),
     '#default_value' => $admin_municipality,
   );
+  $form['os2web_borger_dk_settings_9'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Import duplicate'),
+    '#collapsible' => TRUE,
+    '#group' => 'vertical_settings_tab',
+  );
+  $form['os2web_borger_dk_settings_9']['os2web_borger_dk_import_duplicate'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Allow article import duplicated.'),
+    '#description' => t('Allow to import aricle many times.'),
+    '#default_value' => variable_get('os2web_borger_dk_import_duplicate', 0),
+  );
   return system_settings_form($form);
 }
 
