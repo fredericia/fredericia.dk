@@ -11,14 +11,15 @@
 // --------------------------------------------------
 
 @footer-background-color: @brand-primary;
-@footer-font-color: @state-secondary-text;
 @footer-font-size: @font-size-small;
+@footer-font-color: @state-secondary-text;
+@footer-headings-font-color: #899FB6;
 
 // Responsive
 @footer-xs-inner-top-bottom-padding: 30px;
 @footer-sm-inner-top-bottom-padding: 35px;
-@footer-md-inner-top-bottom-padding: 40px;
-@footer-lg-inner-top-bottom-padding: 50px;
+@footer-md-inner-top-bottom-padding: 50px;
+@footer-lg-inner-top-bottom-padding: 60px;
 
 // --------------------------------------------------
 // Styling
@@ -33,15 +34,36 @@
     margin-bottom: 0;
   }
 
+  &,
+  p {
+    color: @footer-font-color;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 6px;
     font-family: @font-family-base;
     font-size: @font-size-large;
     .line-height(@font-size-large);
-    color: @text-color;
+    color: @footer-headings-font-color;
     letter-spacing: 0;
     font-weight: @font-weight-bold;
+  }
+
+  .footer-opening-hours {
+
+    table {
+
+      tr {
+
+        td {
+
+          &:first-child {
+            padding-right: 20px;
+          }
+        }
+      }
+    }
   }
 
   .row {
@@ -81,7 +103,10 @@
 
   // Footer
   .footer {
-    padding: @footer-xs-inner-top-bottom-padding 0;
+
+    .footer-content {
+      padding: @footer-xs-inner-top-bottom-padding 0;
+    }
   }
 }
 
@@ -97,7 +122,10 @@
 
   // Footer
   .footer {
-    padding: @footer-sm-inner-top-bottom-padding 0;
+
+    .footer-content {
+      padding: @footer-sm-inner-top-bottom-padding 0;
+    }
   }
 }
 
@@ -113,7 +141,10 @@
 
   // Footer
   .footer {
-    padding: @footer-md-inner-top-bottom-padding 0;
+
+    .footer-content {
+      padding: @footer-md-inner-top-bottom-padding 0;
+    }
   }
 }
 
@@ -129,7 +160,10 @@
 
   // Footer
   .footer {
-    padding: @footer-lg-inner-top-bottom-padding 0;
+
+    .footer-content {
+      padding: @footer-lg-inner-top-bottom-padding 0;
+    }
   }
 }
 
