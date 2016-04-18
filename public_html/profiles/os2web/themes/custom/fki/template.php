@@ -52,7 +52,20 @@ function fki_preprocess_html(&$variables) {
  */
 function fki_preprocess_page(&$variables) {
 
-  // Tabs
+  // Wrap panels layout.
+  $variables['wrap_panels_layout'] = FALSE;
+
+  $exclude_layouts_from_wrapping = array(
+    'full-width-dark-light-dark',
+    'full-width-light-dark-light',
+    'full-width-dark-light-dark-with-right-sidebar-8-4',
+    'full-width-dark-light-dark-with-right-sidebar-9-3',
+  );
+  if (!in_array($variables['panels']->layout, $exclude_layouts_from_wrapping)) {
+    $variables['wrap_panels_layout'] = TRUE;
+  }
+
+  // Tabs.
   $variables['tabs_primary'] = $variables['tabs'];
   $variables['tabs_secondary'] = $variables['tabs'];
   unset($variables['tabs_primary']['#secondary']);

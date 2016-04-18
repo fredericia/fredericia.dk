@@ -156,7 +156,14 @@
                     </div>
                 </div>
             <?php else: ?>
-                <?php print render($page['content']); ?>
+                
+                <?php if ($wrap_panels_layout): ?>
+                    <div class="container">
+                        <?php print render($page['content']); ?>
+                    </div>
+                <?php else: ?>
+                    <?php print render($page['content']); ?>
+                <?php endif; ?>
             <?php endif; ?>
 
         </div>

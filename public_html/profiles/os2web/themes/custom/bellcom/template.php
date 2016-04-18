@@ -50,6 +50,9 @@ function bellcom_preprocess_page(&$variables) {
   $variables['path_css']  = base_path() . drupal_get_path('theme', $current_theme) . '/dist/css';
   $variables['path_font'] = base_path() . drupal_get_path('theme', $current_theme) . '/dist/font';
 
+  // Panels.
+  $variables['panels'] = panels_get_current_page_display();
+
   // Theme settings
   $variables['theme_settings'] = _bellcom_collect_theme_settings();
 }
