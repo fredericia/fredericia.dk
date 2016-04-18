@@ -52,7 +52,6 @@
 </div>
 <!-- End - skip link -->
 
-<?php print $page_top; ?>
 <?php print $page; ?>
 
 <!-- Begin - load javascript files -->

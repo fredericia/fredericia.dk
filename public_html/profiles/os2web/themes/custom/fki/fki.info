@@ -14,7 +14,6 @@ base theme  = 'bellcom'
 
 regions[highlighted]            = 'Highlighted'
 regions[help]                   = 'Help'
-regions[content]                = 'Content'
 regions[footer]                 = 'Footer'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

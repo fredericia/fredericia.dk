@@ -147,16 +147,7 @@
 
             <a id="main-content"></a>
 
-            <?php if (!panels_get_current_page_display()): ?>
-                <div class="container">
-                    <div class="os2-box">
-                        <div class="os2-box-body">
-                            <?php print render($page['content']); ?>
-                        </div>
-                    </div>
-                </div>
-            <?php else: ?>
-                
+            <?php if (panels_get_current_page_display()): ?>
                 <?php if ($wrap_panels_layout): ?>
                     <div class="container">
                         <?php print render($page['content']); ?>
@@ -164,6 +155,14 @@
                 <?php else: ?>
                     <?php print render($page['content']); ?>
                 <?php endif; ?>
+            <?php else: ?>
+                <div class="container">
+                    <div class="os2-box">
+                        <div class="os2-box-body">
+                            <?php print render($page['content']); ?>
+                        </div>
+                    </div>
+                </div>
             <?php endif; ?>
 
         </div>
