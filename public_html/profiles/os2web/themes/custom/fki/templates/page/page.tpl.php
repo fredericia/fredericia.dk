@@ -77,7 +77,7 @@
                         <div class="row">
 
                             <!-- Begin - content -->
-                            <div class="col-md-4 text-center">
+                            <div class="col-md-4">
                                 <a href="<?php echo $front_page; ?>" class="main-navigation-logo-link">
                                     <img src="<?php echo $path_img; ?>/logo-main-navigation.png" alt=""
                                          class="main-navigation-logo-image">
@@ -86,7 +86,7 @@
                             <!-- End - content -->
 
                             <!-- Begin - content -->
-                            <?php if (isset($main_navigation_secondary)): ?>
+                            <?php if (isset($main_navigation_primary)): ?>
                                 <div class="col-md-8 main-navigation-right">
 
                                     <!-- Begin - navigation -->

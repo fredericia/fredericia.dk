@@ -16,9 +16,9 @@ function bellcom_preprocess_html(&$variables) {
   $variables['path_font'] = base_path() . drupal_get_path('theme', $current_theme) . '/dist/font';
 
   // Live reload.
-  $live_reload_file = 'http://127.0.0.1:35729/livereload.js';
+  if (variable_get('environment', FALSE) == 'dev') {
+    $live_reload_file = 'http://127.0.0.1:35729/livereload.js';
 
-  if (_bellcom_check_if_file_in_url_exists($live_reload_file)) {
     drupal_add_js($live_reload_file, array(
       'group' => JS_LIBRARY,
     ));

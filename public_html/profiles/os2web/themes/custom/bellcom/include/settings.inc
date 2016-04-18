@@ -26,38 +26,6 @@ function _theme_settings_form(&$form, $form_state) {
     '#title' => t('Sideopsætning'),
   );
 
-  // Top bar.
-  $form['options']['layout']['top_bar'] = array(
-    '#type' => 'fieldset',
-    '#title' => 'Top bar',
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-  );
-
-  // Top bar - contact information
-  $form['options']['layout']['top_bar']['contact_information'] = array(
-    '#type' => 'select',
-    '#title' => t('Vis kontaktinformationer'),
-    '#options' => array(
-      1 => t('Nej, skjul dem.'),
-      2 => t('Venstre side'),
-      3 => t('Højre side'),
-    ),
-    '#default_value' => theme_get_setting('contact_information'),
-  );
-
-  // Top bar - social links
-  $form['options']['layout']['top_bar']['social_links'] = array(
-    '#type' => 'select',
-    '#title' => t('Vis links til sociale websites'),
-    '#options' => array(
-      1 => t('Nej, skjul dem.'),
-      2 => t('Venstre side'),
-      3 => t('Højre side'),
-    ),
-    '#default_value' => theme_get_setting('social_links'),
-  );
-
   // Navigation
   $form['options']['layout']['navigation'] = array(
     '#type' => 'fieldset',
@@ -279,86 +247,6 @@ function _theme_settings_form(&$form, $form_state) {
     '#title' => t('Vis links til sociale tjenester'),
     '#default_value' => theme_get_setting('footer_show_social_links'),
     '#description' => t("Skal links til sociale tjenester vises i bunden af siden?"),
-  );
-
-  /*
-  |--------------------------------------------------------------------------
-  | Contact information
-  |--------------------------------------------------------------------------
-  |
-  | Sets all necessary options to save data.
-  |
-  */
-
-  // Fieldset
-  $form['options']['contact_information'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Kontakt information'),
-  );
-
-  // Business owner name
-  $form['options']['contact_information']['business_owner_name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Navn'),
-    '#default_value' => theme_get_setting('business_owner_name'),
-  );
-
-  // Business startup year
-  $form['options']['contact_information']['business_startup_year'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Opstartsår'),
-    '#default_value' => theme_get_setting('business_startup_year'),
-  );
-
-  // Address
-  $form['options']['contact_information']['address'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Adresse'),
-    '#default_value' => theme_get_setting('address'),
-  );
-
-  // Zipcode
-  $form['options']['contact_information']['zipcode'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Postnr'),
-    '#default_value' => theme_get_setting('zipcode'),
-  );
-
-  // City
-  $form['options']['contact_information']['city'] = array(
-    '#type' => 'textfield',
-    '#title' => t('By'),
-    '#default_value' => theme_get_setting('city'),
-  );
-
-  // Phone number
-  $form['options']['contact_information']['phone_system'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Telefon'),
-    '#description' => t('HUSK: uden mellemrum og inkl. +45 f.eks.: +4570260085'),
-    '#default_value' => theme_get_setting('phone_system'),
-  );
-
-  // Phone number - readable
-  $form['options']['contact_information']['phone_readable'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Vist telefon nummer'),
-    '#description' => t('Telefonnummeret vist (brug evt. mellemrum så det er let læseligt)'),
-    '#default_value' => theme_get_setting('phone_readable'),
-  );
-
-  // E-mail address
-  $form['options']['contact_information']['email'] = array(
-    '#type' => 'textfield',
-    '#title' => t('E-mail'),
-    '#default_value' => theme_get_setting('email'),
-  );
-
-  // Working hours
-  $form['options']['contact_information']['working_hours'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Åbningstid eller anden info'),
-    '#default_value' => theme_get_setting('working_hours'),
   );
 
   /*

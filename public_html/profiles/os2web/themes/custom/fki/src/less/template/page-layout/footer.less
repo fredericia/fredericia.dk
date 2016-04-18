@@ -13,11 +13,25 @@
 @footer-background-color: @brand-primary;
 @footer-font-size: @font-size-small;
 @footer-font-color: @state-secondary-text;
+@footer-link-font-color: @footer-font-color;
 @footer-headings-font-color: #899FB6;
+
+// Hotline
+@footer-hotline-background-color: @state-quaternary-bg;
+@footer-hotline-font-color: @state-quaternary-text;
+@footer-hotline-font-family: @headings-font-family;
+@footer-hotline-font-size: @font-size-h2;
+@footer-hotline-font-weight: @headings-font-weight;
+@footer-hotline-border-radius: @border-radius-base;
+
+@footer-xs-hotline-inner-spacing: 5px 15px;
+@footer-sm-hotline-inner-spacing: 6px 20px;
+@footer-md-hotline-inner-spacing: 7px 30px;
+@footer-lg-hotline-inner-spacing: 8px 42px;
 
 // Responsive
 @footer-xs-inner-top-bottom-padding: 30px;
-@footer-sm-inner-top-bottom-padding: 35px;
+@footer-sm-inner-top-bottom-padding: 40px;
 @footer-md-inner-top-bottom-padding: 50px;
 @footer-lg-inner-top-bottom-padding: 60px;
 
@@ -37,6 +51,14 @@
   &,
   p {
     color: @footer-font-color;
+  }
+
+  a {
+
+    &,
+    &:hover {
+      color: @footer-link-font-color;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -81,6 +103,19 @@
       }
     }
   }
+
+  .footer-hotline {
+
+    p {
+      display: inline-block;
+      font-family: @footer-hotline-font-family;
+      font-size: @footer-hotline-font-size;
+      font-weight: @footer-hotline-font-weight;
+      color: @footer-hotline-font-color;
+      background-color: @footer-hotline-background-color;
+      border-radius: @footer-hotline-border-radius;
+    }
+  }
 }
 
 // --------------------------------------------------
@@ -103,6 +138,27 @@
     .footer-content {
       padding: @footer-xs-inner-top-bottom-padding 0;
     }
+
+    .footer-hotline {
+
+      p {
+        padding: @footer-xs-hotline-inner-spacing;
+      }
+    }
+
+    .row {
+
+      &:first-child {
+        margin-bottom: 20px;
+      }
+
+      > div {
+
+        &:first-child {
+          margin-bottom: 20px;
+        }
+      }
+    }
   }
 }
 
@@ -121,6 +177,13 @@
 
     .footer-content {
       padding: @footer-sm-inner-top-bottom-padding 0;
+    }
+
+    .footer-hotline {
+
+      p {
+        padding: @footer-sm-hotline-inner-spacing;
+      }
     }
   }
 }
@@ -141,6 +204,13 @@
     .footer-content {
       padding: @footer-md-inner-top-bottom-padding 0;
     }
+
+    .footer-hotline {
+
+      p {
+        padding: @footer-md-hotline-inner-spacing;
+      }
+    }
   }
 }
 
@@ -159,6 +229,13 @@
 
     .footer-content {
       padding: @footer-lg-inner-top-bottom-padding 0;
+    }
+
+    .footer-hotline {
+
+      p {
+        padding: @footer-lg-hotline-inner-spacing;
+      }
     }
   }
 }
