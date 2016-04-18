@@ -90,7 +90,7 @@
                                 <div class="col-md-8 main-navigation-right">
 
                                     <!-- Begin - navigation -->
-                                    <?php print render($main_navigation_secondary); ?>
+                                    <?php print render($main_navigation_primary); ?>
                                     <!-- End - navigation -->
 
                                 </div>

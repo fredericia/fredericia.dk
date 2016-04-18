@@ -162,3 +162,18 @@ function _bellcom_sidebar_classes($viewmode) {
 
   return $classes;
 }
+
+/*
+ * Check if file in URL exists.
+ * Check http://stackoverflow.com/questions/2280394/how-can-i-check-if-a-url-exists-via-php.
+ */
+function _bellcom_check_if_file_in_url_exists($file_url) {
+  $file_headers = @get_headers($file_url);
+
+  if ($file_headers[0] == 'HTTP/1.1 404 Not Found') {
+    return FALSE;
+  }
+  else {
+    return TRUE;
+  }
+}

@@ -66,21 +66,17 @@
     }
   }
 
-  .row {
+  .nav {
 
-    > div {
+    > li {
 
-      &:first-child {
+      > a {
+        padding: 3px 0;
 
-        .footer-content {
-          padding-top: 0;
-        }
-      }
-
-      &:last-child {
-
-        .footer-content {
-          padding-bottom: 0;
+        &,
+        &:hover {
+          color: @footer-font-color;
+          background-color: transparent;
         }
       }
     }

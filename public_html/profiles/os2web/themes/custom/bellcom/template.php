@@ -9,13 +9,22 @@ function bellcom_preprocess_html(&$variables) {
   $view_modes = array('xs', 'sm', 'md', 'lg');
   $current_theme = variable_get('theme_default','none');
 
-  // Paths
+  // Paths.
   $variables['path_js']   = base_path() . drupal_get_path('theme', $current_theme) . '/dist/js';
   $variables['path_img']  = base_path() . drupal_get_path('theme', $current_theme) . '/dist/img';
   $variables['path_css']  = base_path() . drupal_get_path('theme', $current_theme) . '/dist/css';
   $variables['path_font'] = base_path() . drupal_get_path('theme', $current_theme) . '/dist/font';
 
-  // Sidebar
+  // Live reload.
+  $live_reload_file = 'http://127.0.0.1:35729/livereload.js';
+
+  if (_bellcom_check_if_file_in_url_exists($live_reload_file)) {
+    drupal_add_js($live_reload_file, array(
+      'group' => JS_LIBRARY,
+    ));
+  }
+
+  // Sidebar.
   foreach($view_modes as $view_mode) {
     $variables['classes_array'] = array_merge($variables['classes_array'], _bellcom_sidebar_classes($view_mode));
   }
